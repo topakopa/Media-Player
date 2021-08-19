@@ -46,14 +46,41 @@ namespace Media_Player
 
         private void context_menu_init()
         {
-            guna2ContextMenuStrip1.Items[0].Click += Add_File;
-            //guna2ContextMenuStrip1.Items[1].Click += ChangeNick;
-            //guna2ContextMenuStrip1.Items[2].Click += ChangePass;
-            //guna2ContextMenuStrip1.Items[3].Click += ShowEditGame1;
+            guna2ContextMenuStripAdd.Items[0].Click += Add_File;
+            guna2ContextMenuStripAdd.Items[1].Click += Add_Folder;
+            //guna2ContextMenuStripAdd.Items[2].Click += ChangePass;
+            //guna2ContextMenuStripAdd.Items[3].Click += ShowEditGame1;
 
-            //guna2ContextMenuStrip2.Items[0].Click += GameDEL;
-            //guna2ContextMenuStrip2.Items[1].Click += GameDEL;
-            //guna2ContextMenuStrip2.Items[3].Click += GameDEL;
+            //guna2ContextMenuStripDel.Items[0].Click += GameDEL;
+            //guna2ContextMenuStripDel.Items[1].Click += GameDEL;
+            //guna2ContextMenuStripDel.Items[3].Click += GameDEL;
+        }
+
+        private void Add_Folder(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                string[] files = Directory.GetFiles(folderBrowserDialog1.SelectedPath); 
+                foreach (String File in files)
+                {
+                    if (File.EndsWith(".mp3") || File.EndsWith(".wave") || File.EndsWith(".mid") || File.EndsWith(".mp4") || File.EndsWith(".avi") || File.EndsWith(".mp2"))
+                    {
+                        FileInfo fileInfo = new FileInfo(File);
+                        TagLib.File F = TagLib.File.Create(fileInfo.FullName);
+
+                        int row = bunifuDataGridView1.Rows.Add(new object[]
+                        {
+                            $"{F.Tag.FirstPerformer} / {F.Tag.Title}",
+                            F.Properties.Duration.ToString(@"mm\:ss"),
+                        });
+
+                        bunifuDataGridView1.Rows[row].Tag = fileInfo;
+
+                        Playlist.appendItem(axWindowsMediaPlayer1.newMedia(File));
+                    }
+                }
+            }
         }
 
         private void Add_File(object sender, EventArgs e)
@@ -385,10 +412,21 @@ namespace Media_Player
                 guna2PictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Default album icon.jpg");
             }
 
-            TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
+            if (Music.EndsWith(".mp3"))
+            {
+                guna2RatingStar1.Visible = true;
+             
+                TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
+                guna2RatingStar1.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
+            }
+            else
+            {
+                guna2RatingStar1.Visible = false;
+            }
+                
 
 
-            guna2RatingStar1.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
+            
 
         }
 
