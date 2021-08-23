@@ -74,9 +74,22 @@ namespace Media_Player
             ContextMenuAdd.Items[3].Click += Add_Link;
 
             ContextMenuDEL.Items[0].Click += DEL_File;
-            //ContextMenuDEL.Items[1].Click += DEL_File_from_disk;
+            ContextMenuDEL.Items[1].Click += DEL_File_from_disk;
             ContextMenuDEL.Items[3].Click += Clean_Playlist;
             //ContextMenuDEL.Items[4].Click += DEL_Playlist;
+        }
+
+        private void DEL_File_from_disk(object sender, EventArgs e)
+        {
+            if (VisualPlaylist.SelectedRows.Count > 0)
+            {
+                int index = VisualPlaylist.SelectedRows[0].Index;
+                FileInfo fileInfo = (FileInfo)VisualPlaylist.SelectedRows[0].Tag;
+                Player.currentPlaylist.removeItem(Player.currentPlaylist.Item[index]);
+                VisualPlaylist.Rows.Remove(VisualPlaylist.Rows[index]);
+                File.Delete(fileInfo.FullName);
+            }
+
         }
 
         private void Clean_Playlist(object sender, EventArgs e)
