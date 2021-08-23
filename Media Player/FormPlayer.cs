@@ -30,9 +30,28 @@ namespace Media_Player
             {5, 255}
 
         };
-        private string Music { get; set; }
+        /// <summary>
+        /// Зацыкливание песни
+        /// </summary>
+        private bool Retry { get; set; }
+        /// <summary>
+        /// Путь к песне
+        /// </summary>
+        private string Music { get; set; } = @"";
+        /// <summary>
+        /// Выключен ли звук
+        /// </summary>
         private bool IsMute { get; set; } = false;
+        /// <summary>
+        /// Теги песни
+        /// </summary>
         TagLib.File file { get; set; }
+        private int Timer { get; set; }
+        private string Vstatus { get; set; }
+        private byte Sstatus { get; set; }
+        /// <summary>
+        /// Плейлист
+        /// </summary>
         private WMPLib.IWMPPlaylist Playlist { get; set; }
 
         [Obsolete]
@@ -44,24 +63,55 @@ namespace Media_Player
             context_menu_init();
         }
 
+        /// <summary>
+        /// Инициализация контекстных меню
+        /// </summary>
         private void context_menu_init()
         {
-            guna2ContextMenuStripAdd.Items[0].Click += Add_File;
-            guna2ContextMenuStripAdd.Items[1].Click += Add_Folder;
-            //guna2ContextMenuStripAdd.Items[2].Click += ChangePass;
-            //guna2ContextMenuStripAdd.Items[3].Click += ShowEditGame1;
+            ContextMenuAdd.Items[0].Click += Add_File;
+            ContextMenuAdd.Items[1].Click += Add_Folder;
+            //ContextMenuAdd.Items[2].Click += Add_Playlist;
+            ContextMenuAdd.Items[3].Click += Add_Link;
 
-            //guna2ContextMenuStripDel.Items[0].Click += GameDEL;
-            //guna2ContextMenuStripDel.Items[1].Click += GameDEL;
-            //guna2ContextMenuStripDel.Items[3].Click += GameDEL;
+            ContextMenuDEL.Items[0].Click += DEL_File;
+            //ContextMenuDEL.Items[1].Click += DEL_File_from_disk;
+            ContextMenuDEL.Items[3].Click += Clean_Playlist;
+            //ContextMenuDEL.Items[4].Click += DEL_Playlist;
         }
 
+        private void Clean_Playlist(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Player.currentPlaylist.count; i++)
+            {
+                Player.currentPlaylist.removeItem(Player.currentPlaylist.Item[i]);
+                VisualPlaylist.Rows.Remove(VisualPlaylist.Rows[i]);
+            }
+        }
+
+        private void DEL_File(object sender, EventArgs e)
+        {
+            if (VisualPlaylist.SelectedRows.Count > 0)
+            {
+                int index = VisualPlaylist.SelectedRows[0].Index;
+                Player.currentPlaylist.removeItem(Player.currentPlaylist.Item[index]);
+                VisualPlaylist.Rows.Remove(VisualPlaylist.Rows[index]);
+            }
+        }
+
+        private void Add_Link(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Добавление папки в плейлист
+        /// </summary>
         private void Add_Folder(object sender, EventArgs e)
         {
-            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
+            DialogResult dialogResult = folderBrowserDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                string[] files = Directory.GetFiles(folderBrowserDialog1.SelectedPath); 
+                string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath); 
                 foreach (String File in files)
                 {
                     if (File.EndsWith(".mp3") || File.EndsWith(".wave") || File.EndsWith(".mid") || File.EndsWith(".mp4") || File.EndsWith(".avi") || File.EndsWith(".mp2"))
@@ -69,20 +119,36 @@ namespace Media_Player
                         FileInfo fileInfo = new FileInfo(File);
                         TagLib.File F = TagLib.File.Create(fileInfo.FullName);
 
-                        int row = bunifuDataGridView1.Rows.Add(new object[]
+                        string name;
+                        if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
                         {
-                            $"{F.Tag.FirstPerformer} / {F.Tag.Title}",
+                            name = fileInfo.Name;
+                        }
+                        else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                        {
+                            name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                        }
+                        else
+                        {
+                            name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                        }
+
+                        int row = VisualPlaylist.Rows.Add(new object[]
+                        {
+                            name,
                             F.Properties.Duration.ToString(@"mm\:ss"),
                         });
 
-                        bunifuDataGridView1.Rows[row].Tag = fileInfo;
+                        VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                        Playlist.appendItem(axWindowsMediaPlayer1.newMedia(File));
+                        Playlist.appendItem(Player.newMedia(File));
                     }
                 }
             }
         }
-
+        /// <summary>
+        /// Добавление файла в плейлист
+        /// </summary>
         private void Add_File(object sender, EventArgs e)
         {
             DialogResult dialogResult = openFileDialogPlay.ShowDialog();
@@ -93,24 +159,44 @@ namespace Media_Player
                     FileInfo fileInfo = new FileInfo(File);
                     TagLib.File F = TagLib.File.Create(fileInfo.FullName);
 
-                    int row = bunifuDataGridView1.Rows.Add(new object[]
+                    string name;
+                    if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
                     {
-                    $"{F.Tag.FirstPerformer} / {F.Tag.Title}",
-                    F.Properties.Duration.ToString(@"mm\:ss"),
+                        name = fileInfo.Name;
+                    }
+                    else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                    {
+                        name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                    }
+                    else
+                    {
+                        name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                    }
+
+                    int row = VisualPlaylist.Rows.Add(new object[]
+                    {
+                        name,
+                        F.Properties.Duration.ToString(@"mm\:ss"),
                     });
 
-                    bunifuDataGridView1.Rows[row].Tag = fileInfo;
+                    VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                    Playlist.appendItem(axWindowsMediaPlayer1.newMedia(File));
+                    Playlist.appendItem(Player.newMedia(File));
                 }
             }
         }
 
+        /// <summary>
+        /// Инициализация плеера и стандартного плейлиста
+        /// </summary>
         private void player_init()
         {
-            axWindowsMediaPlayer1.uiMode = "none";
-            axWindowsMediaPlayer1.settings.autoStart = false;
-            axWindowsMediaPlayer1.URL = @"";
+            Player.uiMode = "none";
+            Player.settings.autoStart = false;
+            Player.URL = @"";
+            Player.settings.setMode("loop", true);
+            Player.settings.volume = Settings1.Default.Volume;
+            VolumeSlider.Value = Settings1.Default.Volume;
 
             string user_name = Environment.UserName;
             Stream stream = new StreamReader("Assets/Default.m3u").BaseStream;
@@ -123,49 +209,51 @@ namespace Media_Player
             List<string> audio_paths = playlist.GetTracksPaths();
 
             stream.Close();
-            //File.Delete(@"C:\playlist.m3u");
+            File.Delete($@"C:\Users\{user_name}\Music\Playlists\Default.wpl");
 
-            Playlist = axWindowsMediaPlayer1.playlistCollection.newPlaylist("Default");
+            Playlist = Player.playlistCollection.newPlaylist("Default");
 
             foreach (string path in audio_paths)
             {
-                Playlist.appendItem(axWindowsMediaPlayer1.newMedia(path));
+                Playlist.appendItem(Player.newMedia(path));
             }
-            axWindowsMediaPlayer1.currentPlaylist = Playlist;
+            Player.currentPlaylist = Playlist;
         }
-
+        /// <summary>
+        /// Скрыть визуализацию \ Показать информацию
+        /// </summary>
         private void guna2ImageButtonInfo_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Visible = false;
+            Player.Visible = false;
+            FullscreanButton.Visible = false;
         }
-
-        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Показать визуализацию \ Скрыть информацию
+        /// </summary>
         private void guna2ImageButtonVideo_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Visible = true;
+            Player.Visible = true;
+            FullscreanButton.Visible = true;
 
         }
-
-
+        /// <summary>
+        /// Кнопка Плей
+        /// </summary>
         private void guna2ImageButtonPlay_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            if (Player.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                axWindowsMediaPlayer1.Ctlcontrols.stop();
-                axWindowsMediaPlayer1.Ctlcontrols.play();
+                Player.Ctlcontrols.stop();
+                Player.Ctlcontrols.play();
             }
-            else if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsPaused)
+            else if (Player.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
-                axWindowsMediaPlayer1.Ctlcontrols.play();
+                Player.Ctlcontrols.play();
             }
             else if (Music != null)
             {
-                axWindowsMediaPlayer1.Ctlcontrols.play();
+                Player.Ctlcontrols.play();
 
             }
             timer1.Start();
@@ -173,49 +261,57 @@ namespace Media_Player
             tegChange();
 
         }
-
+        /// <summary>
+        /// Кнопка Паузы
+        /// </summary>
         private void guna2ImageButtonPause_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.pause();
+            Player.Ctlcontrols.pause();
         }
-
+        /// <summary>
+        /// Кнопка Остановки
+        /// </summary>
         private void guna2ImageButtonStop_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            Player.Ctlcontrols.stop();
         }
-
+        /// <summary>
+        /// Кнопка Предыдущей песни
+        /// </summary>
         private void guna2ImageButtonLeft_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.previous();
-            int selectedIndex = bunifuDataGridView1.SelectedRows[0].Index;
-            bunifuDataGridView1.Rows[selectedIndex].Selected = false;
+            Player.Ctlcontrols.previous();
+            int selectedIndex = VisualPlaylist.SelectedRows[0].Index;
+            VisualPlaylist.Rows[selectedIndex].Selected = false;
 
             if (selectedIndex == 0)
             {
-                bunifuDataGridView1.Rows[bunifuDataGridView1.Rows.Count - 1].Selected = true;
+                VisualPlaylist.Rows[VisualPlaylist.Rows.Count - 1].Selected = true;
             }
             else
             {
-                bunifuDataGridView1.Rows[selectedIndex - 1].Selected = true;
+                VisualPlaylist.Rows[selectedIndex - 1].Selected = true;
             }
 
             tegChange();
         }
-
+        /// <summary>
+        /// Кнопка Следующей песни
+        /// </summary>
         private void guna2ImageButtonRight_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.next();
-            int selectedIndex = bunifuDataGridView1.SelectedRows[0].Index;
+            Player.Ctlcontrols.next();
+            int selectedIndex = VisualPlaylist.SelectedRows[0].Index;
 
 
-            bunifuDataGridView1.Rows[selectedIndex].Selected = false;
-            if (selectedIndex == bunifuDataGridView1.Rows.Count - 1)
+            VisualPlaylist.Rows[selectedIndex].Selected = false;
+            if (selectedIndex == VisualPlaylist.Rows.Count - 1)
             {
-                bunifuDataGridView1.Rows[0].Selected = true;
+                VisualPlaylist.Rows[0].Selected = true;
             }
             else
             {
-                bunifuDataGridView1.Rows[selectedIndex + 1].Selected = true;
+                VisualPlaylist.Rows[selectedIndex + 1].Selected = true;
             }
             tegChange();
         }
@@ -223,37 +319,105 @@ namespace Media_Player
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            bunifuLabelSongTime.Text = axWindowsMediaPlayer1.Ctlcontrols.currentPositionString;
-            bunifuHSliderSongTime.Value = (int)axWindowsMediaPlayer1.Ctlcontrols.currentPosition;
-
-            if (axWindowsMediaPlayer1.currentMedia.duration != 0)
+            //визуалилизация времени
+            SongTimeLabel.Text = Player.Ctlcontrols.currentPositionString;
+            SongTimeSlider.Value = (int)Player.Ctlcontrols.currentPosition;
+            if (Player.currentMedia != null)
             {
-                bunifuLabelSongTimeLong.Text = axWindowsMediaPlayer1.currentMedia.durationString;
-                bunifuHSliderSongTime.Maximum = (int)axWindowsMediaPlayer1.currentMedia.duration;
+                if (Player.currentMedia.duration != 0)
+                {
+                    SongLongTimeLabel.Text = Player.currentMedia.durationString;
+                    SongTimeSlider.Maximum = (int)Player.currentMedia.duration;
+                }
             }
 
-            bunifuLabel1.Text = axWindowsMediaPlayer1.status;
-            bunifuLabel3.Text = axWindowsMediaPlayer1.status;
 
-            if (bunifuLabel1.Left == -1)
+            //статус песни
+            if(Player.status == "Приостановлено" || Player.status == "Остановлено")
             {
-                bunifuLabel3.Left = panel1.Size.Width;
-                bunifuLabel3.Visible = true;
+                Sstatus = 0;
+                Vstatus = Player.status;
+            }
+            else if (Sstatus == 1)
+            {
+                if(file.Tag.FirstPerformer != null && file.Tag.Title != null)
+                {
+                    Vstatus = $"{file.Tag.FirstPerformer} / {file.Tag.Title}";
+                }
+                else
+                {
+                    Sstatus++;
+                }
+            }
+            else if(Sstatus == 0)
+            {
+                Vstatus = Player.status;
+            }
+            else if(Sstatus == 2)
+            {
+                FileInfo fileInfo = new FileInfo(Music);
+                Vstatus = fileInfo.Name;
+            }
+            else if (Sstatus == 3)
+            {
+                if (file.Tag.FirstAlbumArtist != null && file.Tag.Album != null)
+                {
+                    Vstatus = $"{file.Tag.FirstAlbumArtist} / {file.Tag.Album}";
+                }
+                else
+                {
+                    Sstatus++;
+                }
+            }
+            else if (Sstatus == 4)
+            {
+                if (file.Tag.FirstGenre != null)
+                {
+                    Vstatus = file.Tag.FirstGenre;
+                }
+                else
+                {
+                    Sstatus++;
+                }
             }
 
-            if (bunifuLabel3.Left == -1)
+            StatusLabel1.Text = Vstatus;
+            StatusLabel2.Text = Vstatus;
+
+            if (StatusLabel1.Left == -1)
             {
-                bunifuLabel1.Left = panel1.Size.Width;
+                StatusLabel2.Left = panel1.Size.Width;
+                StatusLabel2.Visible = true;
             }
 
-            bunifuLabel1.Left -= 1;
-            bunifuLabel3.Left -= 1;
+            if (StatusLabel2.Left == -1)
+            {
+                StatusLabel1.Left = panel1.Size.Width;
+            }
 
+            StatusLabel1.Left -= 1;
+            StatusLabel2.Left -= 1;
+
+            Timer++;
+            if (Timer > 45)
+            {
+                Timer = 0;
+                if(Sstatus < 4)
+                {
+                    Sstatus++;
+                }
+                else
+                {
+                    Sstatus = 0;
+                }
+
+            }
+            
         }
         
         private void bunifuHSliderSongTime_Scroll(object sender, Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.currentPosition = e.Value;
+            Player.Ctlcontrols.currentPosition = e.Value;
         }
 
         /// <summary>
@@ -263,13 +427,13 @@ namespace Media_Player
         /// <param name="e"></param>
         private void bunifuHSliderVolume_Scroll(object sender, Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs e)
         {
-            axWindowsMediaPlayer1.settings.volume = e.Value;
+            Player.settings.volume = e.Value;
             if (IsMute)
             {
                 IsMute = false;
-                guna2ImageButton.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
-                guna2ImageButton.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
-                guna2ImageButton.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
+                ButtonMute.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
+                ButtonMute.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
+                ButtonMute.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
             }
 
         }
@@ -283,20 +447,20 @@ namespace Media_Player
             if (IsMute)
             {
                 IsMute = false;
-                bunifuHSliderVolume.Value = axWindowsMediaPlayer1.settings.volume;
-                guna2ImageButton.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
-                guna2ImageButton.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
-                guna2ImageButton.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
+                VolumeSlider.Value = Player.settings.volume;
+                ButtonMute.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
+                ButtonMute.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
+                ButtonMute.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
             }
             else
             {
                 IsMute = true;
-                bunifuHSliderVolume.Value = 0;
-                guna2ImageButton.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
-                guna2ImageButton.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
-                guna2ImageButton.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
+                VolumeSlider.Value = 0;
+                ButtonMute.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
+                ButtonMute.HoverState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Mute.png");
+                ButtonMute.PressedState.Image = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Unmute.png");
             }
-            axWindowsMediaPlayer1.settings.mute = IsMute;
+            Player.settings.mute = IsMute;
         }
 
         /// <summary>
@@ -312,17 +476,31 @@ namespace Media_Player
                 FileInfo fileInfo = new FileInfo(File);
                 TagLib.File F = TagLib.File.Create(fileInfo.FullName);
 
-                int row = bunifuDataGridView1.Rows.Add(new object[]
+                string name;
+                if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
                 {
-                    $"{F.Tag.FirstPerformer} / {F.Tag.Title}",
+                    name = fileInfo.Name;
+                }
+                else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                {
+                    name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                }
+                else
+                {
+                    name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                }
+
+                int row = VisualPlaylist.Rows.Add(new object[]
+                {
+                    name,
                     F.Properties.Duration.ToString(@"mm\:ss"),
                 });
 
-                bunifuDataGridView1.Rows[row].Tag = fileInfo;
+                VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                Playlist.appendItem(axWindowsMediaPlayer1.newMedia(File));
+                Playlist.appendItem(Player.newMedia(File));
             }
-            axWindowsMediaPlayer1.currentPlaylist = Playlist;
+            Player.currentPlaylist = Playlist;
 
         }
 
@@ -341,47 +519,58 @@ namespace Media_Player
         private void playlist_init()
         {
 
-            for (int i = 0; i < axWindowsMediaPlayer1.currentPlaylist.count; i++)
+            for (int i = 0; i < Player.currentPlaylist.count; i++)
             {
-                WMPLib.IWMPMedia audio = axWindowsMediaPlayer1.currentPlaylist.Item[i];
+                WMPLib.IWMPMedia audio = Player.currentPlaylist.Item[i];
 
                 FileInfo fileInfo = new FileInfo(audio.sourceURL);
                 TagLib.File F = TagLib.File.Create(fileInfo.FullName);
 
-                int row = bunifuDataGridView1.Rows.Add(new object[]
+                string name;
+                if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
                 {
-                    $"{F.Tag.FirstPerformer} / {F.Tag.Title}",
-                    F.Properties.Duration.ToString(@"mm\:ss"),
-                });
-
-                bunifuDataGridView1.Rows[row].Tag = fileInfo;
-            }
-
-        }
-
-        private void axWindowsMediaPlayer1_CurrentItemChange(object sender, AxWMPLib._WMPOCXEvents_CurrentItemChangeEvent e)
-        {
-
-
-        }
-
-        private void axWindowsMediaPlayer1_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
-        {
-            int selected_index = bunifuDataGridView1.SelectedRows[0].Index;
-            if (axWindowsMediaPlayer1.currentMedia.sourceURL != ((FileInfo)bunifuDataGridView1.Rows[selected_index].Tag).FullName)
-            {
-                bunifuDataGridView1.Rows[selected_index].Selected = false;
-                if (selected_index == bunifuDataGridView1.Rows.Count - 1)
+                    name = fileInfo.Name;
+                }
+                else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
                 {
-                    bunifuDataGridView1.Rows[0].Selected = true;
+                    name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
                 }
                 else
                 {
-                    bunifuDataGridView1.Rows[selected_index].Selected = true;
+                    name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                }
+
+                int row = VisualPlaylist.Rows.Add(new object[]
+                {
+                    name,
+                    F.Properties.Duration.ToString(@"mm\:ss"),
+                });
+
+                VisualPlaylist.Rows[row].Tag = fileInfo;
+            }
+
+        }
+
+        /// <summary>
+        /// Переключение песни
+        /// </summary>
+        private void axWindowsMediaPlayer1_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
+        {
+            int selected_index = VisualPlaylist.SelectedRows[0].Index;
+            if (Player.currentMedia.sourceURL != ((FileInfo)VisualPlaylist.Rows[selected_index].Tag).FullName)
+            {
+                VisualPlaylist.Rows[selected_index].Selected = false;
+                if (selected_index == VisualPlaylist.Rows.Count - 1)
+                {
+                    VisualPlaylist.Rows[0].Selected = true;
+                }
+                else
+                {
+                    VisualPlaylist.Rows[selected_index].Selected = true;
                 }
             }
 
-            Music = axWindowsMediaPlayer1.currentMedia.sourceURL;
+            Music = Player.currentMedia.sourceURL;
             tegChange();
         }
 
@@ -392,36 +581,36 @@ namespace Media_Player
         {
             file = TagLib.File.Create(Music);
 
-            bunifuLabelName.Text = file.Tag.Title ?? "";
-            bunifuLabelArtist.Text = file.Tag.FirstPerformer ?? "";
+            TagLabelTile.Text = file.Tag.Title ?? "";
+            TagLabelArtist.Text = file.Tag.FirstPerformer ?? "";
 
-            bunifuLabelAlbum.Text = file.Tag.Album ?? "";
-            bunifuLabelAlbumArtist.Text = file.Tag.FirstAlbumArtist ?? "";
+            TagLabelAlbum.Text = file.Tag.Album ?? "";
+            TagLabelAlbumArtist.Text = file.Tag.FirstAlbumArtist ?? "";
 
-            bunifuLabelNamber.Text = file.Tag.Track.ToString() ?? "";
-            bunifuLabelAge.Text = file.Tag.Year.ToString() ?? "";
-            bunifuLabelStile.Text = file.Tag.FirstGenre ?? "";
+            TagLabelTrack.Text = file.Tag.Track.ToString() ?? "";
+            TagLabelYear.Text = file.Tag.Year.ToString() ?? "";
+            TagLabelStile.Text = file.Tag.FirstGenre ?? "";
 
             if (file.Tag.Pictures.Length != 0)
             {
                 MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
-                guna2PictureBox1.BackgroundImage = Image.FromStream(ms);
+                AlbumPictureBox.BackgroundImage = Image.FromStream(ms);
             }
             else
             {
-                guna2PictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Default album icon.jpg");
+                AlbumPictureBox.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Default album icon.jpg");
             }
 
             if (Music.EndsWith(".mp3"))
             {
-                guna2RatingStar1.Visible = true;
+                RatingStar.Visible = true;
              
                 TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
-                guna2RatingStar1.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
+                RatingStar.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
             }
             else
             {
-                guna2RatingStar1.Visible = false;
+                RatingStar.Visible = false;
             }
                 
 
@@ -430,7 +619,9 @@ namespace Media_Player
 
         }
 
-
+        /// <summary>
+        /// Выбор песни через плейлист
+        /// </summary>
         private void bunifuDataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -438,24 +629,13 @@ namespace Media_Player
                 return;
             }
 
-            FileInfo file = (FileInfo)bunifuDataGridView1.Rows[e.RowIndex].Tag;
+            FileInfo file = (FileInfo)VisualPlaylist.Rows[e.RowIndex].Tag;
 
             Music = file.FullName;
 
-            axWindowsMediaPlayer1.Ctlcontrols.currentItem = axWindowsMediaPlayer1.currentPlaylist.Item[e.RowIndex];
+            Player.Ctlcontrols.currentItem = Player.currentPlaylist.Item[e.RowIndex];
             guna2ImageButtonPlay_Click(sender, e);
             tegChange();
-        }
-
-        private void bunifuLabel1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void bunifuDataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void guna2RatingStar1_ValueChanged(object sender, EventArgs e)
@@ -471,27 +651,35 @@ namespace Media_Player
 
 
         }
-
+        /// <summary>
+        /// Отображение кнопки сохранения рейтинга
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void guna2RatingStar1_Click(object sender, EventArgs e)
         {
-            guna2ImageButton1.Visible = true;
+            ButtonRatingSave.Visible = true;
         }
-
+        /// <summary>
+        /// Сохранение рейтинга
+        /// </summary>
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
-            double currentPosition = axWindowsMediaPlayer1.Ctlcontrols.currentPosition;
+            double currentPosition = Player.Ctlcontrols.currentPosition;
             TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
-            frame.Rating = (byte)stars[guna2RatingStar1.Value];
-            axWindowsMediaPlayer1.close();
+            frame.Rating = (byte)stars[RatingStar.Value];
+            Player.close();
             file.Save();
-            guna2ImageButton1.Visible = false;
-            axWindowsMediaPlayer1.Ctlcontrols.play();
-            axWindowsMediaPlayer1.Ctlcontrols.currentPosition = currentPosition;
+            ButtonRatingSave.Visible = false;
+            Player.Ctlcontrols.play();
+            Player.Ctlcontrols.currentPosition = currentPosition;
         }
-
+        /// <summary>
+        /// режим случайного воспроизведения
+        /// </summary>
         private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.settings.setMode("shuffle", guna2ToggleSwitch1.Checked);
+            Player.settings.setMode("shuffle", ToggleShuffle.Checked);
 
         }
 
@@ -504,9 +692,9 @@ namespace Media_Player
         {
             M3uPlaylist m3UPlaylist = new M3uPlaylist();
             m3UPlaylist.IsExtended = true;
-            for (int i = 0; i < axWindowsMediaPlayer1.currentPlaylist.count; i++)
+            for (int i = 0; i < Player.currentPlaylist.count; i++)
             {
-                WMPLib.IWMPMedia audio = axWindowsMediaPlayer1.currentPlaylist.Item[i];
+                WMPLib.IWMPMedia audio = Player.currentPlaylist.Item[i];
 
                 FileInfo fileInfo = new FileInfo(audio.sourceURL);
                 TagLib.File F = TagLib.File.Create(fileInfo.FullName);
@@ -527,12 +715,31 @@ namespace Media_Player
                 writer.WriteLine(text);
             }
 
+            Settings1.Default.Volume = VolumeSlider.Value;
 
         }
 
         private void guna2ImageButton2_Click(object sender, EventArgs e)
         {
-            guna2ImageButton2.ContextMenuStrip.Show(guna2ImageButton2, new Point(0, 51));
+            ButtonAdd.ContextMenuStrip.Show(ButtonAdd, new Point(0, 51));
+        }
+        /// <summary>
+        /// Режим зацикливаного воспроизведения (Beta)
+        /// </summary>
+        private void guna2ToggleSwitch2_CheckedChanged(object sender, EventArgs e)
+        {
+            Retry = ToggleLoop.Checked;
+        }
+
+        private void FullscreanButton_Click(object sender, EventArgs e)
+        {
+            Player.uiMode = "full";
+            Player.fullScreen = true;
+        }
+
+        private void ButtonDEL_Click(object sender, EventArgs e)
+        {
+            ButtonDEL.ContextMenuStrip.Show(ButtonDEL, new Point(0, 51));
         }
     }
 }

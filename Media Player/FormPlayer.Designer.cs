@@ -35,669 +35,680 @@ namespace Media_Player
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPlayer));
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
-            this.guna2ImageButtonPlay = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButtonPause = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButtonStop = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButtonLeft = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButtonRight = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.bunifuHSliderSongTime = new Bunifu.UI.WinForms.BunifuHSlider();
-            this.bunifuHSliderVolume = new Bunifu.UI.WinForms.BunifuHSlider();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.bunifuLabelSongTime = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelSongTimeLong = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelName = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel9 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel10 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel11 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel12 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelArtist = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelAlbum = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelAge = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelStile = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelNamber = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabelAlbumArtist = new Bunifu.UI.WinForms.BunifuLabel();
-            this.guna2ImageButtonVideo = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButtonInfo = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            this.AlbumPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.RatingStar = new Guna.UI2.WinForms.Guna2RatingStar();
+            this.ButtonPlay = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonPause = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonStop = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonPrevious = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonNext = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.SongTimeSlider = new Bunifu.UI.WinForms.BunifuHSlider();
+            this.VolumeSlider = new Bunifu.UI.WinForms.BunifuHSlider();
+            this.ButtonEXIT = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.ButtonHide = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.SongTimeLabel = new Bunifu.UI.WinForms.BunifuLabel();
+            this.SongLongTimeLabel = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelAlbumArtist = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelTile = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelTile = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelArtist = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelAlbum = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelYear = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelStile = new Bunifu.UI.WinForms.BunifuLabel();
+            this.NTagLabelTrack = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelArtist = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelAlbum = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelYear = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelStile = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelTrack = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TagLabelAlbumArtist = new Bunifu.UI.WinForms.BunifuLabel();
+            this.ButtonVideo = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonInfo = new Guna.UI2.WinForms.Guna2ImageButton();
             this.openFileDialogPlay = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.guna2ImageButton = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.DragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.ButtonMute = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.VisualPlaylist = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SongTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.StatusLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ContextMenuStripAdd = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.bunifuCheckBox1 = new Bunifu.UI.WinForms.BunifuCheckBox();
-            this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.guna2ToggleSwitch2 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
+            this.StatusLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.ButtonRatingSave = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonAdd = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ContextMenuAdd = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.toolStripMenuItemAddFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddPlaylist = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddLink = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButtonDEL = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ToggleShuffle = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.ToggleLoop = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.PictureBoxShuffle = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.ContextMenuDEL = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.toolStripMenuItemDelFromPlaylist = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDelFromDisk = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemCleanPlaylist = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDelPlaylist = new System.Windows.Forms.ToolStripMenuItem();
+            this.PictureBoxLoop = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.Not_work = new System.Windows.Forms.Label();
+            this.List_Playlist = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.ButtonPrevious_playlist = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ButtonPlaylist_Next = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.SongLongTime = new Bunifu.UI.WinForms.BunifuLabel();
+            this.FullscreanButton = new Guna.UI2.WinForms.Guna2ImageButton();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlbumPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VisualPlaylist)).BeginInit();
             this.panel1.SuspendLayout();
-            this.guna2ContextMenuStripAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.ContextMenuAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).BeginInit();
+            this.ContextMenuDEL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLoop)).BeginInit();
             this.SuspendLayout();
             // 
-            // bunifuElipse1
+            // Elipse
             // 
-            this.bunifuElipse1.ElipseRadius = 50;
-            this.bunifuElipse1.TargetControl = this;
+            this.Elipse.ElipseRadius = 50;
+            this.Elipse.TargetControl = this;
             // 
-            // axWindowsMediaPlayer1
+            // Player
             // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(12, 188);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(826, 300);
-            this.axWindowsMediaPlayer1.TabIndex = 0;
-            this.axWindowsMediaPlayer1.Visible = false;
-            this.axWindowsMediaPlayer1.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.axWindowsMediaPlayer1_MediaChange);
-            this.axWindowsMediaPlayer1.CurrentItemChange += new AxWMPLib._WMPOCXEvents_CurrentItemChangeEventHandler(this.axWindowsMediaPlayer1_CurrentItemChange);
-            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(12, 188);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(826, 300);
+            this.Player.TabIndex = 0;
+            this.Player.Visible = false;
+            this.Player.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.axWindowsMediaPlayer1_MediaChange);
             // 
-            // guna2PictureBox1
+            // AlbumPictureBox
             // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Black;
-            this.guna2PictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.BackgroundImage")));
-            this.guna2PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(688, 338);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.ShadowDecoration.Parent = this.guna2PictureBox1;
-            this.guna2PictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.guna2PictureBox1.TabIndex = 18;
-            this.guna2PictureBox1.TabStop = false;
+            this.AlbumPictureBox.BackColor = System.Drawing.Color.Black;
+            this.AlbumPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AlbumPictureBox.BackgroundImage")));
+            this.AlbumPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AlbumPictureBox.FillColor = System.Drawing.Color.Transparent;
+            this.AlbumPictureBox.ImageRotate = 0F;
+            this.AlbumPictureBox.Location = new System.Drawing.Point(688, 338);
+            this.AlbumPictureBox.Name = "AlbumPictureBox";
+            this.AlbumPictureBox.ShadowDecoration.Parent = this.AlbumPictureBox;
+            this.AlbumPictureBox.Size = new System.Drawing.Size(150, 150);
+            this.AlbumPictureBox.TabIndex = 18;
+            this.AlbumPictureBox.TabStop = false;
             // 
-            // guna2RatingStar1
+            // RatingStar
             // 
-            this.guna2RatingStar1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2RatingStar1.Location = new System.Drawing.Point(688, 304);
-            this.guna2RatingStar1.Name = "guna2RatingStar1";
-            this.guna2RatingStar1.Size = new System.Drawing.Size(150, 28);
-            this.guna2RatingStar1.TabIndex = 19;
-            this.guna2RatingStar1.ValueChanged += new System.EventHandler(this.guna2RatingStar1_ValueChanged);
-            this.guna2RatingStar1.Click += new System.EventHandler(this.guna2RatingStar1_Click);
+            this.RatingStar.BackColor = System.Drawing.Color.Transparent;
+            this.RatingStar.Location = new System.Drawing.Point(688, 304);
+            this.RatingStar.Name = "RatingStar";
+            this.RatingStar.Size = new System.Drawing.Size(150, 28);
+            this.RatingStar.TabIndex = 19;
+            this.RatingStar.ValueChanged += new System.EventHandler(this.guna2RatingStar1_ValueChanged);
+            this.RatingStar.Click += new System.EventHandler(this.guna2RatingStar1_Click);
             // 
-            // guna2ImageButtonPlay
+            // ButtonPlay
             // 
-            this.guna2ImageButtonPlay.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonPlay.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonPlay.CheckedState.Parent = this.guna2ImageButtonPlay;
-            this.guna2ImageButtonPlay.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image18")));
-            this.guna2ImageButtonPlay.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
-            this.guna2ImageButtonPlay.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonPlay.HoverState.Parent = this.guna2ImageButtonPlay;
-            this.guna2ImageButtonPlay.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonPlay.Image")));
-            this.guna2ImageButtonPlay.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonPlay.ImageRotate = 0F;
-            this.guna2ImageButtonPlay.ImageSize = new System.Drawing.Size(58, 58);
-            this.guna2ImageButtonPlay.IndicateFocus = true;
-            this.guna2ImageButtonPlay.Location = new System.Drawing.Point(12, 92);
-            this.guna2ImageButtonPlay.Name = "guna2ImageButtonPlay";
-            this.guna2ImageButtonPlay.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image19")));
-            this.guna2ImageButtonPlay.PressedState.ImageSize = new System.Drawing.Size(115, 115);
-            this.guna2ImageButtonPlay.PressedState.Parent = this.guna2ImageButtonPlay;
-            this.guna2ImageButtonPlay.ShadowDecoration.Parent = this.guna2ImageButtonPlay;
-            this.guna2ImageButtonPlay.Size = new System.Drawing.Size(72, 75);
-            this.guna2ImageButtonPlay.TabIndex = 20;
-            this.guna2ImageButtonPlay.Click += new System.EventHandler(this.guna2ImageButtonPlay_Click);
+            this.ButtonPlay.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonPlay.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPlay.CheckedState.Parent = this.ButtonPlay;
+            this.ButtonPlay.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
+            this.ButtonPlay.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
+            this.ButtonPlay.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPlay.HoverState.Parent = this.ButtonPlay;
+            this.ButtonPlay.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPlay.Image")));
+            this.ButtonPlay.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonPlay.ImageRotate = 0F;
+            this.ButtonPlay.ImageSize = new System.Drawing.Size(58, 58);
+            this.ButtonPlay.IndicateFocus = true;
+            this.ButtonPlay.Location = new System.Drawing.Point(12, 92);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image25")));
+            this.ButtonPlay.PressedState.ImageSize = new System.Drawing.Size(115, 115);
+            this.ButtonPlay.PressedState.Parent = this.ButtonPlay;
+            this.ButtonPlay.ShadowDecoration.Parent = this.ButtonPlay;
+            this.ButtonPlay.Size = new System.Drawing.Size(72, 75);
+            this.ButtonPlay.TabIndex = 20;
+            this.ButtonPlay.Click += new System.EventHandler(this.guna2ImageButtonPlay_Click);
             // 
-            // guna2ImageButtonPause
+            // ButtonPause
             // 
-            this.guna2ImageButtonPause.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonPause.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonPause.CheckedState.Parent = this.guna2ImageButtonPause;
-            this.guna2ImageButtonPause.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image16")));
-            this.guna2ImageButtonPause.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
-            this.guna2ImageButtonPause.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonPause.HoverState.Parent = this.guna2ImageButtonPause;
-            this.guna2ImageButtonPause.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonPause.Image")));
-            this.guna2ImageButtonPause.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonPause.ImageRotate = 0F;
-            this.guna2ImageButtonPause.ImageSize = new System.Drawing.Size(58, 58);
-            this.guna2ImageButtonPause.IndicateFocus = true;
-            this.guna2ImageButtonPause.Location = new System.Drawing.Point(90, 92);
-            this.guna2ImageButtonPause.Name = "guna2ImageButtonPause";
-            this.guna2ImageButtonPause.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
-            this.guna2ImageButtonPause.PressedState.ImageSize = new System.Drawing.Size(115, 115);
-            this.guna2ImageButtonPause.PressedState.Parent = this.guna2ImageButtonPause;
-            this.guna2ImageButtonPause.ShadowDecoration.Parent = this.guna2ImageButtonPause;
-            this.guna2ImageButtonPause.Size = new System.Drawing.Size(72, 75);
-            this.guna2ImageButtonPause.TabIndex = 21;
-            this.guna2ImageButtonPause.Click += new System.EventHandler(this.guna2ImageButtonPause_Click);
+            this.ButtonPause.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonPause.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPause.CheckedState.Parent = this.ButtonPause;
+            this.ButtonPause.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image22")));
+            this.ButtonPause.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
+            this.ButtonPause.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPause.HoverState.Parent = this.ButtonPause;
+            this.ButtonPause.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPause.Image")));
+            this.ButtonPause.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonPause.ImageRotate = 0F;
+            this.ButtonPause.ImageSize = new System.Drawing.Size(58, 58);
+            this.ButtonPause.IndicateFocus = true;
+            this.ButtonPause.Location = new System.Drawing.Point(90, 92);
+            this.ButtonPause.Name = "ButtonPause";
+            this.ButtonPause.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image23")));
+            this.ButtonPause.PressedState.ImageSize = new System.Drawing.Size(115, 115);
+            this.ButtonPause.PressedState.Parent = this.ButtonPause;
+            this.ButtonPause.ShadowDecoration.Parent = this.ButtonPause;
+            this.ButtonPause.Size = new System.Drawing.Size(72, 75);
+            this.ButtonPause.TabIndex = 21;
+            this.ButtonPause.Click += new System.EventHandler(this.guna2ImageButtonPause_Click);
             // 
-            // guna2ImageButtonStop
+            // ButtonStop
             // 
-            this.guna2ImageButtonStop.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonStop.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonStop.CheckedState.Parent = this.guna2ImageButtonStop;
-            this.guna2ImageButtonStop.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image14")));
-            this.guna2ImageButtonStop.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
-            this.guna2ImageButtonStop.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonStop.HoverState.Parent = this.guna2ImageButtonStop;
-            this.guna2ImageButtonStop.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonStop.Image")));
-            this.guna2ImageButtonStop.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonStop.ImageRotate = 0F;
-            this.guna2ImageButtonStop.ImageSize = new System.Drawing.Size(58, 58);
-            this.guna2ImageButtonStop.IndicateFocus = true;
-            this.guna2ImageButtonStop.Location = new System.Drawing.Point(168, 92);
-            this.guna2ImageButtonStop.Name = "guna2ImageButtonStop";
-            this.guna2ImageButtonStop.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image15")));
-            this.guna2ImageButtonStop.PressedState.ImageSize = new System.Drawing.Size(115, 115);
-            this.guna2ImageButtonStop.PressedState.Parent = this.guna2ImageButtonStop;
-            this.guna2ImageButtonStop.ShadowDecoration.Parent = this.guna2ImageButtonStop;
-            this.guna2ImageButtonStop.Size = new System.Drawing.Size(72, 75);
-            this.guna2ImageButtonStop.TabIndex = 22;
-            this.guna2ImageButtonStop.Click += new System.EventHandler(this.guna2ImageButtonStop_Click);
+            this.ButtonStop.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonStop.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonStop.CheckedState.Parent = this.ButtonStop;
+            this.ButtonStop.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image20")));
+            this.ButtonStop.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
+            this.ButtonStop.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonStop.HoverState.Parent = this.ButtonStop;
+            this.ButtonStop.Image = ((System.Drawing.Image)(resources.GetObject("ButtonStop.Image")));
+            this.ButtonStop.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonStop.ImageRotate = 0F;
+            this.ButtonStop.ImageSize = new System.Drawing.Size(58, 58);
+            this.ButtonStop.IndicateFocus = true;
+            this.ButtonStop.Location = new System.Drawing.Point(168, 92);
+            this.ButtonStop.Name = "ButtonStop";
+            this.ButtonStop.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image21")));
+            this.ButtonStop.PressedState.ImageSize = new System.Drawing.Size(115, 115);
+            this.ButtonStop.PressedState.Parent = this.ButtonStop;
+            this.ButtonStop.ShadowDecoration.Parent = this.ButtonStop;
+            this.ButtonStop.Size = new System.Drawing.Size(72, 75);
+            this.ButtonStop.TabIndex = 22;
+            this.ButtonStop.Click += new System.EventHandler(this.guna2ImageButtonStop_Click);
             // 
-            // guna2ImageButtonLeft
+            // ButtonPrevious
             // 
-            this.guna2ImageButtonLeft.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonLeft.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonLeft.CheckedState.Parent = this.guna2ImageButtonLeft;
-            this.guna2ImageButtonLeft.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image12")));
-            this.guna2ImageButtonLeft.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
-            this.guna2ImageButtonLeft.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonLeft.HoverState.Parent = this.guna2ImageButtonLeft;
-            this.guna2ImageButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonLeft.Image")));
-            this.guna2ImageButtonLeft.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonLeft.ImageRotate = 0F;
-            this.guna2ImageButtonLeft.ImageSize = new System.Drawing.Size(58, 58);
-            this.guna2ImageButtonLeft.IndicateFocus = true;
-            this.guna2ImageButtonLeft.Location = new System.Drawing.Point(246, 92);
-            this.guna2ImageButtonLeft.Name = "guna2ImageButtonLeft";
-            this.guna2ImageButtonLeft.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image13")));
-            this.guna2ImageButtonLeft.PressedState.ImageSize = new System.Drawing.Size(115, 115);
-            this.guna2ImageButtonLeft.PressedState.Parent = this.guna2ImageButtonLeft;
-            this.guna2ImageButtonLeft.ShadowDecoration.Parent = this.guna2ImageButtonLeft;
-            this.guna2ImageButtonLeft.Size = new System.Drawing.Size(72, 75);
-            this.guna2ImageButtonLeft.TabIndex = 23;
-            this.guna2ImageButtonLeft.Click += new System.EventHandler(this.guna2ImageButtonLeft_Click);
+            this.ButtonPrevious.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonPrevious.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPrevious.CheckedState.Parent = this.ButtonPrevious;
+            this.ButtonPrevious.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image18")));
+            this.ButtonPrevious.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
+            this.ButtonPrevious.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPrevious.HoverState.Parent = this.ButtonPrevious;
+            this.ButtonPrevious.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPrevious.Image")));
+            this.ButtonPrevious.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonPrevious.ImageRotate = 0F;
+            this.ButtonPrevious.ImageSize = new System.Drawing.Size(58, 58);
+            this.ButtonPrevious.IndicateFocus = true;
+            this.ButtonPrevious.Location = new System.Drawing.Point(246, 92);
+            this.ButtonPrevious.Name = "ButtonPrevious";
+            this.ButtonPrevious.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image19")));
+            this.ButtonPrevious.PressedState.ImageSize = new System.Drawing.Size(115, 115);
+            this.ButtonPrevious.PressedState.Parent = this.ButtonPrevious;
+            this.ButtonPrevious.ShadowDecoration.Parent = this.ButtonPrevious;
+            this.ButtonPrevious.Size = new System.Drawing.Size(72, 75);
+            this.ButtonPrevious.TabIndex = 23;
+            this.ButtonPrevious.Click += new System.EventHandler(this.guna2ImageButtonLeft_Click);
             // 
-            // guna2ImageButtonRight
+            // ButtonNext
             // 
-            this.guna2ImageButtonRight.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonRight.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonRight.CheckedState.Parent = this.guna2ImageButtonRight;
-            this.guna2ImageButtonRight.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
-            this.guna2ImageButtonRight.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
-            this.guna2ImageButtonRight.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonRight.HoverState.Parent = this.guna2ImageButtonRight;
-            this.guna2ImageButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonRight.Image")));
-            this.guna2ImageButtonRight.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonRight.ImageRotate = 0F;
-            this.guna2ImageButtonRight.ImageSize = new System.Drawing.Size(58, 58);
-            this.guna2ImageButtonRight.IndicateFocus = true;
-            this.guna2ImageButtonRight.Location = new System.Drawing.Point(324, 92);
-            this.guna2ImageButtonRight.Name = "guna2ImageButtonRight";
-            this.guna2ImageButtonRight.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
-            this.guna2ImageButtonRight.PressedState.ImageSize = new System.Drawing.Size(115, 115);
-            this.guna2ImageButtonRight.PressedState.Parent = this.guna2ImageButtonRight;
-            this.guna2ImageButtonRight.ShadowDecoration.Parent = this.guna2ImageButtonRight;
-            this.guna2ImageButtonRight.Size = new System.Drawing.Size(72, 75);
-            this.guna2ImageButtonRight.TabIndex = 24;
-            this.guna2ImageButtonRight.Click += new System.EventHandler(this.guna2ImageButtonRight_Click);
+            this.ButtonNext.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonNext.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonNext.CheckedState.Parent = this.ButtonNext;
+            this.ButtonNext.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image16")));
+            this.ButtonNext.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
+            this.ButtonNext.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonNext.HoverState.Parent = this.ButtonNext;
+            this.ButtonNext.Image = ((System.Drawing.Image)(resources.GetObject("ButtonNext.Image")));
+            this.ButtonNext.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonNext.ImageRotate = 0F;
+            this.ButtonNext.ImageSize = new System.Drawing.Size(58, 58);
+            this.ButtonNext.IndicateFocus = true;
+            this.ButtonNext.Location = new System.Drawing.Point(324, 92);
+            this.ButtonNext.Name = "ButtonNext";
+            this.ButtonNext.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
+            this.ButtonNext.PressedState.ImageSize = new System.Drawing.Size(115, 115);
+            this.ButtonNext.PressedState.Parent = this.ButtonNext;
+            this.ButtonNext.ShadowDecoration.Parent = this.ButtonNext;
+            this.ButtonNext.Size = new System.Drawing.Size(72, 75);
+            this.ButtonNext.TabIndex = 24;
+            this.ButtonNext.Click += new System.EventHandler(this.guna2ImageButtonRight_Click);
             // 
-            // bunifuHSliderSongTime
+            // SongTimeSlider
             // 
-            this.bunifuHSliderSongTime.AllowCursorChanges = true;
-            this.bunifuHSliderSongTime.AllowHomeEndKeysDetection = false;
-            this.bunifuHSliderSongTime.AllowIncrementalClickMoves = true;
-            this.bunifuHSliderSongTime.AllowMouseDownEffects = false;
-            this.bunifuHSliderSongTime.AllowMouseHoverEffects = false;
-            this.bunifuHSliderSongTime.AllowScrollingAnimations = true;
-            this.bunifuHSliderSongTime.AllowScrollKeysDetection = true;
-            this.bunifuHSliderSongTime.AllowScrollOptionsMenu = true;
-            this.bunifuHSliderSongTime.AllowShrinkingOnFocusLost = false;
-            this.bunifuHSliderSongTime.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuHSliderSongTime.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuHSliderSongTime.BackgroundImage")));
-            this.bunifuHSliderSongTime.BindingContainer = null;
-            this.bunifuHSliderSongTime.BorderRadius = 2;
-            this.bunifuHSliderSongTime.BorderThickness = 1;
-            this.bunifuHSliderSongTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuHSliderSongTime.DrawThickBorder = false;
-            this.bunifuHSliderSongTime.DurationBeforeShrink = 2000;
-            this.bunifuHSliderSongTime.ElapsedColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSliderSongTime.LargeChange = 10;
-            this.bunifuHSliderSongTime.Location = new System.Drawing.Point(12, 55);
-            this.bunifuHSliderSongTime.Maximum = 100;
-            this.bunifuHSliderSongTime.Minimum = 0;
-            this.bunifuHSliderSongTime.MinimumSize = new System.Drawing.Size(0, 31);
-            this.bunifuHSliderSongTime.MinimumThumbLength = 18;
-            this.bunifuHSliderSongTime.Name = "bunifuHSliderSongTime";
-            this.bunifuHSliderSongTime.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.bunifuHSliderSongTime.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.bunifuHSliderSongTime.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.bunifuHSliderSongTime.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderSongTime.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderSongTime.ShrinkSizeLimit = 3;
-            this.bunifuHSliderSongTime.Size = new System.Drawing.Size(826, 31);
-            this.bunifuHSliderSongTime.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderSongTime.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
-            this.bunifuHSliderSongTime.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
-            this.bunifuHSliderSongTime.SmallChange = 1;
-            this.bunifuHSliderSongTime.TabIndex = 26;
-            this.bunifuHSliderSongTime.ThumbColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSliderSongTime.ThumbFillColor = System.Drawing.SystemColors.Control;
-            this.bunifuHSliderSongTime.ThumbLength = 81;
-            this.bunifuHSliderSongTime.ThumbMargin = 1;
-            this.bunifuHSliderSongTime.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
-            this.bunifuHSliderSongTime.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
-            this.bunifuHSliderSongTime.Value = 0;
-            this.bunifuHSliderSongTime.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs>(this.bunifuHSliderSongTime_Scroll);
+            this.SongTimeSlider.AllowCursorChanges = true;
+            this.SongTimeSlider.AllowHomeEndKeysDetection = false;
+            this.SongTimeSlider.AllowIncrementalClickMoves = true;
+            this.SongTimeSlider.AllowMouseDownEffects = false;
+            this.SongTimeSlider.AllowMouseHoverEffects = false;
+            this.SongTimeSlider.AllowScrollingAnimations = true;
+            this.SongTimeSlider.AllowScrollKeysDetection = true;
+            this.SongTimeSlider.AllowScrollOptionsMenu = true;
+            this.SongTimeSlider.AllowShrinkingOnFocusLost = false;
+            this.SongTimeSlider.BackColor = System.Drawing.Color.Transparent;
+            this.SongTimeSlider.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SongTimeSlider.BackgroundImage")));
+            this.SongTimeSlider.BindingContainer = null;
+            this.SongTimeSlider.BorderRadius = 2;
+            this.SongTimeSlider.BorderThickness = 1;
+            this.SongTimeSlider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SongTimeSlider.DrawThickBorder = false;
+            this.SongTimeSlider.DurationBeforeShrink = 2000;
+            this.SongTimeSlider.ElapsedColor = System.Drawing.Color.DodgerBlue;
+            this.SongTimeSlider.LargeChange = 10;
+            this.SongTimeSlider.Location = new System.Drawing.Point(12, 55);
+            this.SongTimeSlider.Maximum = 100;
+            this.SongTimeSlider.Minimum = 0;
+            this.SongTimeSlider.MinimumSize = new System.Drawing.Size(0, 31);
+            this.SongTimeSlider.MinimumThumbLength = 18;
+            this.SongTimeSlider.Name = "SongTimeSlider";
+            this.SongTimeSlider.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+            this.SongTimeSlider.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+            this.SongTimeSlider.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+            this.SongTimeSlider.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.SongTimeSlider.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.SongTimeSlider.ShrinkSizeLimit = 3;
+            this.SongTimeSlider.Size = new System.Drawing.Size(826, 31);
+            this.SongTimeSlider.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.SongTimeSlider.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
+            this.SongTimeSlider.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
+            this.SongTimeSlider.SmallChange = 1;
+            this.SongTimeSlider.TabIndex = 26;
+            this.SongTimeSlider.ThumbColor = System.Drawing.Color.DodgerBlue;
+            this.SongTimeSlider.ThumbFillColor = System.Drawing.SystemColors.Control;
+            this.SongTimeSlider.ThumbLength = 81;
+            this.SongTimeSlider.ThumbMargin = 1;
+            this.SongTimeSlider.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
+            this.SongTimeSlider.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
+            this.SongTimeSlider.Value = 0;
+            this.SongTimeSlider.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs>(this.bunifuHSliderSongTime_Scroll);
             // 
-            // bunifuHSliderVolume
+            // VolumeSlider
             // 
-            this.bunifuHSliderVolume.AllowCursorChanges = true;
-            this.bunifuHSliderVolume.AllowHomeEndKeysDetection = false;
-            this.bunifuHSliderVolume.AllowIncrementalClickMoves = true;
-            this.bunifuHSliderVolume.AllowMouseDownEffects = false;
-            this.bunifuHSliderVolume.AllowMouseHoverEffects = false;
-            this.bunifuHSliderVolume.AllowScrollingAnimations = true;
-            this.bunifuHSliderVolume.AllowScrollKeysDetection = true;
-            this.bunifuHSliderVolume.AllowScrollOptionsMenu = true;
-            this.bunifuHSliderVolume.AllowShrinkingOnFocusLost = false;
-            this.bunifuHSliderVolume.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuHSliderVolume.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuHSliderVolume.BackgroundImage")));
-            this.bunifuHSliderVolume.BindingContainer = null;
-            this.bunifuHSliderVolume.BorderRadius = 2;
-            this.bunifuHSliderVolume.BorderThickness = 1;
-            this.bunifuHSliderVolume.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuHSliderVolume.DrawThickBorder = false;
-            this.bunifuHSliderVolume.DurationBeforeShrink = 2000;
-            this.bunifuHSliderVolume.ElapsedColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSliderVolume.LargeChange = 10;
-            this.bunifuHSliderVolume.Location = new System.Drawing.Point(638, 92);
-            this.bunifuHSliderVolume.Maximum = 100;
-            this.bunifuHSliderVolume.Minimum = 0;
-            this.bunifuHSliderVolume.MinimumSize = new System.Drawing.Size(0, 31);
-            this.bunifuHSliderVolume.MinimumThumbLength = 18;
-            this.bunifuHSliderVolume.Name = "bunifuHSliderVolume";
-            this.bunifuHSliderVolume.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.bunifuHSliderVolume.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.bunifuHSliderVolume.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.bunifuHSliderVolume.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderVolume.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderVolume.ShrinkSizeLimit = 3;
-            this.bunifuHSliderVolume.Size = new System.Drawing.Size(200, 31);
-            this.bunifuHSliderVolume.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSliderVolume.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
-            this.bunifuHSliderVolume.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
-            this.bunifuHSliderVolume.SmallChange = 1;
-            this.bunifuHSliderVolume.TabIndex = 27;
-            this.bunifuHSliderVolume.ThumbColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSliderVolume.ThumbFillColor = System.Drawing.SystemColors.Control;
-            this.bunifuHSliderVolume.ThumbLength = 19;
-            this.bunifuHSliderVolume.ThumbMargin = 1;
-            this.bunifuHSliderVolume.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
-            this.bunifuHSliderVolume.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
-            this.bunifuHSliderVolume.Value = 50;
-            this.bunifuHSliderVolume.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs>(this.bunifuHSliderVolume_Scroll);
+            this.VolumeSlider.AllowCursorChanges = true;
+            this.VolumeSlider.AllowHomeEndKeysDetection = false;
+            this.VolumeSlider.AllowIncrementalClickMoves = true;
+            this.VolumeSlider.AllowMouseDownEffects = false;
+            this.VolumeSlider.AllowMouseHoverEffects = false;
+            this.VolumeSlider.AllowScrollingAnimations = true;
+            this.VolumeSlider.AllowScrollKeysDetection = true;
+            this.VolumeSlider.AllowScrollOptionsMenu = true;
+            this.VolumeSlider.AllowShrinkingOnFocusLost = false;
+            this.VolumeSlider.BackColor = System.Drawing.Color.Transparent;
+            this.VolumeSlider.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("VolumeSlider.BackgroundImage")));
+            this.VolumeSlider.BindingContainer = null;
+            this.VolumeSlider.BorderRadius = 2;
+            this.VolumeSlider.BorderThickness = 1;
+            this.VolumeSlider.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VolumeSlider.DrawThickBorder = false;
+            this.VolumeSlider.DurationBeforeShrink = 2000;
+            this.VolumeSlider.ElapsedColor = System.Drawing.Color.DodgerBlue;
+            this.VolumeSlider.LargeChange = 10;
+            this.VolumeSlider.Location = new System.Drawing.Point(638, 92);
+            this.VolumeSlider.Maximum = 100;
+            this.VolumeSlider.Minimum = 0;
+            this.VolumeSlider.MinimumSize = new System.Drawing.Size(0, 31);
+            this.VolumeSlider.MinimumThumbLength = 18;
+            this.VolumeSlider.Name = "VolumeSlider";
+            this.VolumeSlider.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+            this.VolumeSlider.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+            this.VolumeSlider.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+            this.VolumeSlider.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.VolumeSlider.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.VolumeSlider.ShrinkSizeLimit = 3;
+            this.VolumeSlider.Size = new System.Drawing.Size(200, 31);
+            this.VolumeSlider.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.VolumeSlider.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
+            this.VolumeSlider.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
+            this.VolumeSlider.SmallChange = 1;
+            this.VolumeSlider.TabIndex = 27;
+            this.VolumeSlider.ThumbColor = System.Drawing.Color.DodgerBlue;
+            this.VolumeSlider.ThumbFillColor = System.Drawing.SystemColors.Control;
+            this.VolumeSlider.ThumbLength = 19;
+            this.VolumeSlider.ThumbMargin = 1;
+            this.VolumeSlider.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
+            this.VolumeSlider.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
+            this.VolumeSlider.Value = 50;
+            this.VolumeSlider.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs>(this.bunifuHSliderVolume_Scroll);
             // 
-            // guna2ControlBox1
+            // ButtonEXIT
             // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.Animated = true;
-            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.HoverState.BorderColor = System.Drawing.Color.Red;
-            this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
-            this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.Red;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1122, 0);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.PressedColor = System.Drawing.Color.Red;
-            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
-            this.guna2ControlBox1.TabIndex = 28;
+            this.ButtonEXIT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonEXIT.Animated = true;
+            this.ButtonEXIT.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonEXIT.BorderColor = System.Drawing.Color.Transparent;
+            this.ButtonEXIT.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
+            this.ButtonEXIT.FillColor = System.Drawing.Color.Transparent;
+            this.ButtonEXIT.HoverState.BorderColor = System.Drawing.Color.Red;
+            this.ButtonEXIT.HoverState.FillColor = System.Drawing.Color.Red;
+            this.ButtonEXIT.HoverState.IconColor = System.Drawing.Color.White;
+            this.ButtonEXIT.HoverState.Parent = this.ButtonEXIT;
+            this.ButtonEXIT.IconColor = System.Drawing.Color.Red;
+            this.ButtonEXIT.Location = new System.Drawing.Point(1122, 0);
+            this.ButtonEXIT.Name = "ButtonEXIT";
+            this.ButtonEXIT.PressedColor = System.Drawing.Color.Red;
+            this.ButtonEXIT.ShadowDecoration.Parent = this.ButtonEXIT;
+            this.ButtonEXIT.Size = new System.Drawing.Size(45, 29);
+            this.ButtonEXIT.TabIndex = 28;
             // 
-            // guna2ControlBox2
+            // ButtonHide
             // 
-            this.guna2ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox2.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
-            this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.Gray;
-            this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.HoverState.Parent = this.guna2ControlBox2;
-            this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1088, 0);
-            this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.ShadowDecoration.Parent = this.guna2ControlBox2;
-            this.guna2ControlBox2.Size = new System.Drawing.Size(28, 29);
-            this.guna2ControlBox2.TabIndex = 29;
+            this.ButtonHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonHide.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonHide.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom;
+            this.ButtonHide.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.ButtonHide.FillColor = System.Drawing.Color.Transparent;
+            this.ButtonHide.HoverState.FillColor = System.Drawing.Color.Gray;
+            this.ButtonHide.HoverState.IconColor = System.Drawing.Color.White;
+            this.ButtonHide.HoverState.Parent = this.ButtonHide;
+            this.ButtonHide.IconColor = System.Drawing.Color.White;
+            this.ButtonHide.Location = new System.Drawing.Point(1088, 0);
+            this.ButtonHide.Name = "ButtonHide";
+            this.ButtonHide.ShadowDecoration.Parent = this.ButtonHide;
+            this.ButtonHide.Size = new System.Drawing.Size(28, 29);
+            this.ButtonHide.TabIndex = 29;
             // 
-            // bunifuLabelSongTime
+            // SongTimeLabel
             // 
-            this.bunifuLabelSongTime.AllowParentOverrides = false;
-            this.bunifuLabelSongTime.AutoEllipsis = false;
-            this.bunifuLabelSongTime.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabelSongTime.CursorType = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabelSongTime.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelSongTime.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelSongTime.Location = new System.Drawing.Point(12, 34);
-            this.bunifuLabelSongTime.Name = "bunifuLabelSongTime";
-            this.bunifuLabelSongTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelSongTime.Size = new System.Drawing.Size(25, 17);
-            this.bunifuLabelSongTime.TabIndex = 30;
-            this.bunifuLabelSongTime.Text = "0:00";
-            this.bunifuLabelSongTime.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelSongTime.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.SongTimeLabel.AllowParentOverrides = false;
+            this.SongTimeLabel.AutoEllipsis = false;
+            this.SongTimeLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SongTimeLabel.CursorType = System.Windows.Forms.Cursors.Default;
+            this.SongTimeLabel.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SongTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.SongTimeLabel.Location = new System.Drawing.Point(12, 34);
+            this.SongTimeLabel.Name = "SongTimeLabel";
+            this.SongTimeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SongTimeLabel.Size = new System.Drawing.Size(25, 17);
+            this.SongTimeLabel.TabIndex = 30;
+            this.SongTimeLabel.Text = "0:00";
+            this.SongTimeLabel.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.SongTimeLabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelSongTimeLong
+            // SongLongTimeLabel
             // 
-            this.bunifuLabelSongTimeLong.AllowParentOverrides = false;
-            this.bunifuLabelSongTimeLong.AutoEllipsis = false;
-            this.bunifuLabelSongTimeLong.AutoSize = false;
-            this.bunifuLabelSongTimeLong.CursorType = null;
-            this.bunifuLabelSongTimeLong.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelSongTimeLong.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelSongTimeLong.Location = new System.Drawing.Point(770, 35);
-            this.bunifuLabelSongTimeLong.Name = "bunifuLabelSongTimeLong";
-            this.bunifuLabelSongTimeLong.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelSongTimeLong.Size = new System.Drawing.Size(59, 17);
-            this.bunifuLabelSongTimeLong.TabIndex = 31;
-            this.bunifuLabelSongTimeLong.Text = "0:00";
-            this.bunifuLabelSongTimeLong.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.bunifuLabelSongTimeLong.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.SongLongTimeLabel.AllowParentOverrides = false;
+            this.SongLongTimeLabel.AutoEllipsis = false;
+            this.SongLongTimeLabel.AutoSize = false;
+            this.SongLongTimeLabel.CursorType = null;
+            this.SongLongTimeLabel.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SongLongTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.SongLongTimeLabel.Location = new System.Drawing.Point(770, 35);
+            this.SongLongTimeLabel.Name = "SongLongTimeLabel";
+            this.SongLongTimeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SongLongTimeLabel.Size = new System.Drawing.Size(59, 17);
+            this.SongLongTimeLabel.TabIndex = 31;
+            this.SongLongTimeLabel.Text = "0:00";
+            this.SongLongTimeLabel.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.SongLongTimeLabel.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel2
+            // NTagLabelAlbumArtist
             // 
-            this.bunifuLabel2.AllowParentOverrides = false;
-            this.bunifuLabel2.AutoEllipsis = false;
-            this.bunifuLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(12, 471);
-            this.bunifuLabel2.Name = "bunifuLabel2";
-            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(135, 17);
-            this.bunifuLabel2.TabIndex = 32;
-            this.bunifuLabel2.Text = "Исполнитель альбома:";
-            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelAlbumArtist.AllowParentOverrides = false;
+            this.NTagLabelAlbumArtist.AutoEllipsis = false;
+            this.NTagLabelAlbumArtist.Cursor = System.Windows.Forms.Cursors.Default;
+            this.NTagLabelAlbumArtist.CursorType = System.Windows.Forms.Cursors.Default;
+            this.NTagLabelAlbumArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelAlbumArtist.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelAlbumArtist.Location = new System.Drawing.Point(12, 471);
+            this.NTagLabelAlbumArtist.Name = "NTagLabelAlbumArtist";
+            this.NTagLabelAlbumArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelAlbumArtist.Size = new System.Drawing.Size(135, 17);
+            this.NTagLabelAlbumArtist.TabIndex = 32;
+            this.NTagLabelAlbumArtist.Text = "Исполнитель альбома:";
+            this.NTagLabelAlbumArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelAlbumArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelName
+            // TagLabelTile
             // 
-            this.bunifuLabelName.AllowParentOverrides = false;
-            this.bunifuLabelName.AutoEllipsis = false;
-            this.bunifuLabelName.AutoSize = false;
-            this.bunifuLabelName.CursorType = null;
-            this.bunifuLabelName.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelName.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelName.Location = new System.Drawing.Point(71, 333);
-            this.bunifuLabelName.Name = "bunifuLabelName";
-            this.bunifuLabelName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelName.Size = new System.Drawing.Size(611, 17);
-            this.bunifuLabelName.TabIndex = 33;
-            this.bunifuLabelName.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelName.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelTile.AllowParentOverrides = false;
+            this.TagLabelTile.AutoEllipsis = false;
+            this.TagLabelTile.AutoSize = false;
+            this.TagLabelTile.CursorType = null;
+            this.TagLabelTile.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelTile.ForeColor = System.Drawing.Color.White;
+            this.TagLabelTile.Location = new System.Drawing.Point(71, 333);
+            this.TagLabelTile.Name = "TagLabelTile";
+            this.TagLabelTile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelTile.Size = new System.Drawing.Size(611, 17);
+            this.TagLabelTile.TabIndex = 33;
+            this.TagLabelTile.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelTile.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel8
+            // NTagLabelTile
             // 
-            this.bunifuLabel8.AllowParentOverrides = false;
-            this.bunifuLabel8.AutoEllipsis = false;
-            this.bunifuLabel8.CursorType = null;
-            this.bunifuLabel8.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel8.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel8.Location = new System.Drawing.Point(12, 333);
-            this.bunifuLabel8.Name = "bunifuLabel8";
-            this.bunifuLabel8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel8.Size = new System.Drawing.Size(57, 17);
-            this.bunifuLabel8.TabIndex = 38;
-            this.bunifuLabel8.Text = "Название:";
-            this.bunifuLabel8.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelTile.AllowParentOverrides = false;
+            this.NTagLabelTile.AutoEllipsis = false;
+            this.NTagLabelTile.CursorType = null;
+            this.NTagLabelTile.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelTile.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelTile.Location = new System.Drawing.Point(12, 333);
+            this.NTagLabelTile.Name = "NTagLabelTile";
+            this.NTagLabelTile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelTile.Size = new System.Drawing.Size(57, 17);
+            this.NTagLabelTile.TabIndex = 38;
+            this.NTagLabelTile.Text = "Название:";
+            this.NTagLabelTile.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelTile.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel9
+            // NTagLabelArtist
             // 
-            this.bunifuLabel9.AllowParentOverrides = false;
-            this.bunifuLabel9.AutoEllipsis = false;
-            this.bunifuLabel9.CursorType = null;
-            this.bunifuLabel9.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel9.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel9.Location = new System.Drawing.Point(12, 356);
-            this.bunifuLabel9.Name = "bunifuLabel9";
-            this.bunifuLabel9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel9.Size = new System.Drawing.Size(83, 17);
-            this.bunifuLabel9.TabIndex = 39;
-            this.bunifuLabel9.Text = "Исполнитель:";
-            this.bunifuLabel9.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel9.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelArtist.AllowParentOverrides = false;
+            this.NTagLabelArtist.AutoEllipsis = false;
+            this.NTagLabelArtist.CursorType = null;
+            this.NTagLabelArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelArtist.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelArtist.Location = new System.Drawing.Point(12, 356);
+            this.NTagLabelArtist.Name = "NTagLabelArtist";
+            this.NTagLabelArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelArtist.Size = new System.Drawing.Size(83, 17);
+            this.NTagLabelArtist.TabIndex = 39;
+            this.NTagLabelArtist.Text = "Исполнитель:";
+            this.NTagLabelArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel10
+            // NTagLabelAlbum
             // 
-            this.bunifuLabel10.AllowParentOverrides = false;
-            this.bunifuLabel10.AutoEllipsis = false;
-            this.bunifuLabel10.CursorType = null;
-            this.bunifuLabel10.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel10.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel10.Location = new System.Drawing.Point(12, 379);
-            this.bunifuLabel10.Name = "bunifuLabel10";
-            this.bunifuLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel10.Size = new System.Drawing.Size(48, 17);
-            this.bunifuLabel10.TabIndex = 40;
-            this.bunifuLabel10.Text = "Альбом:";
-            this.bunifuLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel10.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelAlbum.AllowParentOverrides = false;
+            this.NTagLabelAlbum.AutoEllipsis = false;
+            this.NTagLabelAlbum.CursorType = null;
+            this.NTagLabelAlbum.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelAlbum.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelAlbum.Location = new System.Drawing.Point(12, 379);
+            this.NTagLabelAlbum.Name = "NTagLabelAlbum";
+            this.NTagLabelAlbum.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelAlbum.Size = new System.Drawing.Size(48, 17);
+            this.NTagLabelAlbum.TabIndex = 40;
+            this.NTagLabelAlbum.Text = "Альбом:";
+            this.NTagLabelAlbum.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelAlbum.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel11
+            // NTagLabelYear
             // 
-            this.bunifuLabel11.AllowParentOverrides = false;
-            this.bunifuLabel11.AutoEllipsis = false;
-            this.bunifuLabel11.CursorType = null;
-            this.bunifuLabel11.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel11.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel11.Location = new System.Drawing.Point(12, 402);
-            this.bunifuLabel11.Name = "bunifuLabel11";
-            this.bunifuLabel11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel11.Size = new System.Drawing.Size(25, 17);
-            this.bunifuLabel11.TabIndex = 41;
-            this.bunifuLabel11.Text = "Год:";
-            this.bunifuLabel11.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel11.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelYear.AllowParentOverrides = false;
+            this.NTagLabelYear.AutoEllipsis = false;
+            this.NTagLabelYear.CursorType = null;
+            this.NTagLabelYear.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelYear.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelYear.Location = new System.Drawing.Point(12, 402);
+            this.NTagLabelYear.Name = "NTagLabelYear";
+            this.NTagLabelYear.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelYear.Size = new System.Drawing.Size(25, 17);
+            this.NTagLabelYear.TabIndex = 41;
+            this.NTagLabelYear.Text = "Год:";
+            this.NTagLabelYear.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelYear.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel12
+            // NTagLabelStile
             // 
-            this.bunifuLabel12.AllowParentOverrides = false;
-            this.bunifuLabel12.AutoEllipsis = false;
-            this.bunifuLabel12.CursorType = null;
-            this.bunifuLabel12.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel12.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel12.Location = new System.Drawing.Point(12, 425);
-            this.bunifuLabel12.Name = "bunifuLabel12";
-            this.bunifuLabel12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel12.Size = new System.Drawing.Size(33, 17);
-            this.bunifuLabel12.TabIndex = 42;
-            this.bunifuLabel12.Text = "Жанр:";
-            this.bunifuLabel12.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel12.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelStile.AllowParentOverrides = false;
+            this.NTagLabelStile.AutoEllipsis = false;
+            this.NTagLabelStile.CursorType = null;
+            this.NTagLabelStile.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelStile.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelStile.Location = new System.Drawing.Point(12, 425);
+            this.NTagLabelStile.Name = "NTagLabelStile";
+            this.NTagLabelStile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelStile.Size = new System.Drawing.Size(33, 17);
+            this.NTagLabelStile.TabIndex = 42;
+            this.NTagLabelStile.Text = "Жанр:";
+            this.NTagLabelStile.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelStile.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel13
+            // NTagLabelTrack
             // 
-            this.bunifuLabel13.AllowParentOverrides = false;
-            this.bunifuLabel13.AutoEllipsis = false;
-            this.bunifuLabel13.CursorType = null;
-            this.bunifuLabel13.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel13.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel13.Location = new System.Drawing.Point(12, 448);
-            this.bunifuLabel13.Name = "bunifuLabel13";
-            this.bunifuLabel13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel13.Size = new System.Drawing.Size(41, 17);
-            this.bunifuLabel13.TabIndex = 43;
-            this.bunifuLabel13.Text = "Номер:";
-            this.bunifuLabel13.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel13.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.NTagLabelTrack.AllowParentOverrides = false;
+            this.NTagLabelTrack.AutoEllipsis = false;
+            this.NTagLabelTrack.CursorType = null;
+            this.NTagLabelTrack.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NTagLabelTrack.ForeColor = System.Drawing.Color.White;
+            this.NTagLabelTrack.Location = new System.Drawing.Point(12, 448);
+            this.NTagLabelTrack.Name = "NTagLabelTrack";
+            this.NTagLabelTrack.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.NTagLabelTrack.Size = new System.Drawing.Size(41, 17);
+            this.NTagLabelTrack.TabIndex = 43;
+            this.NTagLabelTrack.Text = "Номер:";
+            this.NTagLabelTrack.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.NTagLabelTrack.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelArtist
+            // TagLabelArtist
             // 
-            this.bunifuLabelArtist.AllowParentOverrides = false;
-            this.bunifuLabelArtist.AutoEllipsis = false;
-            this.bunifuLabelArtist.AutoSize = false;
-            this.bunifuLabelArtist.CursorType = null;
-            this.bunifuLabelArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelArtist.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelArtist.Location = new System.Drawing.Point(97, 356);
-            this.bunifuLabelArtist.Name = "bunifuLabelArtist";
-            this.bunifuLabelArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelArtist.Size = new System.Drawing.Size(585, 17);
-            this.bunifuLabelArtist.TabIndex = 44;
-            this.bunifuLabelArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelArtist.AllowParentOverrides = false;
+            this.TagLabelArtist.AutoEllipsis = false;
+            this.TagLabelArtist.AutoSize = false;
+            this.TagLabelArtist.CursorType = null;
+            this.TagLabelArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelArtist.ForeColor = System.Drawing.Color.White;
+            this.TagLabelArtist.Location = new System.Drawing.Point(97, 356);
+            this.TagLabelArtist.Name = "TagLabelArtist";
+            this.TagLabelArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelArtist.Size = new System.Drawing.Size(585, 17);
+            this.TagLabelArtist.TabIndex = 44;
+            this.TagLabelArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelAlbum
+            // TagLabelAlbum
             // 
-            this.bunifuLabelAlbum.AllowParentOverrides = false;
-            this.bunifuLabelAlbum.AutoEllipsis = false;
-            this.bunifuLabelAlbum.AutoSize = false;
-            this.bunifuLabelAlbum.CursorType = null;
-            this.bunifuLabelAlbum.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelAlbum.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelAlbum.Location = new System.Drawing.Point(62, 379);
-            this.bunifuLabelAlbum.Name = "bunifuLabelAlbum";
-            this.bunifuLabelAlbum.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelAlbum.Size = new System.Drawing.Size(620, 17);
-            this.bunifuLabelAlbum.TabIndex = 45;
-            this.bunifuLabelAlbum.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelAlbum.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelAlbum.AllowParentOverrides = false;
+            this.TagLabelAlbum.AutoEllipsis = false;
+            this.TagLabelAlbum.AutoSize = false;
+            this.TagLabelAlbum.CursorType = null;
+            this.TagLabelAlbum.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelAlbum.ForeColor = System.Drawing.Color.White;
+            this.TagLabelAlbum.Location = new System.Drawing.Point(62, 379);
+            this.TagLabelAlbum.Name = "TagLabelAlbum";
+            this.TagLabelAlbum.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelAlbum.Size = new System.Drawing.Size(620, 17);
+            this.TagLabelAlbum.TabIndex = 45;
+            this.TagLabelAlbum.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelAlbum.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelAge
+            // TagLabelYear
             // 
-            this.bunifuLabelAge.AllowParentOverrides = false;
-            this.bunifuLabelAge.AutoEllipsis = false;
-            this.bunifuLabelAge.AutoSize = false;
-            this.bunifuLabelAge.CursorType = null;
-            this.bunifuLabelAge.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelAge.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelAge.Location = new System.Drawing.Point(39, 402);
-            this.bunifuLabelAge.Name = "bunifuLabelAge";
-            this.bunifuLabelAge.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelAge.Size = new System.Drawing.Size(643, 17);
-            this.bunifuLabelAge.TabIndex = 46;
-            this.bunifuLabelAge.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelAge.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelYear.AllowParentOverrides = false;
+            this.TagLabelYear.AutoEllipsis = false;
+            this.TagLabelYear.AutoSize = false;
+            this.TagLabelYear.CursorType = null;
+            this.TagLabelYear.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelYear.ForeColor = System.Drawing.Color.White;
+            this.TagLabelYear.Location = new System.Drawing.Point(39, 402);
+            this.TagLabelYear.Name = "TagLabelYear";
+            this.TagLabelYear.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelYear.Size = new System.Drawing.Size(643, 17);
+            this.TagLabelYear.TabIndex = 46;
+            this.TagLabelYear.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelYear.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelStile
+            // TagLabelStile
             // 
-            this.bunifuLabelStile.AllowParentOverrides = false;
-            this.bunifuLabelStile.AutoEllipsis = false;
-            this.bunifuLabelStile.AutoSize = false;
-            this.bunifuLabelStile.CursorType = null;
-            this.bunifuLabelStile.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelStile.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelStile.Location = new System.Drawing.Point(47, 425);
-            this.bunifuLabelStile.Name = "bunifuLabelStile";
-            this.bunifuLabelStile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelStile.Size = new System.Drawing.Size(635, 17);
-            this.bunifuLabelStile.TabIndex = 47;
-            this.bunifuLabelStile.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelStile.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelStile.AllowParentOverrides = false;
+            this.TagLabelStile.AutoEllipsis = false;
+            this.TagLabelStile.AutoSize = false;
+            this.TagLabelStile.CursorType = null;
+            this.TagLabelStile.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelStile.ForeColor = System.Drawing.Color.White;
+            this.TagLabelStile.Location = new System.Drawing.Point(47, 425);
+            this.TagLabelStile.Name = "TagLabelStile";
+            this.TagLabelStile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelStile.Size = new System.Drawing.Size(635, 17);
+            this.TagLabelStile.TabIndex = 47;
+            this.TagLabelStile.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelStile.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelNamber
+            // TagLabelTrack
             // 
-            this.bunifuLabelNamber.AllowParentOverrides = false;
-            this.bunifuLabelNamber.AutoEllipsis = false;
-            this.bunifuLabelNamber.AutoSize = false;
-            this.bunifuLabelNamber.CursorType = null;
-            this.bunifuLabelNamber.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelNamber.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelNamber.Location = new System.Drawing.Point(55, 448);
-            this.bunifuLabelNamber.Name = "bunifuLabelNamber";
-            this.bunifuLabelNamber.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelNamber.Size = new System.Drawing.Size(627, 17);
-            this.bunifuLabelNamber.TabIndex = 48;
-            this.bunifuLabelNamber.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelNamber.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelTrack.AllowParentOverrides = false;
+            this.TagLabelTrack.AutoEllipsis = false;
+            this.TagLabelTrack.AutoSize = false;
+            this.TagLabelTrack.CursorType = null;
+            this.TagLabelTrack.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelTrack.ForeColor = System.Drawing.Color.White;
+            this.TagLabelTrack.Location = new System.Drawing.Point(55, 448);
+            this.TagLabelTrack.Name = "TagLabelTrack";
+            this.TagLabelTrack.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelTrack.Size = new System.Drawing.Size(627, 17);
+            this.TagLabelTrack.TabIndex = 48;
+            this.TagLabelTrack.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelTrack.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabelAlbumArtist
+            // TagLabelAlbumArtist
             // 
-            this.bunifuLabelAlbumArtist.AllowParentOverrides = false;
-            this.bunifuLabelAlbumArtist.AutoEllipsis = false;
-            this.bunifuLabelAlbumArtist.AutoSize = false;
-            this.bunifuLabelAlbumArtist.CursorType = null;
-            this.bunifuLabelAlbumArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabelAlbumArtist.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabelAlbumArtist.Location = new System.Drawing.Point(149, 471);
-            this.bunifuLabelAlbumArtist.Name = "bunifuLabelAlbumArtist";
-            this.bunifuLabelAlbumArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabelAlbumArtist.Size = new System.Drawing.Size(533, 17);
-            this.bunifuLabelAlbumArtist.TabIndex = 49;
-            this.bunifuLabelAlbumArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabelAlbumArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.TagLabelAlbumArtist.AllowParentOverrides = false;
+            this.TagLabelAlbumArtist.AutoEllipsis = false;
+            this.TagLabelAlbumArtist.AutoSize = false;
+            this.TagLabelAlbumArtist.CursorType = null;
+            this.TagLabelAlbumArtist.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TagLabelAlbumArtist.ForeColor = System.Drawing.Color.White;
+            this.TagLabelAlbumArtist.Location = new System.Drawing.Point(149, 471);
+            this.TagLabelAlbumArtist.Name = "TagLabelAlbumArtist";
+            this.TagLabelAlbumArtist.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TagLabelAlbumArtist.Size = new System.Drawing.Size(533, 17);
+            this.TagLabelAlbumArtist.TabIndex = 49;
+            this.TagLabelAlbumArtist.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TagLabelAlbumArtist.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // guna2ImageButtonVideo
+            // ButtonVideo
             // 
-            this.guna2ImageButtonVideo.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonVideo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonVideo.CheckedState.Parent = this.guna2ImageButtonVideo;
-            this.guna2ImageButtonVideo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
-            this.guna2ImageButtonVideo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButtonVideo.HoverState.Parent = this.guna2ImageButtonVideo;
-            this.guna2ImageButtonVideo.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonVideo.Image")));
-            this.guna2ImageButtonVideo.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonVideo.ImageRotate = 0F;
-            this.guna2ImageButtonVideo.ImageSize = new System.Drawing.Size(38, 38);
-            this.guna2ImageButtonVideo.IndicateFocus = true;
-            this.guna2ImageButtonVideo.Location = new System.Drawing.Point(742, 116);
-            this.guna2ImageButtonVideo.Name = "guna2ImageButtonVideo";
-            this.guna2ImageButtonVideo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
-            this.guna2ImageButtonVideo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
-            this.guna2ImageButtonVideo.PressedState.Parent = this.guna2ImageButtonVideo;
-            this.guna2ImageButtonVideo.ShadowDecoration.Parent = this.guna2ImageButtonVideo;
-            this.guna2ImageButtonVideo.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButtonVideo.TabIndex = 51;
-            this.guna2ImageButtonVideo.Click += new System.EventHandler(this.guna2ImageButtonVideo_Click);
+            this.ButtonVideo.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonVideo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonVideo.CheckedState.Parent = this.ButtonVideo;
+            this.ButtonVideo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image14")));
+            this.ButtonVideo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonVideo.HoverState.Parent = this.ButtonVideo;
+            this.ButtonVideo.Image = ((System.Drawing.Image)(resources.GetObject("ButtonVideo.Image")));
+            this.ButtonVideo.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonVideo.ImageRotate = 0F;
+            this.ButtonVideo.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonVideo.IndicateFocus = true;
+            this.ButtonVideo.Location = new System.Drawing.Point(742, 116);
+            this.ButtonVideo.Name = "ButtonVideo";
+            this.ButtonVideo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image15")));
+            this.ButtonVideo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonVideo.PressedState.Parent = this.ButtonVideo;
+            this.ButtonVideo.ShadowDecoration.Parent = this.ButtonVideo;
+            this.ButtonVideo.Size = new System.Drawing.Size(45, 51);
+            this.ButtonVideo.TabIndex = 51;
+            this.ButtonVideo.Click += new System.EventHandler(this.guna2ImageButtonVideo_Click);
             // 
-            // guna2ImageButtonInfo
+            // ButtonInfo
             // 
-            this.guna2ImageButtonInfo.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButtonInfo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButtonInfo.CheckedState.Parent = this.guna2ImageButtonInfo;
-            this.guna2ImageButtonInfo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
-            this.guna2ImageButtonInfo.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.guna2ImageButtonInfo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButtonInfo.HoverState.Parent = this.guna2ImageButtonInfo;
-            this.guna2ImageButtonInfo.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButtonInfo.Image")));
-            this.guna2ImageButtonInfo.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButtonInfo.ImageRotate = 0F;
-            this.guna2ImageButtonInfo.ImageSize = new System.Drawing.Size(38, 38);
-            this.guna2ImageButtonInfo.IndicateFocus = true;
-            this.guna2ImageButtonInfo.Location = new System.Drawing.Point(793, 116);
-            this.guna2ImageButtonInfo.Name = "guna2ImageButtonInfo";
-            this.guna2ImageButtonInfo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
-            this.guna2ImageButtonInfo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
-            this.guna2ImageButtonInfo.PressedState.Parent = this.guna2ImageButtonInfo;
-            this.guna2ImageButtonInfo.ShadowDecoration.Parent = this.guna2ImageButtonInfo;
-            this.guna2ImageButtonInfo.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButtonInfo.TabIndex = 52;
-            this.guna2ImageButtonInfo.Click += new System.EventHandler(this.guna2ImageButtonInfo_Click);
+            this.ButtonInfo.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonInfo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonInfo.CheckedState.Parent = this.ButtonInfo;
+            this.ButtonInfo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image12")));
+            this.ButtonInfo.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.ButtonInfo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonInfo.HoverState.Parent = this.ButtonInfo;
+            this.ButtonInfo.Image = ((System.Drawing.Image)(resources.GetObject("ButtonInfo.Image")));
+            this.ButtonInfo.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonInfo.ImageRotate = 0F;
+            this.ButtonInfo.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonInfo.IndicateFocus = true;
+            this.ButtonInfo.Location = new System.Drawing.Point(793, 116);
+            this.ButtonInfo.Name = "ButtonInfo";
+            this.ButtonInfo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image13")));
+            this.ButtonInfo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonInfo.PressedState.Parent = this.ButtonInfo;
+            this.ButtonInfo.ShadowDecoration.Parent = this.ButtonInfo;
+            this.ButtonInfo.Size = new System.Drawing.Size(45, 51);
+            this.ButtonInfo.TabIndex = 52;
+            this.ButtonInfo.Click += new System.EventHandler(this.guna2ImageButtonInfo_Click);
             // 
             // openFileDialogPlay
             // 
@@ -707,49 +718,49 @@ namespace Media_Player
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bunifuDragControl1
+            // DragControl
             // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this;
-            this.bunifuDragControl1.Vertical = true;
+            this.DragControl.Fixed = true;
+            this.DragControl.Horizontal = true;
+            this.DragControl.TargetControl = this;
+            this.DragControl.Vertical = true;
             // 
-            // guna2ImageButton
+            // ButtonMute
             // 
-            this.guna2ImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton.CheckedState.Parent = this.guna2ImageButton;
-            this.guna2ImageButton.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            this.guna2ImageButton.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButton.HoverState.Parent = this.guna2ImageButton;
-            this.guna2ImageButton.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton.Image")));
-            this.guna2ImageButton.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton.ImageRotate = 0F;
-            this.guna2ImageButton.ImageSize = new System.Drawing.Size(38, 38);
-            this.guna2ImageButton.IndicateFocus = true;
-            this.guna2ImageButton.Location = new System.Drawing.Point(587, 82);
-            this.guna2ImageButton.Name = "guna2ImageButton";
-            this.guna2ImageButton.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            this.guna2ImageButton.PressedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton.PressedState.Parent = this.guna2ImageButton;
-            this.guna2ImageButton.ShadowDecoration.Parent = this.guna2ImageButton;
-            this.guna2ImageButton.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButton.TabIndex = 53;
-            this.guna2ImageButton.Click += new System.EventHandler(this.guna2ImageButton_Click);
+            this.ButtonMute.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonMute.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonMute.CheckedState.Parent = this.ButtonMute;
+            this.ButtonMute.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
+            this.ButtonMute.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonMute.HoverState.Parent = this.ButtonMute;
+            this.ButtonMute.Image = ((System.Drawing.Image)(resources.GetObject("ButtonMute.Image")));
+            this.ButtonMute.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonMute.ImageRotate = 0F;
+            this.ButtonMute.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonMute.IndicateFocus = true;
+            this.ButtonMute.Location = new System.Drawing.Point(587, 82);
+            this.ButtonMute.Name = "ButtonMute";
+            this.ButtonMute.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
+            this.ButtonMute.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.ButtonMute.PressedState.Parent = this.ButtonMute;
+            this.ButtonMute.ShadowDecoration.Parent = this.ButtonMute;
+            this.ButtonMute.Size = new System.Drawing.Size(45, 51);
+            this.ButtonMute.TabIndex = 53;
+            this.ButtonMute.Click += new System.EventHandler(this.guna2ImageButton_Click);
             // 
-            // bunifuDataGridView1
+            // VisualPlaylist
             // 
-            this.bunifuDataGridView1.AllowCustomTheming = false;
-            this.bunifuDataGridView1.AllowDrop = true;
-            this.bunifuDataGridView1.AllowUserToAddRows = false;
+            this.VisualPlaylist.AllowCustomTheming = false;
+            this.VisualPlaylist.AllowDrop = true;
+            this.VisualPlaylist.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.bunifuDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.bunifuDataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            this.bunifuDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bunifuDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.bunifuDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.VisualPlaylist.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.VisualPlaylist.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.VisualPlaylist.BackgroundColor = System.Drawing.Color.Black;
+            this.VisualPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VisualPlaylist.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.VisualPlaylist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
@@ -757,29 +768,29 @@ namespace Media_Player
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bunifuDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.bunifuDataGridView1.ColumnHeadersHeight = 40;
-            this.bunifuDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.VisualPlaylist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.VisualPlaylist.ColumnHeadersHeight = 40;
+            this.VisualPlaylist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Song,
             this.SongTime});
-            this.bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
-            this.bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            this.bunifuDataGridView1.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuDataGridView1.CurrentTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            this.bunifuDataGridView1.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.bunifuDataGridView1.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            this.bunifuDataGridView1.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.bunifuDataGridView1.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.bunifuDataGridView1.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.CurrentTheme.Name = null;
-            this.bunifuDataGridView1.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.bunifuDataGridView1.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bunifuDataGridView1.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            this.bunifuDataGridView1.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.VisualPlaylist.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
+            this.VisualPlaylist.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.VisualPlaylist.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.White;
+            this.VisualPlaylist.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
+            this.VisualPlaylist.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.VisualPlaylist.CurrentTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.VisualPlaylist.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.VisualPlaylist.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.VisualPlaylist.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.VisualPlaylist.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.VisualPlaylist.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VisualPlaylist.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.VisualPlaylist.CurrentTheme.Name = null;
+            this.VisualPlaylist.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.VisualPlaylist.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.VisualPlaylist.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.White;
+            this.VisualPlaylist.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
+            this.VisualPlaylist.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -787,25 +798,24 @@ namespace Media_Player
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bunifuDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.bunifuDataGridView1.EnableHeadersVisualStyles = false;
-            this.bunifuDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.bunifuDataGridView1.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            this.bunifuDataGridView1.HeaderBgColor = System.Drawing.Color.Empty;
-            this.bunifuDataGridView1.HeaderForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.Location = new System.Drawing.Point(852, 34);
-            this.bunifuDataGridView1.Name = "bunifuDataGridView1";
-            this.bunifuDataGridView1.ReadOnly = true;
-            this.bunifuDataGridView1.RowHeadersVisible = false;
-            this.bunifuDataGridView1.RowTemplate.Height = 40;
-            this.bunifuDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.bunifuDataGridView1.Size = new System.Drawing.Size(307, 417);
-            this.bunifuDataGridView1.TabIndex = 54;
-            this.bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
-            this.bunifuDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuDataGridView1_CellContentClick_1);
-            this.bunifuDataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuDataGridView1_CellMouseClick);
-            this.bunifuDataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.GridViewDragDrop);
-            this.bunifuDataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.GridViewDragEnter);
+            this.VisualPlaylist.DefaultCellStyle = dataGridViewCellStyle3;
+            this.VisualPlaylist.EnableHeadersVisualStyles = false;
+            this.VisualPlaylist.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
+            this.VisualPlaylist.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.VisualPlaylist.HeaderBgColor = System.Drawing.Color.Empty;
+            this.VisualPlaylist.HeaderForeColor = System.Drawing.Color.White;
+            this.VisualPlaylist.Location = new System.Drawing.Point(852, 34);
+            this.VisualPlaylist.Name = "VisualPlaylist";
+            this.VisualPlaylist.ReadOnly = true;
+            this.VisualPlaylist.RowHeadersVisible = false;
+            this.VisualPlaylist.RowTemplate.Height = 40;
+            this.VisualPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.VisualPlaylist.Size = new System.Drawing.Size(307, 417);
+            this.VisualPlaylist.TabIndex = 54;
+            this.VisualPlaylist.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
+            this.VisualPlaylist.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuDataGridView1_CellMouseClick);
+            this.VisualPlaylist.DragDrop += new System.Windows.Forms.DragEventHandler(this.GridViewDragDrop);
+            this.VisualPlaylist.DragEnter += new System.Windows.Forms.DragEventHandler(this.GridViewDragEnter);
             // 
             // Song
             // 
@@ -821,297 +831,456 @@ namespace Media_Player
             this.SongTime.Name = "SongTime";
             this.SongTime.ReadOnly = true;
             // 
-            // bunifuLabel1
+            // StatusLabel1
             // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.AutoSize = false;
-            this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel1.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(741, 21);
-            this.bunifuLabel1.TabIndex = 56;
-            this.bunifuLabel1.Text = "test2";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.bunifuLabel1.Click += new System.EventHandler(this.bunifuLabel1_Click);
+            this.StatusLabel1.AllowParentOverrides = false;
+            this.StatusLabel1.AutoEllipsis = false;
+            this.StatusLabel1.AutoSize = false;
+            this.StatusLabel1.CursorType = null;
+            this.StatusLabel1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatusLabel1.ForeColor = System.Drawing.Color.White;
+            this.StatusLabel1.Location = new System.Drawing.Point(0, 0);
+            this.StatusLabel1.Name = "StatusLabel1";
+            this.StatusLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StatusLabel1.Size = new System.Drawing.Size(741, 21);
+            this.StatusLabel1.TabIndex = 56;
+            this.StatusLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.StatusLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.bunifuLabel3);
-            this.panel1.Controls.Add(this.bunifuLabel1);
+            this.panel1.Controls.Add(this.StatusLabel2);
+            this.panel1.Controls.Add(this.StatusLabel1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 21);
             this.panel1.TabIndex = 57;
             // 
-            // bunifuLabel3
+            // StatusLabel2
             // 
-            this.bunifuLabel3.AllowParentOverrides = false;
-            this.bunifuLabel3.AutoEllipsis = false;
-            this.bunifuLabel3.AutoSize = false;
-            this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuLabel3.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel3.Location = new System.Drawing.Point(0, 0);
-            this.bunifuLabel3.Name = "bunifuLabel3";
-            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(741, 21);
-            this.bunifuLabel3.TabIndex = 57;
-            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.bunifuLabel3.Visible = false;
+            this.StatusLabel2.AllowParentOverrides = false;
+            this.StatusLabel2.AutoEllipsis = false;
+            this.StatusLabel2.AutoSize = false;
+            this.StatusLabel2.CursorType = null;
+            this.StatusLabel2.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatusLabel2.ForeColor = System.Drawing.Color.White;
+            this.StatusLabel2.Location = new System.Drawing.Point(0, 0);
+            this.StatusLabel2.Name = "StatusLabel2";
+            this.StatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StatusLabel2.Size = new System.Drawing.Size(741, 21);
+            this.StatusLabel2.TabIndex = 57;
+            this.StatusLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.StatusLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.StatusLabel2.Visible = false;
             // 
-            // guna2ImageButton1
+            // ButtonRatingSave
             // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.CheckedState.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image20")));
-            this.guna2ImageButton1.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButton1.HoverState.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(35, 35);
-            this.guna2ImageButton1.IndicateFocus = true;
-            this.guna2ImageButton1.Location = new System.Drawing.Point(793, 247);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image21")));
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2ImageButton1.PressedState.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.ShadowDecoration.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButton1.TabIndex = 58;
-            this.guna2ImageButton1.Visible = false;
-            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
+            this.ButtonRatingSave.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonRatingSave.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonRatingSave.CheckedState.Parent = this.ButtonRatingSave;
+            this.ButtonRatingSave.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image26")));
+            this.ButtonRatingSave.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.ButtonRatingSave.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonRatingSave.HoverState.Parent = this.ButtonRatingSave;
+            this.ButtonRatingSave.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRatingSave.Image")));
+            this.ButtonRatingSave.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonRatingSave.ImageRotate = 0F;
+            this.ButtonRatingSave.ImageSize = new System.Drawing.Size(35, 35);
+            this.ButtonRatingSave.IndicateFocus = true;
+            this.ButtonRatingSave.Location = new System.Drawing.Point(793, 247);
+            this.ButtonRatingSave.Name = "ButtonRatingSave";
+            this.ButtonRatingSave.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image27")));
+            this.ButtonRatingSave.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.ButtonRatingSave.PressedState.Parent = this.ButtonRatingSave;
+            this.ButtonRatingSave.ShadowDecoration.Parent = this.ButtonRatingSave;
+            this.ButtonRatingSave.Size = new System.Drawing.Size(45, 51);
+            this.ButtonRatingSave.TabIndex = 58;
+            this.ButtonRatingSave.Visible = false;
+            this.ButtonRatingSave.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
-            // guna2ImageButton2
+            // ButtonAdd
             // 
-            this.guna2ImageButton2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton2.CheckedState.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.ContextMenuStrip = this.guna2ContextMenuStripAdd;
-            this.guna2ImageButton2.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButton2.HoverState.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton2.Image")));
-            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton2.ImageRotate = 0F;
-            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(38, 38);
-            this.guna2ImageButton2.IndicateFocus = true;
-            this.guna2ImageButton2.Location = new System.Drawing.Point(852, 448);
-            this.guna2ImageButton2.Name = "guna2ImageButton2";
-            this.guna2ImageButton2.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(105, 105);
-            this.guna2ImageButton2.PressedState.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.ShadowDecoration.Parent = this.guna2ImageButton2;
-            this.guna2ImageButton2.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButton2.TabIndex = 59;
-            this.guna2ImageButton2.Click += new System.EventHandler(this.guna2ImageButton2_Click);
+            this.ButtonAdd.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonAdd.CheckedState.Parent = this.ButtonAdd;
+            this.ButtonAdd.ContextMenuStrip = this.ContextMenuAdd;
+            this.ButtonAdd.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
+            this.ButtonAdd.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonAdd.HoverState.Parent = this.ButtonAdd;
+            this.ButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButtonAdd.Image")));
+            this.ButtonAdd.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonAdd.ImageRotate = 0F;
+            this.ButtonAdd.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonAdd.IndicateFocus = true;
+            this.ButtonAdd.Location = new System.Drawing.Point(852, 448);
+            this.ButtonAdd.Name = "ButtonAdd";
+            this.ButtonAdd.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
+            this.ButtonAdd.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonAdd.PressedState.Parent = this.ButtonAdd;
+            this.ButtonAdd.ShadowDecoration.Parent = this.ButtonAdd;
+            this.ButtonAdd.Size = new System.Drawing.Size(45, 51);
+            this.ButtonAdd.TabIndex = 59;
+            this.ButtonAdd.Click += new System.EventHandler(this.guna2ImageButton2_Click);
             // 
-            // guna2ContextMenuStripAdd
+            // ContextMenuAdd
             // 
-            this.guna2ContextMenuStripAdd.BackColor = System.Drawing.Color.Black;
-            this.guna2ContextMenuStripAdd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
-            this.guna2ContextMenuStripAdd.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStripAdd.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStripAdd.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStripAdd.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStripAdd.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStripAdd.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStripAdd.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStripAdd.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStripAdd.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStripAdd.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStripAdd.Size = new System.Drawing.Size(212, 114);
+            this.ContextMenuAdd.BackColor = System.Drawing.Color.Black;
+            this.ContextMenuAdd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemAddFile,
+            this.toolStripMenuItemAddFolder,
+            this.toolStripMenuItemAddPlaylist,
+            this.toolStripMenuItemAddLink});
+            this.ContextMenuAdd.Name = "guna2ContextMenuStrip1";
+            this.ContextMenuAdd.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.ContextMenuAdd.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuAdd.RenderStyle.ColorTable = null;
+            this.ContextMenuAdd.RenderStyle.RoundedEdges = true;
+            this.ContextMenuAdd.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.ContextMenuAdd.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.ContextMenuAdd.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.ContextMenuAdd.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuAdd.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.ContextMenuAdd.Size = new System.Drawing.Size(212, 92);
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItemAddFile
             // 
-            this.toolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
-            this.toolStripMenuItem1.Text = "Добавить фаил";
+            this.toolStripMenuItemAddFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.toolStripMenuItemAddFile.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemAddFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemAddFile.Image")));
+            this.toolStripMenuItemAddFile.Name = "toolStripMenuItemAddFile";
+            this.toolStripMenuItemAddFile.Size = new System.Drawing.Size(211, 22);
+            this.toolStripMenuItemAddFile.Text = "Добавить фаил";
             // 
-            // toolStripMenuItem2
+            // toolStripMenuItemAddFolder
             // 
-            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 22);
-            this.toolStripMenuItem2.Text = "Добавить папку";
+            this.toolStripMenuItemAddFolder.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemAddFolder.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemAddFolder.Image")));
+            this.toolStripMenuItemAddFolder.Name = "toolStripMenuItemAddFolder";
+            this.toolStripMenuItemAddFolder.Size = new System.Drawing.Size(211, 22);
+            this.toolStripMenuItemAddFolder.Text = "Добавить папку";
             // 
-            // toolStripMenuItem3
+            // toolStripMenuItemAddPlaylist
             // 
-            this.toolStripMenuItem3.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(211, 22);
-            this.toolStripMenuItem3.Text = "Добавить плейлист";
+            this.toolStripMenuItemAddPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemAddPlaylist.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemAddPlaylist.Image")));
+            this.toolStripMenuItemAddPlaylist.Name = "toolStripMenuItemAddPlaylist";
+            this.toolStripMenuItemAddPlaylist.Size = new System.Drawing.Size(211, 22);
+            this.toolStripMenuItemAddPlaylist.Text = "Добавить плейлист";
             // 
-            // toolStripMenuItem4
+            // toolStripMenuItemAddLink
             // 
-            this.toolStripMenuItem4.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(211, 22);
-            this.toolStripMenuItem4.Text = "Добавить интернет фаил";
+            this.toolStripMenuItemAddLink.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemAddLink.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemAddLink.Image")));
+            this.toolStripMenuItemAddLink.Name = "toolStripMenuItemAddLink";
+            this.toolStripMenuItemAddLink.Size = new System.Drawing.Size(211, 22);
+            this.toolStripMenuItemAddLink.Text = "Добавить интернет фаил";
             // 
-            // guna2ImageButton3
+            // ButtonDEL
             // 
-            this.guna2ImageButton3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton3.CheckedState.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(44, 44);
-            this.guna2ImageButton3.HoverState.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton3.Image")));
-            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(38, 38);
-            this.guna2ImageButton3.IndicateFocus = true;
-            this.guna2ImageButton3.Location = new System.Drawing.Point(903, 448);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(105, 105);
-            this.guna2ImageButton3.PressedState.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.ShadowDecoration.Parent = this.guna2ImageButton3;
-            this.guna2ImageButton3.Size = new System.Drawing.Size(45, 51);
-            this.guna2ImageButton3.TabIndex = 60;
+            this.ButtonDEL.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonDEL.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonDEL.CheckedState.Parent = this.ButtonDEL;
+            this.ButtonDEL.ContextMenuStrip = this.ContextMenuDEL;
+            this.ButtonDEL.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            this.ButtonDEL.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonDEL.HoverState.Parent = this.ButtonDEL;
+            this.ButtonDEL.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDEL.Image")));
+            this.ButtonDEL.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonDEL.ImageRotate = 0F;
+            this.ButtonDEL.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonDEL.IndicateFocus = true;
+            this.ButtonDEL.Location = new System.Drawing.Point(903, 448);
+            this.ButtonDEL.Name = "ButtonDEL";
+            this.ButtonDEL.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
+            this.ButtonDEL.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonDEL.PressedState.Parent = this.ButtonDEL;
+            this.ButtonDEL.ShadowDecoration.Parent = this.ButtonDEL;
+            this.ButtonDEL.Size = new System.Drawing.Size(45, 51);
+            this.ButtonDEL.TabIndex = 60;
+            this.ButtonDEL.Click += new System.EventHandler(this.ButtonDEL_Click);
             // 
-            // bunifuCheckBox1
+            // ToggleShuffle
             // 
-            this.bunifuCheckBox1.AllowBindingControlAnimation = true;
-            this.bunifuCheckBox1.AllowBindingControlColorChanges = false;
-            this.bunifuCheckBox1.AllowBindingControlLocation = true;
-            this.bunifuCheckBox1.AllowCheckBoxAnimation = false;
-            this.bunifuCheckBox1.AllowCheckmarkAnimation = true;
-            this.bunifuCheckBox1.AllowOnHoverStates = true;
-            this.bunifuCheckBox1.AutoCheck = true;
-            this.bunifuCheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCheckBox1.BackgroundImage")));
-            this.bunifuCheckBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bunifuCheckBox1.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right;
-            this.bunifuCheckBox1.BorderRadius = 12;
-            this.bunifuCheckBox1.Checked = true;
-            this.bunifuCheckBox1.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
-            this.bunifuCheckBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuCheckBox1.CustomCheckmarkImage = null;
-            this.bunifuCheckBox1.Location = new System.Drawing.Point(-15, -15);
-            this.bunifuCheckBox1.MinimumSize = new System.Drawing.Size(17, 17);
-            this.bunifuCheckBox1.Name = "bunifuCheckBox1";
-            this.bunifuCheckBox1.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuCheckBox1.OnCheck.BorderRadius = 12;
-            this.bunifuCheckBox1.OnCheck.BorderThickness = 2;
-            this.bunifuCheckBox1.OnCheck.CheckBoxColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuCheckBox1.OnCheck.CheckmarkColor = System.Drawing.Color.White;
-            this.bunifuCheckBox1.OnCheck.CheckmarkThickness = 2;
-            this.bunifuCheckBox1.OnDisable.BorderColor = System.Drawing.Color.LightGray;
-            this.bunifuCheckBox1.OnDisable.BorderRadius = 12;
-            this.bunifuCheckBox1.OnDisable.BorderThickness = 2;
-            this.bunifuCheckBox1.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox1.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray;
-            this.bunifuCheckBox1.OnDisable.CheckmarkThickness = 2;
-            this.bunifuCheckBox1.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuCheckBox1.OnHoverChecked.BorderRadius = 12;
-            this.bunifuCheckBox1.OnHoverChecked.BorderThickness = 2;
-            this.bunifuCheckBox1.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuCheckBox1.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White;
-            this.bunifuCheckBox1.OnHoverChecked.CheckmarkThickness = 2;
-            this.bunifuCheckBox1.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuCheckBox1.OnHoverUnchecked.BorderRadius = 12;
-            this.bunifuCheckBox1.OnHoverUnchecked.BorderThickness = 1;
-            this.bunifuCheckBox1.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox1.OnUncheck.BorderColor = System.Drawing.Color.DarkGray;
-            this.bunifuCheckBox1.OnUncheck.BorderRadius = 12;
-            this.bunifuCheckBox1.OnUncheck.BorderThickness = 1;
-            this.bunifuCheckBox1.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox1.Size = new System.Drawing.Size(21, 21);
-            this.bunifuCheckBox1.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu;
-            this.bunifuCheckBox1.TabIndex = 61;
-            this.bunifuCheckBox1.ThreeState = false;
-            this.bunifuCheckBox1.ToolTipText = null;
+            this.ToggleShuffle.Animated = true;
+            this.ToggleShuffle.AutoRoundedCorners = true;
+            this.ToggleShuffle.BackColor = System.Drawing.Color.Transparent;
+            this.ToggleShuffle.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.ToggleShuffle.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ToggleShuffle.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ToggleShuffle.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.ToggleShuffle.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.ToggleShuffle.CheckedState.Parent = this.ToggleShuffle;
+            this.ToggleShuffle.Location = new System.Drawing.Point(413, 92);
+            this.ToggleShuffle.Name = "ToggleShuffle";
+            this.ToggleShuffle.ShadowDecoration.Parent = this.ToggleShuffle;
+            this.ToggleShuffle.Size = new System.Drawing.Size(35, 20);
+            this.ToggleShuffle.TabIndex = 62;
+            this.ToggleShuffle.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ToggleShuffle.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ToggleShuffle.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.ToggleShuffle.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.ToggleShuffle.UncheckedState.Parent = this.ToggleShuffle;
+            this.ToggleShuffle.CheckedChanged += new System.EventHandler(this.guna2ToggleSwitch1_CheckedChanged);
             // 
-            // guna2ToggleSwitch1
+            // ToggleLoop
             // 
-            this.guna2ToggleSwitch1.Animated = true;
-            this.guna2ToggleSwitch1.AutoRoundedCorners = true;
-            this.guna2ToggleSwitch1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ToggleSwitch1.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.CheckedState.Parent = this.guna2ToggleSwitch1;
-            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(413, 92);
-            this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
-            this.guna2ToggleSwitch1.ShadowDecoration.Parent = this.guna2ToggleSwitch1;
-            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(35, 20);
-            this.guna2ToggleSwitch1.TabIndex = 62;
-            this.guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch1.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.UncheckedState.Parent = this.guna2ToggleSwitch1;
-            this.guna2ToggleSwitch1.CheckedChanged += new System.EventHandler(this.guna2ToggleSwitch1_CheckedChanged);
+            this.ToggleLoop.Animated = true;
+            this.ToggleLoop.AutoRoundedCorners = true;
+            this.ToggleLoop.BackColor = System.Drawing.Color.Transparent;
+            this.ToggleLoop.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.ToggleLoop.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ToggleLoop.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ToggleLoop.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.ToggleLoop.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.ToggleLoop.CheckedState.Parent = this.ToggleLoop;
+            this.ToggleLoop.Location = new System.Drawing.Point(413, 138);
+            this.ToggleLoop.Name = "ToggleLoop";
+            this.ToggleLoop.ShadowDecoration.Parent = this.ToggleLoop;
+            this.ToggleLoop.Size = new System.Drawing.Size(35, 20);
+            this.ToggleLoop.TabIndex = 63;
+            this.ToggleLoop.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ToggleLoop.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.ToggleLoop.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.ToggleLoop.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.ToggleLoop.UncheckedState.Parent = this.ToggleLoop;
+            this.ToggleLoop.UseTransparentBackground = true;
+            this.ToggleLoop.CheckedChanged += new System.EventHandler(this.guna2ToggleSwitch2_CheckedChanged);
             // 
-            // guna2ToggleSwitch2
+            // PictureBoxShuffle
             // 
-            this.guna2ToggleSwitch2.Animated = true;
-            this.guna2ToggleSwitch2.AutoRoundedCorners = true;
-            this.guna2ToggleSwitch2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ToggleSwitch2.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.guna2ToggleSwitch2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch2.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch2.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch2.CheckedState.Parent = this.guna2ToggleSwitch2;
-            this.guna2ToggleSwitch2.Location = new System.Drawing.Point(413, 138);
-            this.guna2ToggleSwitch2.Name = "guna2ToggleSwitch2";
-            this.guna2ToggleSwitch2.ShadowDecoration.Parent = this.guna2ToggleSwitch2;
-            this.guna2ToggleSwitch2.Size = new System.Drawing.Size(35, 20);
-            this.guna2ToggleSwitch2.TabIndex = 63;
-            this.guna2ToggleSwitch2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch2.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch2.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch2.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch2.UncheckedState.Parent = this.guna2ToggleSwitch2;
-            this.guna2ToggleSwitch2.UseTransparentBackground = true;
+            this.PictureBoxShuffle.BackColor = System.Drawing.Color.Transparent;
+            this.PictureBoxShuffle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PictureBoxShuffle.BackgroundImage")));
+            this.PictureBoxShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PictureBoxShuffle.Image = ((System.Drawing.Image)(resources.GetObject("PictureBoxShuffle.Image")));
+            this.PictureBoxShuffle.ImageRotate = 0F;
+            this.PictureBoxShuffle.Location = new System.Drawing.Point(454, 82);
+            this.PictureBoxShuffle.Name = "PictureBoxShuffle";
+            this.PictureBoxShuffle.ShadowDecoration.Parent = this.PictureBoxShuffle;
+            this.PictureBoxShuffle.Size = new System.Drawing.Size(37, 41);
+            this.PictureBoxShuffle.TabIndex = 64;
+            this.PictureBoxShuffle.TabStop = false;
             // 
-            // guna2PictureBox2
+            // folderBrowserDialog
             // 
-            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.BackgroundImage")));
-            this.guna2PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(454, 82);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.ShadowDecoration.Parent = this.guna2PictureBox2;
-            this.guna2PictureBox2.Size = new System.Drawing.Size(37, 41);
-            this.guna2PictureBox2.TabIndex = 64;
-            this.guna2PictureBox2.TabStop = false;
+            this.folderBrowserDialog.Description = "выберете папку";
+            this.folderBrowserDialog.SelectedPath = "C/";
             // 
-            // guna2AnimateWindow1
+            // ContextMenuDEL
             // 
-            this.guna2AnimateWindow1.AnimationType = Guna.UI2.WinForms.Guna2AnimateWindow.AnimateWindowType.AW_SLIDE;
-            this.guna2AnimateWindow1.TargetForm = this;
+            this.ContextMenuDEL.BackColor = System.Drawing.Color.Black;
+            this.ContextMenuDEL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDelFromPlaylist,
+            this.toolStripMenuItemDelFromDisk,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemCleanPlaylist,
+            this.toolStripMenuItemDelPlaylist});
+            this.ContextMenuDEL.Name = "guna2ContextMenuStripDel";
+            this.ContextMenuDEL.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.ContextMenuDEL.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuDEL.RenderStyle.ColorTable = null;
+            this.ContextMenuDEL.RenderStyle.RoundedEdges = true;
+            this.ContextMenuDEL.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.ContextMenuDEL.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.ContextMenuDEL.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.ContextMenuDEL.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuDEL.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.ContextMenuDEL.Size = new System.Drawing.Size(195, 98);
             // 
-            // folderBrowserDialog1
+            // toolStripMenuItemDelFromPlaylist
             // 
-            this.folderBrowserDialog1.Description = "выберете папку";
-            this.folderBrowserDialog1.SelectedPath = "C/";
+            this.toolStripMenuItemDelFromPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelFromPlaylist.Image = global::Media_Player.Properties.Resources.Del_file_lite;
+            this.toolStripMenuItemDelFromPlaylist.Name = "toolStripMenuItemDelFromPlaylist";
+            this.toolStripMenuItemDelFromPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelFromPlaylist.Text = "Удалить из плейлиста";
+            // 
+            // toolStripMenuItemDelFromDisk
+            // 
+            this.toolStripMenuItemDelFromDisk.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelFromDisk.Image = global::Media_Player.Properties.Resources.Del_file;
+            this.toolStripMenuItemDelFromDisk.Name = "toolStripMenuItemDelFromDisk";
+            this.toolStripMenuItemDelFromDisk.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelFromDisk.Text = "Удалить с диска";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
+            // 
+            // toolStripMenuItemCleanPlaylist
+            // 
+            this.toolStripMenuItemCleanPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemCleanPlaylist.Image = global::Media_Player.Properties.Resources.Clear_playlist;
+            this.toolStripMenuItemCleanPlaylist.Name = "toolStripMenuItemCleanPlaylist";
+            this.toolStripMenuItemCleanPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemCleanPlaylist.Text = "Очистить плейлист";
+            // 
+            // toolStripMenuItemDelPlaylist
+            // 
+            this.toolStripMenuItemDelPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelPlaylist.Image = global::Media_Player.Properties.Resources.Del_Playlist;
+            this.toolStripMenuItemDelPlaylist.Name = "toolStripMenuItemDelPlaylist";
+            this.toolStripMenuItemDelPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelPlaylist.Text = "Удалить плейлист";
+            // 
+            // PictureBoxLoop
+            // 
+            this.PictureBoxLoop.BackColor = System.Drawing.Color.Transparent;
+            this.PictureBoxLoop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PictureBoxLoop.BackgroundImage")));
+            this.PictureBoxLoop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PictureBoxLoop.Image = ((System.Drawing.Image)(resources.GetObject("PictureBoxLoop.Image")));
+            this.PictureBoxLoop.ImageRotate = 0F;
+            this.PictureBoxLoop.Location = new System.Drawing.Point(454, 126);
+            this.PictureBoxLoop.Name = "PictureBoxLoop";
+            this.PictureBoxLoop.ShadowDecoration.Parent = this.PictureBoxLoop;
+            this.PictureBoxLoop.Size = new System.Drawing.Size(37, 41);
+            this.PictureBoxLoop.TabIndex = 65;
+            this.PictureBoxLoop.TabStop = false;
+            // 
+            // Not_work
+            // 
+            this.Not_work.AutoSize = true;
+            this.Not_work.BackColor = System.Drawing.Color.Transparent;
+            this.Not_work.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Not_work.ForeColor = System.Drawing.Color.Red;
+            this.Not_work.Location = new System.Drawing.Point(402, 143);
+            this.Not_work.Name = "Not_work";
+            this.Not_work.Size = new System.Drawing.Size(122, 24);
+            this.Not_work.TabIndex = 66;
+            this.Not_work.Text = "NOT WORK";
+            // 
+            // List_Playlist
+            // 
+            this.List_Playlist.BackColor = System.Drawing.Color.Transparent;
+            this.List_Playlist.BackgroundColor = System.Drawing.Color.Transparent;
+            this.List_Playlist.BorderColor = System.Drawing.Color.Silver;
+            this.List_Playlist.BorderRadius = 1;
+            this.List_Playlist.Color = System.Drawing.Color.Silver;
+            this.List_Playlist.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.List_Playlist.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.List_Playlist.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.List_Playlist.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.List_Playlist.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.List_Playlist.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.List_Playlist.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.List_Playlist.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thick;
+            this.List_Playlist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.List_Playlist.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.List_Playlist.FillDropDown = true;
+            this.List_Playlist.FillIndicator = false;
+            this.List_Playlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.List_Playlist.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.List_Playlist.ForeColor = System.Drawing.Color.White;
+            this.List_Playlist.FormattingEnabled = true;
+            this.List_Playlist.Icon = null;
+            this.List_Playlist.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.List_Playlist.IndicatorColor = System.Drawing.Color.DimGray;
+            this.List_Playlist.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.List_Playlist.ItemBackColor = System.Drawing.Color.Black;
+            this.List_Playlist.ItemBorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.List_Playlist.ItemForeColor = System.Drawing.Color.White;
+            this.List_Playlist.ItemHeight = 26;
+            this.List_Playlist.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.List_Playlist.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.List_Playlist.Items.AddRange(new object[] {
+            "Default"});
+            this.List_Playlist.ItemTopMargin = 3;
+            this.List_Playlist.Location = new System.Drawing.Point(62, 205);
+            this.List_Playlist.Name = "List_Playlist";
+            this.List_Playlist.Size = new System.Drawing.Size(725, 32);
+            this.List_Playlist.TabIndex = 67;
+            this.List_Playlist.Text = null;
+            this.List_Playlist.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.List_Playlist.TextLeftMargin = 5;
+            // 
+            // ButtonPrevious_playlist
+            // 
+            this.ButtonPrevious_playlist.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonPrevious_playlist.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPrevious_playlist.CheckedState.Parent = this.ButtonPrevious_playlist;
+            this.ButtonPrevious_playlist.ContextMenuStrip = this.ContextMenuAdd;
+            this.ButtonPrevious_playlist.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.ButtonPrevious_playlist.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonPrevious_playlist.HoverState.Parent = this.ButtonPrevious_playlist;
+            this.ButtonPrevious_playlist.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPrevious_playlist.Image")));
+            this.ButtonPrevious_playlist.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonPrevious_playlist.ImageRotate = 0F;
+            this.ButtonPrevious_playlist.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonPrevious_playlist.IndicateFocus = true;
+            this.ButtonPrevious_playlist.Location = new System.Drawing.Point(8, 197);
+            this.ButtonPrevious_playlist.Name = "ButtonPrevious_playlist";
+            this.ButtonPrevious_playlist.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.ButtonPrevious_playlist.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonPrevious_playlist.PressedState.Parent = this.ButtonPrevious_playlist;
+            this.ButtonPrevious_playlist.ShadowDecoration.Parent = this.ButtonPrevious_playlist;
+            this.ButtonPrevious_playlist.Size = new System.Drawing.Size(45, 51);
+            this.ButtonPrevious_playlist.TabIndex = 68;
+            // 
+            // ButtonPlaylist_Next
+            // 
+            this.ButtonPlaylist_Next.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonPlaylist_Next.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.ButtonPlaylist_Next.CheckedState.Parent = this.ButtonPlaylist_Next;
+            this.ButtonPlaylist_Next.ContextMenuStrip = this.ContextMenuAdd;
+            this.ButtonPlaylist_Next.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.ButtonPlaylist_Next.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.ButtonPlaylist_Next.HoverState.Parent = this.ButtonPlaylist_Next;
+            this.ButtonPlaylist_Next.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPlaylist_Next.Image")));
+            this.ButtonPlaylist_Next.ImageOffset = new System.Drawing.Point(0, 0);
+            this.ButtonPlaylist_Next.ImageRotate = 0F;
+            this.ButtonPlaylist_Next.ImageSize = new System.Drawing.Size(38, 38);
+            this.ButtonPlaylist_Next.IndicateFocus = true;
+            this.ButtonPlaylist_Next.Location = new System.Drawing.Point(793, 197);
+            this.ButtonPlaylist_Next.Name = "ButtonPlaylist_Next";
+            this.ButtonPlaylist_Next.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.ButtonPlaylist_Next.PressedState.ImageSize = new System.Drawing.Size(105, 105);
+            this.ButtonPlaylist_Next.PressedState.Parent = this.ButtonPlaylist_Next;
+            this.ButtonPlaylist_Next.ShadowDecoration.Parent = this.ButtonPlaylist_Next;
+            this.ButtonPlaylist_Next.Size = new System.Drawing.Size(45, 51);
+            this.ButtonPlaylist_Next.TabIndex = 69;
+            // 
+            // SongLongTime
+            // 
+            this.SongLongTime.AllowParentOverrides = false;
+            this.SongLongTime.AutoEllipsis = false;
+            this.SongLongTime.AutoSize = false;
+            this.SongLongTime.CursorType = null;
+            this.SongLongTime.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SongLongTime.ForeColor = System.Drawing.Color.White;
+            this.SongLongTime.Location = new System.Drawing.Point(770, 35);
+            this.SongLongTime.Name = "SongLongTime";
+            this.SongLongTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SongLongTime.Size = new System.Drawing.Size(59, 17);
+            this.SongLongTime.TabIndex = 31;
+            this.SongLongTime.Text = "0:00";
+            this.SongLongTime.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.SongLongTime.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // FullscreanButton
+            // 
+            this.FullscreanButton.BackColor = System.Drawing.Color.Transparent;
+            this.FullscreanButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.FullscreanButton.CheckedState.Parent = this.FullscreanButton;
+            this.FullscreanButton.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.FullscreanButton.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.FullscreanButton.HoverState.Parent = this.FullscreanButton;
+            this.FullscreanButton.Image = ((System.Drawing.Image)(resources.GetObject("FullscreanButton.Image")));
+            this.FullscreanButton.ImageOffset = new System.Drawing.Point(0, 0);
+            this.FullscreanButton.ImageRotate = 0F;
+            this.FullscreanButton.ImageSize = new System.Drawing.Size(38, 38);
+            this.FullscreanButton.IndicateFocus = true;
+            this.FullscreanButton.Location = new System.Drawing.Point(688, 116);
+            this.FullscreanButton.Name = "FullscreanButton";
+            this.FullscreanButton.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.FullscreanButton.PressedState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
+            this.FullscreanButton.PressedState.ImageSize = new System.Drawing.Size(45, 45);
+            this.FullscreanButton.PressedState.Parent = this.FullscreanButton;
+            this.FullscreanButton.ShadowDecoration.Parent = this.FullscreanButton;
+            this.FullscreanButton.Size = new System.Drawing.Size(45, 51);
+            this.FullscreanButton.TabIndex = 70;
+            this.FullscreanButton.Click += new System.EventHandler(this.FullscreanButton_Click);
             // 
             // FormPlayer
             // 
@@ -1122,46 +1291,51 @@ namespace Media_Player
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1168, 500);
             this.ControlBox = false;
-            this.Controls.Add(this.guna2PictureBox2);
-            this.Controls.Add(this.guna2ToggleSwitch2);
-            this.Controls.Add(this.guna2ToggleSwitch1);
-            this.Controls.Add(this.bunifuCheckBox1);
-            this.Controls.Add(this.guna2ImageButton3);
-            this.Controls.Add(this.guna2ImageButton2);
+            this.Controls.Add(this.FullscreanButton);
+            this.Controls.Add(this.Player);
+            this.Controls.Add(this.ButtonPlaylist_Next);
+            this.Controls.Add(this.ButtonPrevious_playlist);
+            this.Controls.Add(this.List_Playlist);
+            this.Controls.Add(this.Not_work);
+            this.Controls.Add(this.PictureBoxLoop);
+            this.Controls.Add(this.PictureBoxShuffle);
+            this.Controls.Add(this.ToggleLoop);
+            this.Controls.Add(this.ToggleShuffle);
+            this.Controls.Add(this.ButtonDEL);
+            this.Controls.Add(this.ButtonAdd);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.bunifuDataGridView1);
-            this.Controls.Add(this.guna2ImageButton);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
-            this.Controls.Add(this.guna2ImageButtonInfo);
-            this.Controls.Add(this.guna2ImageButtonVideo);
-            this.Controls.Add(this.bunifuLabelAlbumArtist);
-            this.Controls.Add(this.bunifuLabelNamber);
-            this.Controls.Add(this.bunifuLabelStile);
-            this.Controls.Add(this.bunifuLabelAge);
-            this.Controls.Add(this.bunifuLabelAlbum);
-            this.Controls.Add(this.bunifuLabelArtist);
-            this.Controls.Add(this.bunifuLabel13);
-            this.Controls.Add(this.bunifuLabel12);
-            this.Controls.Add(this.bunifuLabel11);
-            this.Controls.Add(this.bunifuLabel10);
-            this.Controls.Add(this.bunifuLabel9);
-            this.Controls.Add(this.bunifuLabel8);
-            this.Controls.Add(this.bunifuLabelName);
-            this.Controls.Add(this.bunifuLabel2);
-            this.Controls.Add(this.bunifuLabelSongTimeLong);
-            this.Controls.Add(this.bunifuLabelSongTime);
-            this.Controls.Add(this.guna2ControlBox2);
-            this.Controls.Add(this.guna2ControlBox1);
-            this.Controls.Add(this.bunifuHSliderVolume);
-            this.Controls.Add(this.bunifuHSliderSongTime);
-            this.Controls.Add(this.guna2ImageButtonRight);
-            this.Controls.Add(this.guna2ImageButtonLeft);
-            this.Controls.Add(this.guna2ImageButtonStop);
-            this.Controls.Add(this.guna2ImageButtonPause);
-            this.Controls.Add(this.guna2ImageButtonPlay);
-            this.Controls.Add(this.guna2RatingStar1);
-            this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.guna2ImageButton1);
+            this.Controls.Add(this.VisualPlaylist);
+            this.Controls.Add(this.ButtonMute);
+            this.Controls.Add(this.ButtonInfo);
+            this.Controls.Add(this.ButtonVideo);
+            this.Controls.Add(this.TagLabelAlbumArtist);
+            this.Controls.Add(this.TagLabelTrack);
+            this.Controls.Add(this.TagLabelStile);
+            this.Controls.Add(this.TagLabelYear);
+            this.Controls.Add(this.TagLabelAlbum);
+            this.Controls.Add(this.TagLabelArtist);
+            this.Controls.Add(this.NTagLabelTrack);
+            this.Controls.Add(this.NTagLabelStile);
+            this.Controls.Add(this.NTagLabelYear);
+            this.Controls.Add(this.NTagLabelAlbum);
+            this.Controls.Add(this.NTagLabelArtist);
+            this.Controls.Add(this.NTagLabelTile);
+            this.Controls.Add(this.TagLabelTile);
+            this.Controls.Add(this.NTagLabelAlbumArtist);
+            this.Controls.Add(this.SongLongTimeLabel);
+            this.Controls.Add(this.SongTimeLabel);
+            this.Controls.Add(this.ButtonHide);
+            this.Controls.Add(this.ButtonEXIT);
+            this.Controls.Add(this.VolumeSlider);
+            this.Controls.Add(this.SongTimeSlider);
+            this.Controls.Add(this.ButtonNext);
+            this.Controls.Add(this.ButtonPrevious);
+            this.Controls.Add(this.ButtonStop);
+            this.Controls.Add(this.ButtonPause);
+            this.Controls.Add(this.ButtonPlay);
+            this.Controls.Add(this.RatingStar);
+            this.Controls.Add(this.AlbumPictureBox);
+            this.Controls.Add(this.ButtonRatingSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPlayer";
@@ -1169,12 +1343,14 @@ namespace Media_Player
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPlayer_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPlayer_FormClosed);
             this.Load += new System.EventHandler(this.FormPlayer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlbumPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VisualPlaylist)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.guna2ContextMenuStripAdd.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.ContextMenuAdd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).EndInit();
+            this.ContextMenuDEL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLoop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1182,61 +1358,72 @@ namespace Media_Player
 
         #endregion
 
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonPlay;
-        private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonRight;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonLeft;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonStop;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonPause;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Bunifu.UI.WinForms.BunifuHSlider bunifuHSliderVolume;
-        private Bunifu.UI.WinForms.BunifuHSlider bunifuHSliderSongTime;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelSongTime;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelAlbumArtist;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelNamber;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelStile;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelAge;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelAlbum;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelArtist;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel13;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel12;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel11;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel10;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel9;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelName;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabelSongTimeLong;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonInfo;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButtonVideo;
+        private Bunifu.Framework.UI.BunifuElipse Elipse;
+        private AxWMPLib.AxWindowsMediaPlayer Player;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonPlay;
+        private Guna.UI2.WinForms.Guna2RatingStar RatingStar;
+        private Guna.UI2.WinForms.Guna2PictureBox AlbumPictureBox;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonNext;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonPrevious;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonStop;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonPause;
+        private Guna.UI2.WinForms.Guna2ControlBox ButtonEXIT;
+        private Bunifu.UI.WinForms.BunifuHSlider VolumeSlider;
+        private Bunifu.UI.WinForms.BunifuHSlider SongTimeSlider;
+        private Bunifu.UI.WinForms.BunifuLabel SongTimeLabel;
+        private Guna.UI2.WinForms.Guna2ControlBox ButtonHide;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelAlbumArtist;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelTrack;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelStile;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelYear;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelAlbum;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelArtist;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelTrack;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelStile;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelYear;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelAlbum;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelArtist;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelTile;
+        private Bunifu.UI.WinForms.BunifuLabel TagLabelTile;
+        private Bunifu.UI.WinForms.BunifuLabel NTagLabelAlbumArtist;
+        private Bunifu.UI.WinForms.BunifuLabel SongLongTimeLabel;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonInfo;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonVideo;
         private System.Windows.Forms.OpenFileDialog openFileDialogPlay;
         private System.Windows.Forms.Timer timer1;
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton;
-        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView1;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonMute;
+        private Bunifu.UI.WinForms.BunifuDataGridView VisualPlaylist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Song;
         private System.Windows.Forms.DataGridViewTextBoxColumn SongTime;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
+        private Bunifu.UI.WinForms.BunifuLabel StatusLabel1;
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch2;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
-        private Bunifu.UI.WinForms.BunifuCheckBox bunifuCheckBox1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
-        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStripAdd;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private Bunifu.UI.WinForms.BunifuLabel StatusLabel2;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonRatingSave;
+        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxShuffle;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch ToggleLoop;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch ToggleShuffle;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonDEL;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonAdd;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddFile;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddFolder;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddPlaylist;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddLink;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuDEL;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelFromPlaylist;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelFromDisk;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCleanPlaylist;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelPlaylist;
+        private Guna.UI2.WinForms.Guna2PictureBox PictureBoxLoop;
+        private System.Windows.Forms.Label Not_work;
+        private Bunifu.UI.WinForms.BunifuDropdown List_Playlist;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonPlaylist_Next;
+        private Guna.UI2.WinForms.Guna2ImageButton ButtonPrevious_playlist;
+        private Bunifu.UI.WinForms.BunifuLabel SongLongTime;
+        private Guna.UI2.WinForms.Guna2ImageButton FullscreanButton;
     }
 }
 

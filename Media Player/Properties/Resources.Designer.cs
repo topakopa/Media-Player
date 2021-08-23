@@ -61,12 +61,52 @@ namespace Media_Player.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Clear_playlist {
+            get {
+                object obj = ResourceManager.GetObject("Clear playlist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] Default {
             get {
                 object obj = ResourceManager.GetObject("Default", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Del_file {
+            get {
+                object obj = ResourceManager.GetObject("Del file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Del_file_lite {
+            get {
+                object obj = ResourceManager.GetObject("Del file lite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Del_Playlist {
+            get {
+                object obj = ResourceManager.GetObject("Del Playlist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
