@@ -84,30 +84,30 @@ namespace Media_Player
             this.toolStripMenuItemAddPlaylist = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAddLink = new System.Windows.Forms.ToolStripMenuItem();
             this.ButtonDEL = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.ToggleShuffle = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.ToggleLoop = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.PictureBoxShuffle = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.ContextMenuDEL = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.toolStripMenuItemDelFromPlaylist = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelFromDisk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemCleanPlaylist = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelPlaylist = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToggleShuffle = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.ToggleLoop = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.PictureBoxShuffle = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.PictureBoxLoop = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.Not_work = new System.Windows.Forms.Label();
             this.List_Playlist = new Bunifu.UI.WinForms.BunifuDropdown();
             this.ButtonPrevious_playlist = new Guna.UI2.WinForms.Guna2ImageButton();
             this.ButtonPlaylist_Next = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SongLongTime = new Bunifu.UI.WinForms.BunifuLabel();
             this.FullscreanButton = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.openFileDialogPlaylists = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlbumPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VisualPlaylist)).BeginInit();
             this.panel1.SuspendLayout();
             this.ContextMenuAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).BeginInit();
             this.ContextMenuDEL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLoop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,10 +122,11 @@ namespace Media_Player
             this.Player.Location = new System.Drawing.Point(12, 188);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(826, 300);
+            this.Player.Size = new System.Drawing.Size(826, 3);
             this.Player.TabIndex = 0;
             this.Player.Visible = false;
             this.Player.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.axWindowsMediaPlayer1_MediaChange);
+            this.Player.Enter += new System.EventHandler(this.Player_Enter);
             // 
             // AlbumPictureBox
             // 
@@ -317,6 +318,7 @@ namespace Media_Player
             this.SongTimeSlider.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
             this.SongTimeSlider.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
             this.SongTimeSlider.Value = 0;
+            this.SongTimeSlider.ValueChanged += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ValueChangedEventArgs>(this.SongTimeSlider_ValueChanged);
             this.SongTimeSlider.Scroll += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ScrollEventArgs>(this.bunifuHSliderSongTime_Scroll);
             // 
             // VolumeSlider
@@ -1000,6 +1002,65 @@ namespace Media_Player
             this.ButtonDEL.TabIndex = 60;
             this.ButtonDEL.Click += new System.EventHandler(this.ButtonDEL_Click);
             // 
+            // ContextMenuDEL
+            // 
+            this.ContextMenuDEL.BackColor = System.Drawing.Color.Black;
+            this.ContextMenuDEL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDelFromPlaylist,
+            this.toolStripMenuItemDelFromDisk,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemCleanPlaylist,
+            this.toolStripMenuItemDelPlaylist});
+            this.ContextMenuDEL.Name = "guna2ContextMenuStripDel";
+            this.ContextMenuDEL.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.ContextMenuDEL.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuDEL.RenderStyle.ColorTable = null;
+            this.ContextMenuDEL.RenderStyle.RoundedEdges = true;
+            this.ContextMenuDEL.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.ContextMenuDEL.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.ContextMenuDEL.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.ContextMenuDEL.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.ContextMenuDEL.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.ContextMenuDEL.Size = new System.Drawing.Size(195, 98);
+            // 
+            // toolStripMenuItemDelFromPlaylist
+            // 
+            this.toolStripMenuItemDelFromPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelFromPlaylist.Image = global::Media_Player.Properties.Resources.Del_file_lite;
+            this.toolStripMenuItemDelFromPlaylist.Name = "toolStripMenuItemDelFromPlaylist";
+            this.toolStripMenuItemDelFromPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelFromPlaylist.Text = "Удалить из плейлиста";
+            // 
+            // toolStripMenuItemDelFromDisk
+            // 
+            this.toolStripMenuItemDelFromDisk.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelFromDisk.Image = global::Media_Player.Properties.Resources.Del_file;
+            this.toolStripMenuItemDelFromDisk.Name = "toolStripMenuItemDelFromDisk";
+            this.toolStripMenuItemDelFromDisk.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelFromDisk.Text = "Удалить с диска";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
+            // 
+            // toolStripMenuItemCleanPlaylist
+            // 
+            this.toolStripMenuItemCleanPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemCleanPlaylist.Image = global::Media_Player.Properties.Resources.Clear_playlist;
+            this.toolStripMenuItemCleanPlaylist.Name = "toolStripMenuItemCleanPlaylist";
+            this.toolStripMenuItemCleanPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemCleanPlaylist.Text = "Очистить плейлист";
+            // 
+            // toolStripMenuItemDelPlaylist
+            // 
+            this.toolStripMenuItemDelPlaylist.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItemDelPlaylist.Image = global::Media_Player.Properties.Resources.Del_Playlist;
+            this.toolStripMenuItemDelPlaylist.Name = "toolStripMenuItemDelPlaylist";
+            this.toolStripMenuItemDelPlaylist.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItemDelPlaylist.Text = "Удалить плейлист";
+            // 
             // ToggleShuffle
             // 
             this.ToggleShuffle.Animated = true;
@@ -1066,65 +1127,6 @@ namespace Media_Player
             this.folderBrowserDialog.Description = "выберете папку";
             this.folderBrowserDialog.SelectedPath = "C/";
             // 
-            // ContextMenuDEL
-            // 
-            this.ContextMenuDEL.BackColor = System.Drawing.Color.Black;
-            this.ContextMenuDEL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemDelFromPlaylist,
-            this.toolStripMenuItemDelFromDisk,
-            this.toolStripSeparator1,
-            this.toolStripMenuItemCleanPlaylist,
-            this.toolStripMenuItemDelPlaylist});
-            this.ContextMenuDEL.Name = "guna2ContextMenuStripDel";
-            this.ContextMenuDEL.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.ContextMenuDEL.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.ContextMenuDEL.RenderStyle.ColorTable = null;
-            this.ContextMenuDEL.RenderStyle.RoundedEdges = true;
-            this.ContextMenuDEL.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.ContextMenuDEL.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.ContextMenuDEL.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.ContextMenuDEL.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.ContextMenuDEL.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.ContextMenuDEL.Size = new System.Drawing.Size(195, 98);
-            // 
-            // toolStripMenuItemDelFromPlaylist
-            // 
-            this.toolStripMenuItemDelFromPlaylist.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItemDelFromPlaylist.Image = global::Media_Player.Properties.Resources.Del_file_lite;
-            this.toolStripMenuItemDelFromPlaylist.Name = "toolStripMenuItemDelFromPlaylist";
-            this.toolStripMenuItemDelFromPlaylist.Size = new System.Drawing.Size(194, 22);
-            this.toolStripMenuItemDelFromPlaylist.Text = "Удалить из плейлиста";
-            // 
-            // toolStripMenuItemDelFromDisk
-            // 
-            this.toolStripMenuItemDelFromDisk.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItemDelFromDisk.Image = global::Media_Player.Properties.Resources.Del_file;
-            this.toolStripMenuItemDelFromDisk.Name = "toolStripMenuItemDelFromDisk";
-            this.toolStripMenuItemDelFromDisk.Size = new System.Drawing.Size(194, 22);
-            this.toolStripMenuItemDelFromDisk.Text = "Удалить с диска";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
-            // 
-            // toolStripMenuItemCleanPlaylist
-            // 
-            this.toolStripMenuItemCleanPlaylist.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItemCleanPlaylist.Image = global::Media_Player.Properties.Resources.Clear_playlist;
-            this.toolStripMenuItemCleanPlaylist.Name = "toolStripMenuItemCleanPlaylist";
-            this.toolStripMenuItemCleanPlaylist.Size = new System.Drawing.Size(194, 22);
-            this.toolStripMenuItemCleanPlaylist.Text = "Очистить плейлист";
-            // 
-            // toolStripMenuItemDelPlaylist
-            // 
-            this.toolStripMenuItemDelPlaylist.ForeColor = System.Drawing.Color.White;
-            this.toolStripMenuItemDelPlaylist.Image = global::Media_Player.Properties.Resources.Del_Playlist;
-            this.toolStripMenuItemDelPlaylist.Name = "toolStripMenuItemDelPlaylist";
-            this.toolStripMenuItemDelPlaylist.Size = new System.Drawing.Size(194, 22);
-            this.toolStripMenuItemDelPlaylist.Text = "Удалить плейлист";
-            // 
             // PictureBoxLoop
             // 
             this.PictureBoxLoop.BackColor = System.Drawing.Color.Transparent;
@@ -1138,18 +1140,6 @@ namespace Media_Player
             this.PictureBoxLoop.Size = new System.Drawing.Size(37, 41);
             this.PictureBoxLoop.TabIndex = 65;
             this.PictureBoxLoop.TabStop = false;
-            // 
-            // Not_work
-            // 
-            this.Not_work.AutoSize = true;
-            this.Not_work.BackColor = System.Drawing.Color.Transparent;
-            this.Not_work.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Not_work.ForeColor = System.Drawing.Color.Red;
-            this.Not_work.Location = new System.Drawing.Point(402, 143);
-            this.Not_work.Name = "Not_work";
-            this.Not_work.Size = new System.Drawing.Size(122, 24);
-            this.Not_work.TabIndex = 66;
-            this.Not_work.Text = "NOT WORK";
             // 
             // List_Playlist
             // 
@@ -1194,6 +1184,7 @@ namespace Media_Player
             this.List_Playlist.Text = null;
             this.List_Playlist.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.List_Playlist.TextLeftMargin = 5;
+            this.List_Playlist.SelectedIndexChanged += new System.EventHandler(this.List_Playlist_SelectedIndexChanged);
             // 
             // ButtonPrevious_playlist
             // 
@@ -1217,6 +1208,7 @@ namespace Media_Player
             this.ButtonPrevious_playlist.ShadowDecoration.Parent = this.ButtonPrevious_playlist;
             this.ButtonPrevious_playlist.Size = new System.Drawing.Size(45, 51);
             this.ButtonPrevious_playlist.TabIndex = 68;
+            this.ButtonPrevious_playlist.Click += new System.EventHandler(this.ButtonPrevious_playlist_Click);
             // 
             // ButtonPlaylist_Next
             // 
@@ -1240,6 +1232,7 @@ namespace Media_Player
             this.ButtonPlaylist_Next.ShadowDecoration.Parent = this.ButtonPlaylist_Next;
             this.ButtonPlaylist_Next.Size = new System.Drawing.Size(45, 51);
             this.ButtonPlaylist_Next.TabIndex = 69;
+            this.ButtonPlaylist_Next.Click += new System.EventHandler(this.ButtonPlaylist_Next_Click);
             // 
             // SongLongTime
             // 
@@ -1282,6 +1275,10 @@ namespace Media_Player
             this.FullscreanButton.TabIndex = 70;
             this.FullscreanButton.Click += new System.EventHandler(this.FullscreanButton_Click);
             // 
+            // openFileDialogPlaylists
+            // 
+            this.openFileDialogPlaylists.FileName = "openFileDialog1";
+            // 
             // FormPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1296,7 +1293,6 @@ namespace Media_Player
             this.Controls.Add(this.ButtonPlaylist_Next);
             this.Controls.Add(this.ButtonPrevious_playlist);
             this.Controls.Add(this.List_Playlist);
-            this.Controls.Add(this.Not_work);
             this.Controls.Add(this.PictureBoxLoop);
             this.Controls.Add(this.PictureBoxShuffle);
             this.Controls.Add(this.ToggleLoop);
@@ -1348,8 +1344,8 @@ namespace Media_Player
             ((System.ComponentModel.ISupportInitialize)(this.VisualPlaylist)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ContextMenuAdd.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).EndInit();
             this.ContextMenuDEL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxShuffle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxLoop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1418,12 +1414,12 @@ namespace Media_Player
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCleanPlaylist;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelPlaylist;
         private Guna.UI2.WinForms.Guna2PictureBox PictureBoxLoop;
-        private System.Windows.Forms.Label Not_work;
         private Bunifu.UI.WinForms.BunifuDropdown List_Playlist;
         private Guna.UI2.WinForms.Guna2ImageButton ButtonPlaylist_Next;
         private Guna.UI2.WinForms.Guna2ImageButton ButtonPrevious_playlist;
         private Bunifu.UI.WinForms.BunifuLabel SongLongTime;
         private Guna.UI2.WinForms.Guna2ImageButton FullscreanButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPlaylists;
     }
 }
 

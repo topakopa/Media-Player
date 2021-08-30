@@ -52,14 +52,14 @@ namespace Media_Player
         /// <summary>
         /// Плейлист
         /// </summary>
-        private WMPLib.IWMPPlaylist Playlist { get; set; }
+        private WMPLib.IWMPPlaylist CurrentPlaylist { get; set; }
 
         [Obsolete]
         public FormPlayer()
         {
             InitializeComponent();
             player_init();
-            playlist_init();
+
             context_menu_init();
         }
 
@@ -70,13 +70,70 @@ namespace Media_Player
         {
             ContextMenuAdd.Items[0].Click += Add_File;
             ContextMenuAdd.Items[1].Click += Add_Folder;
-            //ContextMenuAdd.Items[2].Click += Add_Playlist;
+            ContextMenuAdd.Items[2].Click += Add_Playlist;
             ContextMenuAdd.Items[3].Click += Add_Link;
 
             ContextMenuDEL.Items[0].Click += DEL_File;
             ContextMenuDEL.Items[1].Click += DEL_File_from_disk;
             ContextMenuDEL.Items[3].Click += Clean_Playlist;
             //ContextMenuDEL.Items[4].Click += DEL_Playlist;
+        }
+
+        private void Add_Playlist(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = openFileDialogPlaylists.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                foreach (String File in openFileDialogPlaylists.FileNames)
+                {
+                    FileInfo fileInfo = new FileInfo(File);
+                    
+                    Stream stream = new StreamReader(fileInfo.FullName).BaseStream;
+
+                    M3uContent content = new M3uContent();
+                    M3uPlaylist playlist = content.GetFromStream(stream);
+
+                    List<string> audio_paths = playlist.GetTracksPaths();
+
+                    stream.Close();
+
+                    CurrentPlaylist = Player.playlistCollection.newPlaylist(File);
+                    
+
+                    foreach (string path in audio_paths)
+                    {
+                        TagLib.File F = TagLib.File.Create(path);
+                        string name;
+
+                        if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
+                        {
+                            name = fileInfo.Name;
+                        }
+                        else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                        {
+                            name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                        }
+                        else
+                        {
+                            name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                        }
+
+                        int row = VisualPlaylist.Rows.Add(new object[]
+                        {
+                        name,
+                        F.Properties.Duration.ToString(@"mm\:ss"),
+                        });
+
+                        VisualPlaylist.Rows[row].Tag = fileInfo;
+
+                        CurrentPlaylist.appendItem(Player.newMedia(path));
+                    }
+                    Player.currentPlaylist = CurrentPlaylist;
+
+                    List_Playlist.Items.Add(File);
+                    List_Playlist.SelectedIndex = List_Playlist.Items.Count - 1;
+                }
+            }
         }
 
         private void DEL_File_from_disk(object sender, EventArgs e)
@@ -154,7 +211,7 @@ namespace Media_Player
 
                         VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                        Playlist.appendItem(Player.newMedia(File));
+                        Player.currentPlaylist.appendItem(Player.newMedia(File));
                     }
                 }
             }
@@ -194,7 +251,7 @@ namespace Media_Player
 
                     VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                    Playlist.appendItem(Player.newMedia(File));
+                    Player.currentPlaylist.appendItem(Player.newMedia(File));
                 }
             }
         }
@@ -224,13 +281,14 @@ namespace Media_Player
             stream.Close();
             File.Delete($@"C:\Users\{user_name}\Music\Playlists\Default.wpl");
 
-            Playlist = Player.playlistCollection.newPlaylist("Default");
+            CurrentPlaylist = Player.playlistCollection.newPlaylist("Default");
 
             foreach (string path in audio_paths)
             {
-                Playlist.appendItem(Player.newMedia(path));
+                CurrentPlaylist.appendItem(Player.newMedia(path));
             }
-            Player.currentPlaylist = Playlist;
+            Player.currentPlaylist = CurrentPlaylist;
+            List_Playlist.SelectedIndex = 0;
         }
         /// <summary>
         /// Скрыть визуализацию \ Показать информацию
@@ -332,9 +390,15 @@ namespace Media_Player
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (Retry && (int)Player.Ctlcontrols.currentPosition == (int)Player.currentMedia.duration)
+            {
+                Player.Ctlcontrols.currentPosition = 0;
+            }
             //визуалилизация времени
             SongTimeLabel.Text = Player.Ctlcontrols.currentPositionString;
             SongTimeSlider.Value = (int)Player.Ctlcontrols.currentPosition;
+
+
             if (Player.currentMedia != null)
             {
                 if (Player.currentMedia.duration != 0)
@@ -511,9 +575,9 @@ namespace Media_Player
 
                 VisualPlaylist.Rows[row].Tag = fileInfo;
 
-                Playlist.appendItem(Player.newMedia(File));
+                CurrentPlaylist.appendItem(Player.newMedia(File));
             }
-            Player.currentPlaylist = Playlist;
+            Player.currentPlaylist = CurrentPlaylist;
 
         }
 
@@ -569,19 +633,24 @@ namespace Media_Player
         /// </summary>
         private void axWindowsMediaPlayer1_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
         {
-            int selected_index = VisualPlaylist.SelectedRows[0].Index;
-            if (Player.currentMedia.sourceURL != ((FileInfo)VisualPlaylist.Rows[selected_index].Tag).FullName)
+            if (VisualPlaylist.SelectedRows.Count > 0)
             {
-                VisualPlaylist.Rows[selected_index].Selected = false;
-                if (selected_index == VisualPlaylist.Rows.Count - 1)
+                int selected_index = VisualPlaylist.SelectedRows[0].Index;
+                if (Player.currentMedia.sourceURL != ((FileInfo)VisualPlaylist.Rows[selected_index].Tag).FullName)
                 {
-                    VisualPlaylist.Rows[0].Selected = true;
-                }
-                else
-                {
-                    VisualPlaylist.Rows[selected_index].Selected = true;
+                    VisualPlaylist.Rows[selected_index].Selected = false;
+                    if (selected_index == VisualPlaylist.Rows.Count - 1)
+                    {
+                        VisualPlaylist.Rows[0].Selected = true;
+                    }
+                    else
+                    {
+                        VisualPlaylist.Rows[selected_index].Selected = true;
+                    }
                 }
             }
+
+
 
             Music = Player.currentMedia.sourceURL;
             tegChange();
@@ -753,6 +822,50 @@ namespace Media_Player
         private void ButtonDEL_Click(object sender, EventArgs e)
         {
             ButtonDEL.ContextMenuStrip.Show(ButtonDEL, new Point(0, 51));
+        }
+
+        private void Player_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SongTimeSlider_ValueChanged(object sender, Utilities.BunifuSlider.BunifuHScrollBar.ValueChangedEventArgs e)
+        {
+
+        }
+
+        private void List_Playlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             string playlist = (string)List_Playlist.SelectedItem;
+            Player.currentPlaylist = Player.playlistCollection.getByName(playlist).Item(0);
+
+            VisualPlaylist.Rows.Clear();
+            playlist_init();
+         
+        }
+
+        private void ButtonPlaylist_Next_Click(object sender, EventArgs e)
+        {
+            if(List_Playlist.SelectedIndex < List_Playlist.Items.Count - 1)
+            {
+                List_Playlist.SelectedIndex += 1;
+            }
+            else if (List_Playlist.SelectedIndex == List_Playlist.Items.Count - 1)
+            {
+                List_Playlist.SelectedIndex = 0;
+            }
+        }
+
+        private void ButtonPrevious_playlist_Click(object sender, EventArgs e)
+        {
+            if (List_Playlist.SelectedIndex > 0)
+            {
+                List_Playlist.SelectedIndex -= 1;
+            }
+            else if (List_Playlist.SelectedIndex == 0)
+            {
+                List_Playlist.SelectedIndex = List_Playlist.Items.Count - 1;
+            }
         }
     }
 }
