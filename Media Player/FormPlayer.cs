@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Un4seen.Bass;
+using Un4seen.Bass.AddOn.Tags;
 
 namespace Media_Player
 {
@@ -46,6 +48,7 @@ namespace Media_Player
         /// Теги песни
         /// </summary>
         TagLib.File file { get; set; }
+        TAG_INFO tag_info { get; set; }
         private int Timer { get; set; }
         private string Vstatus { get; set; }
         private byte Sstatus { get; set; }
@@ -59,7 +62,7 @@ namespace Media_Player
         {
             InitializeComponent();
             player_init();
-
+            Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             context_menu_init();
         }
 
@@ -102,36 +105,83 @@ namespace Media_Player
 
                     foreach (string path in audio_paths)
                     {
-                        TagLib.File F = TagLib.File.Create(path);
-                        string name;
+                        if (!path.StartsWith("http"))
+                        {
+                            TagLib.File F = TagLib.File.Create(path);
+                            string name;
 
-                        if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
-                        {
-                            name = fileInfo.Name;
-                        }
-                        else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
-                        {
-                            name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                            if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
+                            {
+                                name = fileInfo.Name;
+                            }
+                            else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                            {
+                                name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                            }
+                            else
+                            {
+                                name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                            }
+
+                            int row = VisualPlaylist.Rows.Add(new object[]
+                            {
+                                name,
+                                F.Properties.Duration.ToString(@"mm\:ss"),
+                            });
+
+                            VisualPlaylist.Rows[row].Tag = fileInfo;
                         }
                         else
                         {
-                            name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                            var tagInfo = new TAG_INFO(path);
+                            var _stream = Bass.BASS_StreamCreateURL(path, 0, BASSFlag.BASS_DEFAULT, null, IntPtr.Zero);
+
+                            string artist = "";
+                            string title = "";
+
+                            if (BassTags.BASS_TAG_GetFromURL(_stream, tagInfo))
+                            {
+                                artist = tagInfo.artist.ToString();
+                                title = tagInfo.title.ToString();
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            string name;
+                            if (artist == "" && title == "")
+                            {
+                                name = path;
+                            }
+                            else if (artist == "" || title == "")
+                            {
+                                name = $"{artist}{title}";
+                            }
+                            else
+                            {
+                                name = $"{artist} / {title}";
+                            }
+
+
+                            int row = VisualPlaylist.Rows.Add(new object[]
+                            {
+                                name,
+                                tagInfo.duration < TimeSpan.MaxValue.TotalSeconds ? TimeSpan.FromSeconds(tagInfo.duration).ToString(@"mm\:ss") : "radio"
+                            });
+
+                            VisualPlaylist.Rows[row].Tag = path;
+
+
                         }
-
-                        int row = VisualPlaylist.Rows.Add(new object[]
-                        {
-                        name,
-                        F.Properties.Duration.ToString(@"mm\:ss"),
-                        });
-
-                        VisualPlaylist.Rows[row].Tag = fileInfo;
-
                         CurrentPlaylist.appendItem(Player.newMedia(path));
+
                     }
                     Player.currentPlaylist = CurrentPlaylist;
 
                     List_Playlist.Items.Add(File);
                     List_Playlist.SelectedIndex = List_Playlist.Items.Count - 1;
+
                 }
             }
         }
@@ -151,11 +201,8 @@ namespace Media_Player
 
         private void Clean_Playlist(object sender, EventArgs e)
         {
-            for (int i = 0; i < Player.currentPlaylist.count; i++)
-            {
-                Player.currentPlaylist.removeItem(Player.currentPlaylist.Item[i]);
-                VisualPlaylist.Rows.Remove(VisualPlaylist.Rows[i]);
-            }
+            VisualPlaylist.Rows.Clear();
+            Player.currentPlaylist.clear();
         }
 
         private void DEL_File(object sender, EventArgs e)
@@ -170,7 +217,9 @@ namespace Media_Player
 
         private void Add_Link(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            AddLink addLink = new AddLink(this);
+            addLink.ShowDialog();
+
         }
 
         /// <summary>
@@ -265,8 +314,6 @@ namespace Media_Player
             Player.settings.autoStart = false;
             Player.URL = @"";
             Player.settings.setMode("loop", true);
-            Player.settings.volume = Settings1.Default.Volume;
-            VolumeSlider.Value = Settings1.Default.Volume;
 
             string user_name = Environment.UserName;
             Stream stream = new StreamReader("Assets/Default.m3u").BaseStream;
@@ -417,9 +464,9 @@ namespace Media_Player
             }
             else if (Sstatus == 1)
             {
-                if(file.Tag.FirstPerformer != null && file.Tag.Title != null)
+                if(TagLabelArtist.Text != null && TagLabelTile.Text != null)
                 {
-                    Vstatus = $"{file.Tag.FirstPerformer} / {file.Tag.Title}";
+                    Vstatus = $"{TagLabelArtist.Text} / {TagLabelTile.Text}";
                 }
                 else
                 {
@@ -432,14 +479,13 @@ namespace Media_Player
             }
             else if(Sstatus == 2)
             {
-                FileInfo fileInfo = new FileInfo(Music);
-                Vstatus = fileInfo.Name;
+                Vstatus = Player.currentMedia.name;
             }
             else if (Sstatus == 3)
             {
-                if (file.Tag.FirstAlbumArtist != null && file.Tag.Album != null)
+                if (TagLabelAlbumArtist.Text != null && TagLabelAlbum.Text != null)
                 {
-                    Vstatus = $"{file.Tag.FirstAlbumArtist} / {file.Tag.Album}";
+                    Vstatus = $"{TagLabelAlbumArtist.Text} / {TagLabelAlbum.Text}";
                 }
                 else
                 {
@@ -448,9 +494,9 @@ namespace Media_Player
             }
             else if (Sstatus == 4)
             {
-                if (file.Tag.FirstGenre != null)
+                if (TagLabelStile.Text != null)
                 {
-                    Vstatus = file.Tag.FirstGenre;
+                    Vstatus = TagLabelStile.Text;
                 }
                 else
                 {
@@ -487,7 +533,7 @@ namespace Media_Player
                 {
                     Sstatus = 0;
                 }
-
+                
             }
             
         }
@@ -598,32 +644,80 @@ namespace Media_Player
 
             for (int i = 0; i < Player.currentPlaylist.count; i++)
             {
+
                 WMPLib.IWMPMedia audio = Player.currentPlaylist.Item[i];
 
-                FileInfo fileInfo = new FileInfo(audio.sourceURL);
-                TagLib.File F = TagLib.File.Create(fileInfo.FullName);
+                if (!audio.sourceURL.StartsWith("http"))
+                {
+                    FileInfo fileInfo = new FileInfo(audio.sourceURL);
+                    TagLib.File F = TagLib.File.Create(fileInfo.FullName);
 
-                string name;
-                if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
-                {
-                    name = fileInfo.Name;
-                }
-                else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
-                {
-                    name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                    string name;
+                    if (F.Tag.FirstPerformer == null && F.Tag.Title == null)
+                    {
+                        name = fileInfo.Name;
+                    }
+                    else if (F.Tag.FirstPerformer == null || F.Tag.Title == null)
+                    {
+                        name = $"{F.Tag.FirstPerformer}{F.Tag.Title}";
+                    }
+                    else
+                    {
+                        name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                    }
+
+                    int row = VisualPlaylist.Rows.Add(new object[]
+                    {
+                    name,
+                    F.Properties.Duration.ToString(@"mm\:ss"),
+                    });
+
+                    VisualPlaylist.Rows[row].Tag = fileInfo;
                 }
                 else
                 {
-                    name = $"{F.Tag.FirstPerformer} / {F.Tag.Title}";
+                    var tagInfo = new TAG_INFO(audio.sourceURL);
+                    var _stream = Bass.BASS_StreamCreateURL(audio.sourceURL, 0, BASSFlag.BASS_DEFAULT, null, IntPtr.Zero);
+
+                    string artist = "";
+                    string title = "";
+
+                    if (BassTags.BASS_TAG_GetFromURL(_stream, tagInfo))
+                    {
+                        artist = tagInfo.artist.ToString();
+                        title = tagInfo.title.ToString();
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    string name;
+                    if (artist == "" && title == "")
+                    {
+                        name = audio.sourceURL;
+                    }
+                    else if (artist == "" || title == "")
+                    {
+                        name = $"{artist}{title}";
+                    }
+                    else
+                    {
+                        name = $"{artist} / {title}";
+                    }
+
+
+                    int row = VisualPlaylist.Rows.Add(new object[]
+                    {
+                        name,
+                        tagInfo.duration < TimeSpan.MaxValue.TotalSeconds ? TimeSpan.FromSeconds(tagInfo.duration).ToString(@"mm\:ss") : "radio"
+                    });
+
+                    VisualPlaylist.Rows[row].Tag = audio.sourceURL;
+
+
                 }
 
-                int row = VisualPlaylist.Rows.Add(new object[]
-                {
-                    name,
-                    F.Properties.Duration.ToString(@"mm\:ss"),
-                });
-
-                VisualPlaylist.Rows[row].Tag = fileInfo;
             }
 
         }
@@ -636,23 +730,45 @@ namespace Media_Player
             if (VisualPlaylist.SelectedRows.Count > 0)
             {
                 int selected_index = VisualPlaylist.SelectedRows[0].Index;
-                if (Player.currentMedia.sourceURL != ((FileInfo)VisualPlaylist.Rows[selected_index].Tag).FullName)
+                if (!Player.currentMedia.sourceURL.StartsWith("http"))
                 {
-                    VisualPlaylist.Rows[selected_index].Selected = false;
-                    if (selected_index == VisualPlaylist.Rows.Count - 1)
+                    if (Player.currentMedia.sourceURL != ((FileInfo)VisualPlaylist.Rows[selected_index].Tag).FullName)
                     {
-                        VisualPlaylist.Rows[0].Selected = true;
-                    }
-                    else
-                    {
-                        VisualPlaylist.Rows[selected_index].Selected = true;
+                        VisualPlaylist.Rows[selected_index].Selected = false;
+                        if (selected_index == VisualPlaylist.Rows.Count - 1)
+                        {
+                            VisualPlaylist.Rows[0].Selected = true;
+                        }
+                        else
+                        {
+                            VisualPlaylist.Rows[selected_index].Selected = true;
+                        }
                     }
                 }
+                else
+                {
+                    if (Player.currentMedia.sourceURL != (string)VisualPlaylist.Rows[selected_index].Tag)
+                    {
+                        VisualPlaylist.Rows[selected_index].Selected = false;
+                        if (selected_index == VisualPlaylist.Rows.Count - 1)
+                        {
+                            VisualPlaylist.Rows[0].Selected = true;
+                        }
+                        else
+                        {
+                            VisualPlaylist.Rows[selected_index].Selected = true;
+                        }
+                    }
+                }
+
             }
 
 
+            if(Player.currentMedia != null)
+            {
+                Music = Player.currentMedia.sourceURL;
+            }
 
-            Music = Player.currentMedia.sourceURL;
             tegChange();
         }
 
@@ -661,45 +777,68 @@ namespace Media_Player
         /// </summary>
         private void tegChange()
         {
-            file = TagLib.File.Create(Music);
-
-            TagLabelTile.Text = file.Tag.Title ?? "";
-            TagLabelArtist.Text = file.Tag.FirstPerformer ?? "";
-
-            TagLabelAlbum.Text = file.Tag.Album ?? "";
-            TagLabelAlbumArtist.Text = file.Tag.FirstAlbumArtist ?? "";
-
-            TagLabelTrack.Text = file.Tag.Track.ToString() ?? "";
-            TagLabelYear.Text = file.Tag.Year.ToString() ?? "";
-            TagLabelStile.Text = file.Tag.FirstGenre ?? "";
-
-            if (file.Tag.Pictures.Length != 0)
+            if (!Music.StartsWith("http"))
             {
-                MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
-                AlbumPictureBox.BackgroundImage = Image.FromStream(ms);
+                file = TagLib.File.Create(Music);
+
+                TagLabelTile.Text = file.Tag.Title ?? "";
+                TagLabelArtist.Text = file.Tag.FirstPerformer ?? "";
+
+                TagLabelAlbum.Text = file.Tag.Album ?? "";
+                TagLabelAlbumArtist.Text = file.Tag.FirstAlbumArtist ?? "";
+
+                TagLabelTrack.Text = file.Tag.Track.ToString() ?? "";
+                TagLabelYear.Text = file.Tag.Year.ToString() ?? "";
+                TagLabelStile.Text = file.Tag.FirstGenre ?? "";
+
+                if (file.Tag.Pictures.Length != 0)
+                {
+                    MemoryStream ms = new MemoryStream(file.Tag.Pictures[0].Data.Data);
+                    AlbumPictureBox.BackgroundImage = Image.FromStream(ms);
+                }
+                else
+                {
+                    AlbumPictureBox.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Default album icon.jpg");
+                }
+
+                if (Music.EndsWith(".mp3"))
+                {
+                    RatingStar.Visible = true;
+
+                    TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
+                    RatingStar.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
+                }
+                else
+                {
+                    RatingStar.Visible = false;
+                }
+
             }
             else
             {
-                AlbumPictureBox.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Default album icon.jpg");
-            }
+                tag_info = new TAG_INFO(Music);
 
-            if (Music.EndsWith(".mp3"))
-            {
-                RatingStar.Visible = true;
-             
-                TagLib.Id3v2.PopularimeterFrame frame = TagLib.Id3v2.PopularimeterFrame.Get((TagLib.Id3v2.Tag)file.GetTag(TagLib.TagTypes.Id3v2), "Windows Media Player 9 Series", true);
-                RatingStar.Value = (float)stars.First(u => u.Value == frame.Rating).Key;
-            }
-            else
-            {
-                RatingStar.Visible = false;
-            }
-                
+                var _stream = Bass.BASS_StreamCreateURL(Music, 0, BASSFlag.BASS_DEFAULT, null, IntPtr.Zero);
 
+                if (BassTags.BASS_TAG_GetFromURL(_stream, tag_info))
+                {
+                    TagLabelTile.Text = tag_info.title ?? "";
+                    TagLabelArtist.Text = tag_info.artist ?? "";
 
-            
+                    TagLabelAlbum.Text = tag_info.album ?? "";
+                    TagLabelAlbumArtist.Text = tag_info.albumartist ?? "";
+
+                    TagLabelTrack.Text = tag_info.track ?? "";
+                    TagLabelYear.Text = tag_info.year ?? "";
+                    TagLabelStile.Text = tag_info.genre ?? "";
+
+                    AlbumPictureBox.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Radio Album icon.png");
+                }
+            }
 
         }
+
+        
 
         /// <summary>
         /// Выбор песни через плейлист
@@ -710,10 +849,18 @@ namespace Media_Player
             {
                 return;
             }
+            if (!VisualPlaylist.Rows[e.RowIndex].Tag.ToString().StartsWith("http"))
+            {
+                FileInfo file = (FileInfo)VisualPlaylist.Rows[e.RowIndex].Tag;
+                Music = file.FullName;
+            }
+            else
+            {
+                Music = VisualPlaylist.Rows[e.RowIndex].Tag.ToString();
+            }
 
-            FileInfo file = (FileInfo)VisualPlaylist.Rows[e.RowIndex].Tag;
 
-            Music = file.FullName;
+
 
             Player.Ctlcontrols.currentItem = Player.currentPlaylist.Item[e.RowIndex];
             guna2ImageButtonPlay_Click(sender, e);
@@ -722,7 +869,7 @@ namespace Media_Player
 
         private void guna2RatingStar1_ValueChanged(object sender, EventArgs e)
         {
-
+            
 
 
         }
@@ -797,7 +944,6 @@ namespace Media_Player
                 writer.WriteLine(text);
             }
 
-            Settings1.Default.Volume = VolumeSlider.Value;
 
         }
 

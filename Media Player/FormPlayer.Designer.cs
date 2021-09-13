@@ -122,7 +122,7 @@ namespace Media_Player
             this.Player.Location = new System.Drawing.Point(12, 188);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(826, 3);
+            this.Player.Size = new System.Drawing.Size(826, 300);
             this.Player.TabIndex = 0;
             this.Player.Visible = false;
             this.Player.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.axWindowsMediaPlayer1_MediaChange);
@@ -1355,7 +1355,7 @@ namespace Media_Player
         #endregion
 
         private Bunifu.Framework.UI.BunifuElipse Elipse;
-        private AxWMPLib.AxWindowsMediaPlayer Player;
+        public AxWMPLib.AxWindowsMediaPlayer Player;
         private Guna.UI2.WinForms.Guna2ImageButton ButtonPlay;
         private Guna.UI2.WinForms.Guna2RatingStar RatingStar;
         private Guna.UI2.WinForms.Guna2PictureBox AlbumPictureBox;
@@ -1389,7 +1389,7 @@ namespace Media_Player
         private System.Windows.Forms.Timer timer1;
         private Bunifu.Framework.UI.BunifuDragControl DragControl;
         private Guna.UI2.WinForms.Guna2ImageButton ButtonMute;
-        private Bunifu.UI.WinForms.BunifuDataGridView VisualPlaylist;
+        public Bunifu.UI.WinForms.BunifuDataGridView VisualPlaylist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Song;
         private System.Windows.Forms.DataGridViewTextBoxColumn SongTime;
         private Bunifu.UI.WinForms.BunifuLabel StatusLabel1;
