@@ -39,12 +39,12 @@ namespace Media_Player
 
 
             var tagInfo = new TAG_INFO(link);
-            
-            var _stream = Bass.BASS_StreamCreateURL(link, 0, BASSFlag.BASS_DEFAULT, null, IntPtr.Zero);
+
+            FormPlayer.BassPlayer.Play(link);
 
             string artist = "";
             string title = "";
-            if (BassTags.BASS_TAG_GetFromURL(_stream, tagInfo))
+            if (BassTags.BASS_TAG_GetFromURL(FormPlayer.BassPlayer._numberStream, tagInfo))
             {
                 artist = tagInfo.artist.ToString();
                 title = tagInfo.title.ToString();
@@ -74,7 +74,12 @@ namespace Media_Player
             }) ;
 
             FormPlayer.VisualPlaylist.Rows[row].Tag = link;
+            FormPlayer.VisualPlaylist.SelectedRows[0].Selected = false;
+            FormPlayer.VisualPlaylist.Rows[row].Selected = true;
+            FormPlayer.Player.Ctlcontrols.currentItem = FormPlayer.Player.currentPlaylist.Item[row];
 
+        Bass.BASS_ChannelStop(FormPlayer.BassPlayer._numberStream);
+            //Bass.BASS_StreamFree(FormPlayer.BassPlayer._numberStream);
         }
     }
 }

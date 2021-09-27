@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Tags;
+using WMPLib;
 
 namespace Media_Player
 {
@@ -39,7 +40,7 @@ namespace Media_Player
         /// <summary>
         /// Путь к песне
         /// </summary>
-        private string Music { get; set; } = @"";
+        public string Music { get; set; } = @"";
         /// <summary>
         /// Выключен ли звук
         /// </summary>
@@ -52,6 +53,7 @@ namespace Media_Player
         private int Timer { get; set; }
         private string Vstatus { get; set; }
         private byte Sstatus { get; set; }
+        public BassPlayer BassPlayer { get; set; }
         /// <summary>
         /// Плейлист
         /// </summary>
@@ -64,6 +66,7 @@ namespace Media_Player
             player_init();
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             context_menu_init();
+            BassPlayer = new BassPlayer(this);
         }
 
         /// <summary>
@@ -74,12 +77,18 @@ namespace Media_Player
             ContextMenuAdd.Items[0].Click += Add_File;
             ContextMenuAdd.Items[1].Click += Add_Folder;
             ContextMenuAdd.Items[2].Click += Add_Playlist;
-            ContextMenuAdd.Items[3].Click += Add_Link;
+            ContextMenuAdd.Items[3].Click += Create_Playlist;
+            ContextMenuAdd.Items[4].Click += Add_Link;
 
             ContextMenuDEL.Items[0].Click += DEL_File;
             ContextMenuDEL.Items[1].Click += DEL_File_from_disk;
             ContextMenuDEL.Items[3].Click += Clean_Playlist;
             //ContextMenuDEL.Items[4].Click += DEL_Playlist;
+        }
+
+        private void Create_Playlist(object sender, EventArgs e)
+        {
+            
         }
 
         private void Add_Playlist(object sender, EventArgs e)
@@ -457,7 +466,7 @@ namespace Media_Player
 
 
             //статус песни
-            if(Player.status == "Приостановлено" || Player.status == "Остановлено")
+            if(Player.status == "Приостановлено" || Player.status == "Остановлено" || Player.status == "Подключение" || Player.status.StartsWith("Буферизация"))
             {
                 Sstatus = 0;
                 Vstatus = Player.status;
@@ -722,6 +731,7 @@ namespace Media_Player
 
         }
 
+
         /// <summary>
         /// Переключение песни
         /// </summary>
@@ -775,7 +785,7 @@ namespace Media_Player
         /// <summary>
         /// настройка визуальных тегов
         /// </summary>
-        private void tegChange()
+        public void tegChange(TAG_INFO tagInfo = null)
         {
             if (!Music.StartsWith("http"))
             {
@@ -816,6 +826,58 @@ namespace Media_Player
             }
             else
             {
+                if (tagInfo != null)
+                {
+                    TagLabelTile.Text = tagInfo.title ?? "";
+                    TagLabelArtist.Text = tagInfo.artist ?? "";
+
+                    TagLabelAlbum.Text = tagInfo.album ?? "";
+                    TagLabelAlbumArtist.Text = tagInfo.albumartist ?? "";
+
+                    TagLabelTrack.Text = tagInfo.track ?? "";
+                    TagLabelYear.Text = tagInfo.year ?? "";
+                    TagLabelStile.Text = tagInfo.genre ?? "";
+
+                    AlbumPictureBox.BackgroundImage = Image.FromFile(@"C:\Users\шурик\source\repos\Media Player\Media Player\Assets\Radio Album icon.png");
+            
+                    string artist = tagInfo.artist.ToString();
+                    string title = tagInfo.title.ToString();
+
+
+                    string name;
+                    if (artist == "" && title == "")
+                    {
+                        name = Music;
+                    }
+                    else if (artist == "" || title == "")
+                    {
+                        name = $"{artist}{title}";
+                    }
+                    else
+                    {
+                        name = $"{artist} / {title}";
+                    }
+
+                    int selected_index = VisualPlaylist.SelectedRows[0].Index;
+                    Action action = () => VisualPlaylist.Rows.RemoveAt(selected_index);
+                    VisualPlaylist.Invoke(action);
+
+                    if (VisualPlaylist.SelectedRows.Count > 0)
+                    {
+                        VisualPlaylist.SelectedRows[0].Selected = false;
+                    }
+
+                    Action action2 = () => VisualPlaylist.Rows.Insert(selected_index, new object[]
+                    {
+                name,
+                tagInfo.duration < TimeSpan.MaxValue.TotalSeconds ? TimeSpan.FromSeconds(tagInfo.duration).ToString(@"mm\:ss") : "radio"
+                    });
+                    VisualPlaylist.Invoke(action2);
+
+                    VisualPlaylist.Rows[selected_index].Selected = true;
+                    VisualPlaylist.Rows[selected_index].Tag = Music;
+                    return;
+                }
                 tag_info = new TAG_INFO(Music);
 
                 var _stream = Bass.BASS_StreamCreateURL(Music, 0, BASSFlag.BASS_DEFAULT, null, IntPtr.Zero);
@@ -843,7 +905,7 @@ namespace Media_Player
         /// <summary>
         /// Выбор песни через плейлист
         /// </summary>
-        private void bunifuDataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        public void bunifuDataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0)
             {
@@ -857,6 +919,7 @@ namespace Media_Player
             else
             {
                 Music = VisualPlaylist.Rows[e.RowIndex].Tag.ToString();
+                BassPlayer.Play(Music);
             }
 
 
@@ -919,31 +982,49 @@ namespace Media_Player
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            M3uPlaylist m3UPlaylist = new M3uPlaylist();
-            m3UPlaylist.IsExtended = true;
-            for (int i = 0; i < Player.currentPlaylist.count; i++)
+            for (int j = 0; j < List_Playlist.Items.Count; j++)
             {
-                WMPLib.IWMPMedia audio = Player.currentPlaylist.Item[i];
+                M3uPlaylist m3UPlaylist = new M3uPlaylist();
+                m3UPlaylist.IsExtended = true;
 
-                FileInfo fileInfo = new FileInfo(audio.sourceURL);
-                TagLib.File F = TagLib.File.Create(fileInfo.FullName);
+                IWMPPlaylist playlist = Player.playlistCollection.getByName(List_Playlist.Items[j].ToString()).Item(0);
 
-                m3UPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
+                for (int i = 0; i < playlist.count; i++)
                 {
-                    Title = F.Tag.Title,
-                    Path = audio.sourceURL,
-                    Duration = F.Properties.Duration,
+                    WMPLib.IWMPMedia audio = playlist.Item[i];
 
-                });
+                    if (!audio.sourceURL.StartsWith("http"))
+                    {
+                        FileInfo fileInfo = new FileInfo(audio.sourceURL);
+                        TagLib.File F = TagLib.File.Create(fileInfo.FullName);
+
+                        m3UPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
+                        {
+                            Title = F.Tag.Title,
+                            Path = audio.sourceURL,
+                            Duration = F.Properties.Duration,
+
+                        });
+                    }
+                    else
+                    {
+                        m3UPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
+                        {
+                            Title = tag_info.title,
+                            Path = audio.sourceURL,
+                            Duration = tag_info.duration < TimeSpan.MaxValue.TotalSeconds ?
+                                TimeSpan.FromSeconds(tag_info.duration) : TimeSpan.FromSeconds(-1)
+                        });
+                    }
+                }
+
+                string text = PlaylistToTextHelper.ToText(m3UPlaylist);
+
+                using (StreamWriter writer = new StreamWriter(Path.GetFileNameWithoutExtension(playlist.name), false))
+                {
+                    writer.WriteLine(text);
+                }
             }
-
-            string text = PlaylistToTextHelper.ToText(m3UPlaylist);
-
-            using (StreamWriter writer = new StreamWriter("Assets/Default.m3u", false))
-            {
-                writer.WriteLine(text);
-            }
-
 
         }
 
@@ -1011,6 +1092,30 @@ namespace Media_Player
             else if (List_Playlist.SelectedIndex == 0)
             {
                 List_Playlist.SelectedIndex = List_Playlist.Items.Count - 1;
+            }
+        }
+
+        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
+        {
+            if (!EditPlaylist.Visible)
+            {
+
+                EditPlaylist.Visible = true;
+                EditPlaylist.Text = List_Playlist.SelectedItem.ToString();
+            }
+            else
+            {
+                string oldName = List_Playlist.SelectedItem.ToString();
+
+                int selectedIndex = List_Playlist.SelectedIndex;
+
+                List_Playlist.Items.RemoveAt(List_Playlist.SelectedIndex);
+                List_Playlist.Items.Insert(selectedIndex, EditPlaylist.Text);
+                FileInfo fileInfo = new FileInfo(Player.playlistCollection.getByName(oldName).Item(0).name);
+                File.Move(fileInfo.FullName, fileInfo.FullName.Replace(oldName, EditPlaylist.Text));
+
+                List_Playlist.SelectedIndex = selectedIndex;
+
             }
         }
     }
