@@ -188,7 +188,8 @@ namespace Media_Player
                     }
                     Player.currentPlaylist = CurrentPlaylist;
 
-                    List_Playlist.Items.Add(File);
+                    string[] data = fileInfo.Name.Split('.');
+                    List_Playlist.Items.Add(new ListItem() {FileName = data[0], FilePath = fileInfo.Directory.FullName, Format = data[1], OldFullPath = fileInfo.FullName });
                     List_Playlist.SelectedIndex = List_Playlist.Items.Count - 1;
 
                 }
@@ -344,6 +345,8 @@ namespace Media_Player
                 CurrentPlaylist.appendItem(Player.newMedia(path));
             }
             Player.currentPlaylist = CurrentPlaylist;
+
+            List_Playlist.Items.Add(new ListItem() { FileName = "Default", FullPath = CurrentPlaylist.name, OldFullPath = CurrentPlaylist.name});
             List_Playlist.SelectedIndex = 0;
         }
         /// <summary>
@@ -987,7 +990,8 @@ namespace Media_Player
                 M3uPlaylist m3UPlaylist = new M3uPlaylist();
                 m3UPlaylist.IsExtended = true;
 
-                IWMPPlaylist playlist = Player.playlistCollection.getByName(List_Playlist.Items[j].ToString()).Item(0);
+                ListItem item = (ListItem)List_Playlist.Items[j];
+                IWMPPlaylist playlist = Player.playlistCollection.getByName(item.OldFullPath.Replace("m3u", "wpl")).Item(0);
 
                 for (int i = 0; i < playlist.count; i++)
                 {
@@ -1063,8 +1067,8 @@ namespace Media_Player
 
         private void List_Playlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-             string playlist = (string)List_Playlist.SelectedItem;
-            Player.currentPlaylist = Player.playlistCollection.getByName(playlist).Item(0);
+            ListItem playlist = (ListItem)List_Playlist.SelectedItem;
+            Player.currentPlaylist = Player.playlistCollection.getByName(playlist.OldFullPath).Item(0);
 
             VisualPlaylist.Rows.Clear();
             playlist_init();
@@ -1101,22 +1105,31 @@ namespace Media_Player
             {
 
                 EditPlaylist.Visible = true;
+                guna2ImageButton2.Visible = true;
+                guna2ImageButton3.Visible = true;
                 EditPlaylist.Text = List_Playlist.SelectedItem.ToString();
             }
-            else
-            {
-                string oldName = List_Playlist.SelectedItem.ToString();
 
-                int selectedIndex = List_Playlist.SelectedIndex;
+        }
 
-                List_Playlist.Items.RemoveAt(List_Playlist.SelectedIndex);
-                List_Playlist.Items.Insert(selectedIndex, EditPlaylist.Text);
-                FileInfo fileInfo = new FileInfo(Player.playlistCollection.getByName(oldName).Item(0).name);
-                File.Move(fileInfo.FullName, fileInfo.FullName.Replace(oldName, EditPlaylist.Text));
+        private void guna2ImageButton3_Click(object sender, EventArgs e)
+        {
 
-                List_Playlist.SelectedIndex = selectedIndex;
+            ListItem item = (ListItem)List_Playlist.SelectedItem;
+            FileInfo fileInfo = new FileInfo(Player.playlistCollection.getByName(item.GetFullPath()).Item(0).name);
+            int selectedIndex = List_Playlist.SelectedIndex;
 
-            }
+            List_Playlist.Items.Insert(selectedIndex, new ListItem() { FileName = EditPlaylist.Text, FilePath = item.FilePath, Format = item.Format, OldFullPath = fileInfo.FullName});
+            List_Playlist.Items.RemoveAt(List_Playlist.SelectedIndex);
+
+            File.Move(fileInfo.FullName, fileInfo.FullName.Replace(item.FileName, EditPlaylist.Text));
+
+            List_Playlist.SelectedIndex = selectedIndex;
+            EditPlaylist.Visible = false;
+            guna2ImageButton2.Visible = false;
+            guna2ImageButton3.Visible = false;
+
+
         }
     }
 }

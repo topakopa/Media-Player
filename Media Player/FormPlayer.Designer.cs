@@ -108,6 +108,8 @@ namespace Media_Player
             this.openFileDialogPlaylists = new System.Windows.Forms.OpenFileDialog();
             this.EditPlaylist = new Bunifu.UI.WinForms.BunifuTextBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlbumPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VisualPlaylist)).BeginInit();
@@ -129,7 +131,7 @@ namespace Media_Player
             this.Player.Location = new System.Drawing.Point(12, 188);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(826, 3);
+            this.Player.Size = new System.Drawing.Size(826, 300);
             this.Player.TabIndex = 0;
             this.Player.Visible = false;
             this.Player.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.axWindowsMediaPlayer1_MediaChange);
@@ -164,7 +166,7 @@ namespace Media_Player
             this.ButtonPlay.BackColor = System.Drawing.Color.Transparent;
             this.ButtonPlay.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPlay.CheckedState.Parent = this.ButtonPlay;
-            this.ButtonPlay.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image26")));
+            this.ButtonPlay.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
             this.ButtonPlay.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
             this.ButtonPlay.HoverState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPlay.HoverState.Parent = this.ButtonPlay;
@@ -175,7 +177,7 @@ namespace Media_Player
             this.ButtonPlay.IndicateFocus = true;
             this.ButtonPlay.Location = new System.Drawing.Point(12, 92);
             this.ButtonPlay.Name = "ButtonPlay";
-            this.ButtonPlay.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image27")));
+            this.ButtonPlay.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image25")));
             this.ButtonPlay.PressedState.ImageSize = new System.Drawing.Size(115, 115);
             this.ButtonPlay.PressedState.Parent = this.ButtonPlay;
             this.ButtonPlay.ShadowDecoration.Parent = this.ButtonPlay;
@@ -188,7 +190,7 @@ namespace Media_Player
             this.ButtonPause.BackColor = System.Drawing.Color.Transparent;
             this.ButtonPause.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPause.CheckedState.Parent = this.ButtonPause;
-            this.ButtonPause.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image24")));
+            this.ButtonPause.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image22")));
             this.ButtonPause.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
             this.ButtonPause.HoverState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPause.HoverState.Parent = this.ButtonPause;
@@ -199,7 +201,7 @@ namespace Media_Player
             this.ButtonPause.IndicateFocus = true;
             this.ButtonPause.Location = new System.Drawing.Point(90, 92);
             this.ButtonPause.Name = "ButtonPause";
-            this.ButtonPause.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image25")));
+            this.ButtonPause.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image23")));
             this.ButtonPause.PressedState.ImageSize = new System.Drawing.Size(115, 115);
             this.ButtonPause.PressedState.Parent = this.ButtonPause;
             this.ButtonPause.ShadowDecoration.Parent = this.ButtonPause;
@@ -212,7 +214,7 @@ namespace Media_Player
             this.ButtonStop.BackColor = System.Drawing.Color.Transparent;
             this.ButtonStop.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonStop.CheckedState.Parent = this.ButtonStop;
-            this.ButtonStop.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image22")));
+            this.ButtonStop.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image20")));
             this.ButtonStop.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
             this.ButtonStop.HoverState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonStop.HoverState.Parent = this.ButtonStop;
@@ -223,7 +225,7 @@ namespace Media_Player
             this.ButtonStop.IndicateFocus = true;
             this.ButtonStop.Location = new System.Drawing.Point(168, 92);
             this.ButtonStop.Name = "ButtonStop";
-            this.ButtonStop.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image23")));
+            this.ButtonStop.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image21")));
             this.ButtonStop.PressedState.ImageSize = new System.Drawing.Size(115, 115);
             this.ButtonStop.PressedState.Parent = this.ButtonStop;
             this.ButtonStop.ShadowDecoration.Parent = this.ButtonStop;
@@ -236,7 +238,7 @@ namespace Media_Player
             this.ButtonPrevious.BackColor = System.Drawing.Color.Transparent;
             this.ButtonPrevious.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPrevious.CheckedState.Parent = this.ButtonPrevious;
-            this.ButtonPrevious.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image20")));
+            this.ButtonPrevious.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image18")));
             this.ButtonPrevious.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
             this.ButtonPrevious.HoverState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPrevious.HoverState.Parent = this.ButtonPrevious;
@@ -247,7 +249,7 @@ namespace Media_Player
             this.ButtonPrevious.IndicateFocus = true;
             this.ButtonPrevious.Location = new System.Drawing.Point(246, 92);
             this.ButtonPrevious.Name = "ButtonPrevious";
-            this.ButtonPrevious.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image21")));
+            this.ButtonPrevious.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image19")));
             this.ButtonPrevious.PressedState.ImageSize = new System.Drawing.Size(115, 115);
             this.ButtonPrevious.PressedState.Parent = this.ButtonPrevious;
             this.ButtonPrevious.ShadowDecoration.Parent = this.ButtonPrevious;
@@ -260,7 +262,7 @@ namespace Media_Player
             this.ButtonNext.BackColor = System.Drawing.Color.Transparent;
             this.ButtonNext.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonNext.CheckedState.Parent = this.ButtonNext;
-            this.ButtonNext.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image18")));
+            this.ButtonNext.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image16")));
             this.ButtonNext.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical;
             this.ButtonNext.HoverState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonNext.HoverState.Parent = this.ButtonNext;
@@ -271,7 +273,7 @@ namespace Media_Player
             this.ButtonNext.IndicateFocus = true;
             this.ButtonNext.Location = new System.Drawing.Point(324, 92);
             this.ButtonNext.Name = "ButtonNext";
-            this.ButtonNext.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image19")));
+            this.ButtonNext.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
             this.ButtonNext.PressedState.ImageSize = new System.Drawing.Size(115, 115);
             this.ButtonNext.PressedState.Parent = this.ButtonNext;
             this.ButtonNext.ShadowDecoration.Parent = this.ButtonNext;
@@ -677,7 +679,7 @@ namespace Media_Player
             this.ButtonVideo.BackColor = System.Drawing.Color.Transparent;
             this.ButtonVideo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonVideo.CheckedState.Parent = this.ButtonVideo;
-            this.ButtonVideo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image16")));
+            this.ButtonVideo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image14")));
             this.ButtonVideo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonVideo.HoverState.Parent = this.ButtonVideo;
             this.ButtonVideo.Image = ((System.Drawing.Image)(resources.GetObject("ButtonVideo.Image")));
@@ -687,7 +689,7 @@ namespace Media_Player
             this.ButtonVideo.IndicateFocus = true;
             this.ButtonVideo.Location = new System.Drawing.Point(742, 116);
             this.ButtonVideo.Name = "ButtonVideo";
-            this.ButtonVideo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image17")));
+            this.ButtonVideo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image15")));
             this.ButtonVideo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonVideo.PressedState.Parent = this.ButtonVideo;
             this.ButtonVideo.ShadowDecoration.Parent = this.ButtonVideo;
@@ -700,7 +702,7 @@ namespace Media_Player
             this.ButtonInfo.BackColor = System.Drawing.Color.Transparent;
             this.ButtonInfo.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonInfo.CheckedState.Parent = this.ButtonInfo;
-            this.ButtonInfo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image14")));
+            this.ButtonInfo.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image12")));
             this.ButtonInfo.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
             this.ButtonInfo.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonInfo.HoverState.Parent = this.ButtonInfo;
@@ -711,7 +713,7 @@ namespace Media_Player
             this.ButtonInfo.IndicateFocus = true;
             this.ButtonInfo.Location = new System.Drawing.Point(793, 116);
             this.ButtonInfo.Name = "ButtonInfo";
-            this.ButtonInfo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image15")));
+            this.ButtonInfo.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image13")));
             this.ButtonInfo.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonInfo.PressedState.Parent = this.ButtonInfo;
             this.ButtonInfo.ShadowDecoration.Parent = this.ButtonInfo;
@@ -739,7 +741,7 @@ namespace Media_Player
             this.ButtonMute.BackColor = System.Drawing.Color.Transparent;
             this.ButtonMute.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonMute.CheckedState.Parent = this.ButtonMute;
-            this.ButtonMute.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image12")));
+            this.ButtonMute.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
             this.ButtonMute.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonMute.HoverState.Parent = this.ButtonMute;
             this.ButtonMute.Image = ((System.Drawing.Image)(resources.GetObject("ButtonMute.Image")));
@@ -749,7 +751,7 @@ namespace Media_Player
             this.ButtonMute.IndicateFocus = true;
             this.ButtonMute.Location = new System.Drawing.Point(587, 82);
             this.ButtonMute.Name = "ButtonMute";
-            this.ButtonMute.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image13")));
+            this.ButtonMute.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
             this.ButtonMute.PressedState.ImageSize = new System.Drawing.Size(45, 45);
             this.ButtonMute.PressedState.Parent = this.ButtonMute;
             this.ButtonMute.ShadowDecoration.Parent = this.ButtonMute;
@@ -888,7 +890,7 @@ namespace Media_Player
             this.ButtonRatingSave.BackColor = System.Drawing.Color.Transparent;
             this.ButtonRatingSave.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonRatingSave.CheckedState.Parent = this.ButtonRatingSave;
-            this.ButtonRatingSave.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image28")));
+            this.ButtonRatingSave.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image26")));
             this.ButtonRatingSave.HoverState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
             this.ButtonRatingSave.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonRatingSave.HoverState.Parent = this.ButtonRatingSave;
@@ -899,7 +901,7 @@ namespace Media_Player
             this.ButtonRatingSave.IndicateFocus = true;
             this.ButtonRatingSave.Location = new System.Drawing.Point(793, 247);
             this.ButtonRatingSave.Name = "ButtonRatingSave";
-            this.ButtonRatingSave.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image29")));
+            this.ButtonRatingSave.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image27")));
             this.ButtonRatingSave.PressedState.ImageSize = new System.Drawing.Size(45, 45);
             this.ButtonRatingSave.PressedState.Parent = this.ButtonRatingSave;
             this.ButtonRatingSave.ShadowDecoration.Parent = this.ButtonRatingSave;
@@ -914,7 +916,7 @@ namespace Media_Player
             this.ButtonAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonAdd.CheckedState.Parent = this.ButtonAdd;
             this.ButtonAdd.ContextMenuStrip = this.ContextMenuAdd;
-            this.ButtonAdd.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
+            this.ButtonAdd.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
             this.ButtonAdd.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonAdd.HoverState.Parent = this.ButtonAdd;
             this.ButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButtonAdd.Image")));
@@ -924,7 +926,7 @@ namespace Media_Player
             this.ButtonAdd.IndicateFocus = true;
             this.ButtonAdd.Location = new System.Drawing.Point(852, 448);
             this.ButtonAdd.Name = "ButtonAdd";
-            this.ButtonAdd.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
+            this.ButtonAdd.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
             this.ButtonAdd.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonAdd.PressedState.Parent = this.ButtonAdd;
             this.ButtonAdd.ShadowDecoration.Parent = this.ButtonAdd;
@@ -999,7 +1001,7 @@ namespace Media_Player
             this.ButtonDEL.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonDEL.CheckedState.Parent = this.ButtonDEL;
             this.ButtonDEL.ContextMenuStrip = this.ContextMenuDEL;
-            this.ButtonDEL.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
+            this.ButtonDEL.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
             this.ButtonDEL.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonDEL.HoverState.Parent = this.ButtonDEL;
             this.ButtonDEL.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDEL.Image")));
@@ -1009,7 +1011,7 @@ namespace Media_Player
             this.ButtonDEL.IndicateFocus = true;
             this.ButtonDEL.Location = new System.Drawing.Point(903, 448);
             this.ButtonDEL.Name = "ButtonDEL";
-            this.ButtonDEL.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
+            this.ButtonDEL.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
             this.ButtonDEL.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonDEL.PressedState.Parent = this.ButtonDEL;
             this.ButtonDEL.ShadowDecoration.Parent = this.ButtonDEL;
@@ -1189,8 +1191,6 @@ namespace Media_Player
             this.List_Playlist.ItemHeight = 26;
             this.List_Playlist.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
             this.List_Playlist.ItemHighLightForeColor = System.Drawing.Color.White;
-            this.List_Playlist.Items.AddRange(new object[] {
-            "Default"});
             this.List_Playlist.ItemTopMargin = 3;
             this.List_Playlist.Location = new System.Drawing.Point(62, 205);
             this.List_Playlist.Name = "List_Playlist";
@@ -1207,7 +1207,7 @@ namespace Media_Player
             this.ButtonPrevious_playlist.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPrevious_playlist.CheckedState.Parent = this.ButtonPrevious_playlist;
             this.ButtonPrevious_playlist.ContextMenuStrip = this.ContextMenuAdd;
-            this.ButtonPrevious_playlist.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            this.ButtonPrevious_playlist.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.ButtonPrevious_playlist.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonPrevious_playlist.HoverState.Parent = this.ButtonPrevious_playlist;
             this.ButtonPrevious_playlist.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPrevious_playlist.Image")));
@@ -1217,7 +1217,7 @@ namespace Media_Player
             this.ButtonPrevious_playlist.IndicateFocus = true;
             this.ButtonPrevious_playlist.Location = new System.Drawing.Point(8, 197);
             this.ButtonPrevious_playlist.Name = "ButtonPrevious_playlist";
-            this.ButtonPrevious_playlist.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
+            this.ButtonPrevious_playlist.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
             this.ButtonPrevious_playlist.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonPrevious_playlist.PressedState.Parent = this.ButtonPrevious_playlist;
             this.ButtonPrevious_playlist.ShadowDecoration.Parent = this.ButtonPrevious_playlist;
@@ -1231,7 +1231,7 @@ namespace Media_Player
             this.ButtonPlaylist_Next.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.ButtonPlaylist_Next.CheckedState.Parent = this.ButtonPlaylist_Next;
             this.ButtonPlaylist_Next.ContextMenuStrip = this.ContextMenuAdd;
-            this.ButtonPlaylist_Next.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.ButtonPlaylist_Next.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             this.ButtonPlaylist_Next.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.ButtonPlaylist_Next.HoverState.Parent = this.ButtonPlaylist_Next;
             this.ButtonPlaylist_Next.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPlaylist_Next.Image")));
@@ -1241,7 +1241,7 @@ namespace Media_Player
             this.ButtonPlaylist_Next.IndicateFocus = true;
             this.ButtonPlaylist_Next.Location = new System.Drawing.Point(793, 197);
             this.ButtonPlaylist_Next.Name = "ButtonPlaylist_Next";
-            this.ButtonPlaylist_Next.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.ButtonPlaylist_Next.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.ButtonPlaylist_Next.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.ButtonPlaylist_Next.PressedState.Parent = this.ButtonPlaylist_Next;
             this.ButtonPlaylist_Next.ShadowDecoration.Parent = this.ButtonPlaylist_Next;
@@ -1271,7 +1271,7 @@ namespace Media_Player
             this.FullscreanButton.BackColor = System.Drawing.Color.Transparent;
             this.FullscreanButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.FullscreanButton.CheckedState.Parent = this.FullscreanButton;
-            this.FullscreanButton.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.FullscreanButton.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.FullscreanButton.HoverState.ImageSize = new System.Drawing.Size(44, 44);
             this.FullscreanButton.HoverState.Parent = this.FullscreanButton;
             this.FullscreanButton.Image = ((System.Drawing.Image)(resources.GetObject("FullscreanButton.Image")));
@@ -1281,7 +1281,7 @@ namespace Media_Player
             this.FullscreanButton.IndicateFocus = true;
             this.FullscreanButton.Location = new System.Drawing.Point(688, 116);
             this.FullscreanButton.Name = "FullscreanButton";
-            this.FullscreanButton.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.FullscreanButton.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.FullscreanButton.PressedState.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
             this.FullscreanButton.PressedState.ImageSize = new System.Drawing.Size(45, 45);
             this.FullscreanButton.PressedState.Parent = this.FullscreanButton;
@@ -1376,23 +1376,70 @@ namespace Media_Player
             this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.CheckedState.Parent = this.guna2ImageButton1;
             this.guna2ImageButton1.ContextMenuStrip = this.ContextMenuAdd;
-            this.guna2ImageButton1.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(44, 44);
+            this.guna2ImageButton1.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image32")));
             this.guna2ImageButton1.HoverState.Parent = this.guna2ImageButton1;
             this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(38, 38);
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(18, 18);
             this.guna2ImageButton1.IndicateFocus = true;
-            this.guna2ImageButton1.Location = new System.Drawing.Point(8, 243);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(8, 247);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.guna2ImageButton1.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image33")));
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(105, 105);
             this.guna2ImageButton1.PressedState.Parent = this.guna2ImageButton1;
             this.guna2ImageButton1.ShadowDecoration.Parent = this.guna2ImageButton1;
-            this.guna2ImageButton1.Size = new System.Drawing.Size(45, 51);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(29, 26);
             this.guna2ImageButton1.TabIndex = 72;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click_1);
+            // 
+            // guna2ImageButton2
+            // 
+            this.guna2ImageButton2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton2.CheckedState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.ContextMenuStrip = this.ContextMenuAdd;
+            this.guna2ImageButton2.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image28")));
+            this.guna2ImageButton2.HoverState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton2.Image")));
+            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton2.ImageRotate = 0F;
+            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(18, 18);
+            this.guna2ImageButton2.IndicateFocus = true;
+            this.guna2ImageButton2.Location = new System.Drawing.Point(39, 247);
+            this.guna2ImageButton2.Name = "guna2ImageButton2";
+            this.guna2ImageButton2.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image29")));
+            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(22, 22);
+            this.guna2ImageButton2.PressedState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.ShadowDecoration.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Size = new System.Drawing.Size(21, 26);
+            this.guna2ImageButton2.TabIndex = 73;
+            this.guna2ImageButton2.Visible = false;
+            // 
+            // guna2ImageButton3
+            // 
+            this.guna2ImageButton3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton3.CheckedState.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.ContextMenuStrip = this.ContextMenuAdd;
+            this.guna2ImageButton3.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image30")));
+            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton3.HoverState.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton3.Image")));
+            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton3.ImageRotate = 0F;
+            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(28, 28);
+            this.guna2ImageButton3.IndicateFocus = true;
+            this.guna2ImageButton3.Location = new System.Drawing.Point(12, 247);
+            this.guna2ImageButton3.Name = "guna2ImageButton3";
+            this.guna2ImageButton3.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image31")));
+            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2ImageButton3.PressedState.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.ShadowDecoration.Parent = this.guna2ImageButton3;
+            this.guna2ImageButton3.Size = new System.Drawing.Size(21, 26);
+            this.guna2ImageButton3.TabIndex = 74;
+            this.guna2ImageButton3.Visible = false;
+            this.guna2ImageButton3.Click += new System.EventHandler(this.guna2ImageButton3_Click);
             // 
             // FormPlayer
             // 
@@ -1403,8 +1450,6 @@ namespace Media_Player
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1168, 500);
             this.ControlBox = false;
-            this.Controls.Add(this.guna2ImageButton1);
-            this.Controls.Add(this.EditPlaylist);
             this.Controls.Add(this.FullscreanButton);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.ButtonPlaylist_Next);
@@ -1449,6 +1494,10 @@ namespace Media_Player
             this.Controls.Add(this.RatingStar);
             this.Controls.Add(this.AlbumPictureBox);
             this.Controls.Add(this.ButtonRatingSave);
+            this.Controls.Add(this.EditPlaylist);
+            this.Controls.Add(this.guna2ImageButton2);
+            this.Controls.Add(this.guna2ImageButton3);
+            this.Controls.Add(this.guna2ImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPlayer";
@@ -1540,6 +1589,8 @@ namespace Media_Player
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCreatePlaylist;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Bunifu.UI.WinForms.BunifuTextBox EditPlaylist;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
     }
 }
 

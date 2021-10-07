@@ -141,6 +141,7 @@
     <Compile Include="FormPlayer.Designer.cs">
       <DependentUpon>FormPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RPTagsChangedEventArgs.cs" />
@@ -179,6 +180,9 @@
   <ItemGroup>
     <Content Include="Assets\1618632294_15-phonoteka_org-p-sinii-fon-gradient-s-fioletovim-16.jpg" />
     <Content Include="Assets\3293d19b24029556a9c5f5a6b146e73e.png" />
+    <Content Include="Assets\cancel.png" />
+    <Content Include="Assets\ok.png" />
+    <Content Include="Assets\pensil.png" />
     <Content Include="Assets\Radio Album icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
